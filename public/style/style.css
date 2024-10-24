@@ -1,29 +1,78 @@
-h1 {
-	background-color: #e8e8f2;
-	padding: 20px;
-	text-align: center;
-	color: #0e3698;
-}
-.myNav {
-	background-color: #86c6f6;
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400..900&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap');
+
+root {
+	--title_font : "Cinzel", serif;
+	--sous_tittle_font : "Cinzel Decorative", serif;
+	--text_font :  "Merriweather", serif;
+	--bg_color : #731C37;
+	--title_color : #E7CF47;
+	--text_color : #FFFCFC;
 }
 
-.myBody {
-	background-image: url("/public/img/fond.jpeg");
-	background-size: cover;
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
 }
-.myFooter {
-	background-color: black;
+
+
+.myNav {
+	background-color: #731C37;
 }
-.bgp {
-	background-color: #7b2fd1;
+
+.iconLogo {
+	color: #FFFCFC;
+	font-size: 19px;
+	margin-left: 5px;
 }
-.bgb {
-	background-color: #0e3698;
+
+.headerTitle {
+	font-size: 20px;
+	font-family: "Cinzel", serif;
 }
-.bgbc {
-	background-color: #86c6f6;
+
+.title {
+	color: #E7CF47;
+	font-weight: bold;
 }
-.bgg {
-	background-color: #e8e8f2;
+
+.searchInput {
+	width: 500px;
+	padding: 10px;
+	border-radius: 20px;
+	border: none;
 }
+
+.headerText {
+	color: #FFFCFC;
+	font-size: 19px;
+	font-family: "Cinzel", serif;
+}
+
+footer {
+	background-color: #232224;
+	padding: 20px;
+}
+
+@media screen and (max-width : 769px){
+
+	.headerTitle {
+		display: none;
+	}
+
+	.searchInput {
+		width: 200px;
+	}
+
+	.iconLogo {
+		display: none;
+	}
+
+	.nav-item {
+		margin-top: 5px;
+		border-bottom: 2px solid #E7CF47;
+		width: 100%;
+		display: block;
+	}
+}
+
