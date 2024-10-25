@@ -15,7 +15,16 @@ root {
 	box-sizing: border-box;
 }
 
+a {
+	text-decoration: none;
+	color: inherit;
+}
 
+button {
+	border: none;
+}
+
+ /********************************* NAVBAR********************************* */
 .myNav {
 	background-color: #731C37;
 }
@@ -49,13 +58,48 @@ root {
 	font-family: "Cinzel", serif;
 }
 
+/*********************************************** 404 ********************************/
+
+.errorContainer {
+	display: block;
+	width: 25%;
+	margin: 80px auto;
+}
+
+.errorText {
+	font-size: 45px;
+	margin: 30px;
+}
+
+.errorBtn {
+	background-color: #731C37;
+	padding: 15px;
+	border-radius:10px;
+	transition: all 0.3s ease;
+	margin-left: 25px;
+}
+
+.errorLink {
+	color: #FFFCFC;
+}
+
+.errorBtn:hover {
+	background-color: #a20c3b;
+}
+
+/************************************************ FOOTER ***************************/
 footer {
 	background-color: #232224;
 	padding: 20px;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
 }
 
 @media screen and (max-width : 769px){
 
+/********************************* NAVBAR********************************* */
 	.headerTitle {
 		display: none;
 	}
@@ -73,6 +117,12 @@ footer {
 		border-bottom: 2px solid #E7CF47;
 		width: 100%;
 		display: block;
+	}
+
+	/*********************************************** 404 ********************************/
+
+	.errorContainer {
+		width: 80%;
 	}
 }
 
