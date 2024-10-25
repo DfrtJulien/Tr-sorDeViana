@@ -19,7 +19,7 @@
     </div>
 </section>
 <section class="aboutContainer">
-    <div class="d-flex">
+    <div class="d-md-flex">
         <div>
             <img src="/public/img/img_qsn_home.png" alt="photo d'une femme fortant un colier en or">
         </div>

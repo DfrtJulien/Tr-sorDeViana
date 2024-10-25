@@ -187,5 +187,21 @@ footer {
 	.homeLink {
 		font-size: 20px;
 	}
+
+	.aboutContainer {
+		width: 98%;
+	}
+	
+	.aboutInfo {
+		width: 100%;
+	}
+	
+	.aboutTitle {
+		font-size: 22px;
+	}
+	
+	.aboutText {
+		font-size: 16px;
+	}
 }
 
