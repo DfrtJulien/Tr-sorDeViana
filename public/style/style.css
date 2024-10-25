@@ -20,6 +20,10 @@ a {
 	color: inherit;
 }
 
+img {
+	width: 100%;
+}
+
 button {
 	border: none;
 }
@@ -87,14 +91,63 @@ button {
 	background-color: #a20c3b;
 }
 
+/********************************************** HOME *******************************/
+.selectionContainer {
+	margin-top: 50px;
+	width: 100%;
+}
+
+.homeImgContainer {
+	position: relative;
+}
+
+.homeImgContainer img {
+	width: 100%;
+	height: 400px;
+}
+
+.homeLink {
+	position: absolute;
+	left: 50%;
+	top: 5%;
+	font-size: 45px;
+	transform: translateX(-50%);
+	text-decoration: underline;
+	font-family: "Cinzel Decorative", serif;
+	font-weight: bold;
+}
+
+.aboutContainer {
+	width: 50%;
+	margin: 100px auto;
+}
+
+.aboutInfo {
+	width: 50%;
+	background-color: #731C37;
+	padding: 15px;
+}
+
+.aboutTitle {
+	text-align: center;
+	font-size: 30px;
+	font-family: "Cinzel", serif;
+}
+
+.aboutText {
+	font-size: 20px;
+	font-family: "Merriweather", serif;
+	color: #FFFCFC;
+}
+
 /************************************************ FOOTER ***************************/
 footer {
 	background-color: #232224;
 	padding: 20px;
-	position: absolute;
+	/* position: absolute;
 	bottom: 0;
 	left: 0;
-	right: 0;
+	right: 0; */
 }
 
 @media screen and (max-width : 769px){
@@ -123,6 +176,16 @@ footer {
 
 	.errorContainer {
 		width: 80%;
+	}
+
+	/********************************************** HOME *******************************/
+
+	.homeImgContainer img {
+		height: 150px;
+	}
+
+	.homeLink {
+		font-size: 20px;
 	}
 }
 
