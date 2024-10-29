@@ -35,19 +35,22 @@
           <div class="d-flex align-items-center">
             <i class="fa-solid fa-store iconLogo"></i>
             <li class="nav-item">
-              <a class="nav-link  headerText" href="/">Accueil</a>
+              <a class="nav-link  headerText me-2" href="/">Accueil</a>
             </li>
           </div>
           <div class="d-flex align-items-center">
             <i class="fa-solid fa-cart-shopping iconLogo"></i>
             <li class="nav-item">
-              <a class="nav-link  headerText" href="/">Boutique</a>
+              <a class="nav-link  headerText me-2" href="/">Boutique</a>
             </li>
           </div>
           <div class="d-flex align-items-center">
             <i class="fa-solid fa-user iconLogo"></i>
             <li class="nav-item">
-              <a class="nav-link  headerText" href="/">Connexion</a>
+              <a class="nav-link  headerText me-2" href="/register">Inscription</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link  headerText ms-2" href="/">Connexion</a>
             </li>
           </div>
         </ul>

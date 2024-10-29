@@ -21,7 +21,7 @@
 <section class="aboutContainer">
     <div class="d-md-flex">
         <div>
-            <img src="/public/img/img_qsn_home.png" alt="photo d'une femme fortant un colier en or">
+            <img src="/public/img/image-carrousel-2.png" alt="photo d'une femme fortant un colier en or">
         </div>
         <div class="aboutInfo">
             <h3 class="title aboutTitle">Qui Somme-nous ?</h3>
