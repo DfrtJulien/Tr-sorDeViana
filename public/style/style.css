@@ -140,6 +140,51 @@ button {
 	color: #FFFCFC;
 }
 
+/********************************************* REGISTER PAGE**************************/
+
+.registerForm {
+	border: 3px solid #731C37;
+	width: 40%;
+	margin: auto;
+	margin-top: 50px;
+	margin-bottom: 50px;
+}
+
+.form-span {
+	display: block;
+	height: 50px;
+	width: 100%;
+	background-color: #731C37;
+}
+
+.registerForm label {
+	font-size: 22px;
+	margin-bottom: 5px;
+}
+
+.registerForm input,
+.duoInput input {
+	/* display: block; */
+	width: 100%;
+	padding: 8px;
+	font-size: 18px;
+}
+
+.submitBtn {
+	padding: 8px;
+	margin-left: 8px;
+	border: none;
+	border-radius: 8px;
+	color: #FFFCFC;
+	background-color: #731C37;
+	font-size: 22px;
+	transition: all 0.3s ease;
+}
+
+.submitBtn:hover {
+	background-color: #a20c3b;
+}
+
 /************************************************ FOOTER ***************************/
 footer {
 	background-color: #232224;
@@ -203,5 +248,13 @@ footer {
 	.aboutText {
 		font-size: 16px;
 	}
+
+	/********************************************* REGISTER PAGE**************************/
+
+.registerForm {
+	width: 100%;
+}
+
+
 }
 

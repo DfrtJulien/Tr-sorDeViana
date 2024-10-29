@@ -5,7 +5,7 @@ namespace App\Models;
 use PDO;
 use Config\DataBase;
 
-class User
+class Users
 {
     protected ?int $id;
     protected ?string $mail;
@@ -18,8 +18,9 @@ class User
     protected ?string $lastname;
     protected ?string $phone_number;
     protected int|string|null $id_role;
+    protected int|string|null $id_userInfo;
 
-    public function __construct(?int $id,?string $mail, ?string $password,  ?string $register_date,  ?string $city, ?string $postal,  ?string $street, ?string $firstname, ?string $lastname, ?string $pseudo, ?string $phone_number, int|string|null $id_role)
+    public function __construct(?int $id,?string $mail, ?string $password,  ?string $register_date,  ?string $city, ?string $postal,  ?string $street, ?string $firstname, ?string $lastname, ?string $phone_number, int|string|null $id_role, int|string|null $id_userInfo)
     {
         $this->id = $id;
         $this->mail = $mail;
@@ -32,8 +33,23 @@ class User
         $this->lastname = $lastname;
         $this->phone_number = $phone_number;
         $this->id_role = $id_role;
+        $this->id_userInfo = $id_userInfo;
     }
     
+    public function saveUser(){
+        $pdo = DataBase::getConnection();
+        $sql = "INSERT INTO user (id,mail,password,register_date,id_role, id_userInfo) VALUES (?,?,?,?,?,?)";
+        $statement = $pdo->prepare($sql);
+        return $statement->execute([$this->id, $this->mail, $this->password, $this->register_date, $this->id_role, $this->id_userInfo]);
+    }
+
+    public function saveUserInfo(){
+        $pdo = DataBase::getConnection();
+        $sql = "INSERT INTO userinfo (id,city,postal,street,firstname,lastname,phoneNumber) VALUES (?,?,?,?,?,?,?)";
+        $statement = $pdo->prepare($sql);
+        return $statement->execute([$this->id, $this->city, $this->postal, $this->street, $this->firstname, $this->lastname, $this->phone_number]);
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -87,6 +103,11 @@ class User
     public function getId_role(): ?int
     {
         return $this->id_role;
+    }
+
+    public function getId_user(): ?int
+    {
+        return $this->id_userInfo;
     }
 
     public function setId(int $id): static
@@ -152,6 +173,12 @@ class User
     public function setIdRole(int|string $id_role): static
     {
         $this->id_role = $id_role;
+        return $this;
+    }
+
+    public function setIdUser(int|string $id_userInfo): static
+    {
+        $this->id_userInfo = $id_userInfo;
         return $this;
     }
 }
