@@ -40,7 +40,7 @@
           </div>
 
           <?php
-          if (isset($_SESSION)) {
+          if (isset($_SESSION['user'])) {
           ?>
             <div class="d-flex align-items-center">
               <i class="fa-solid fa-cart-shopping iconLogo"></i>
@@ -57,7 +57,7 @@
             <div class="d-flex align-items-center">
               <i class="fa-solid fa-right-from-bracket iconLogo"></i>
               <li class="nav-item">
-                <a class="nav-link  headerText me-2" href="/">déconexion</a>
+                <a class="nav-link  headerText me-2" href="/logout">déconexion</a>
               </li>
             </div>
           <?php

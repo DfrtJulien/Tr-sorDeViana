@@ -15,4 +15,6 @@ $router->addRoute('/', 'HomeController', 'index');
 // inscription / connexion
 $router->addRoute('/register', 'RegisterController', 'index');
 $router->addRoute('/login', 'LoginController', 'index');
+// deconnexion
+$router->addRoute('/logout', 'LogoutController', 'index');
 $router->handleRequest();
