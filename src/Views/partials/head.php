@@ -38,21 +38,43 @@
               <a class="nav-link  headerText me-2" href="/">Accueil</a>
             </li>
           </div>
-          <div class="d-flex align-items-center">
-            <i class="fa-solid fa-cart-shopping iconLogo"></i>
-            <li class="nav-item">
-              <a class="nav-link  headerText me-2" href="/">Boutique</a>
-            </li>
-          </div>
-          <div class="d-flex align-items-center">
-            <i class="fa-solid fa-user iconLogo"></i>
-            <li class="nav-item">
-              <a class="nav-link  headerText me-2" href="/register">Inscription</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link  headerText ms-2" href="/">Connexion</a>
-            </li>
-          </div>
+
+          <?php
+          if (isset($_SESSION)) {
+          ?>
+            <div class="d-flex align-items-center">
+              <i class="fa-solid fa-cart-shopping iconLogo"></i>
+              <li class="nav-item">
+                <a class="nav-link  headerText me-2" href="/">Boutique</a>
+              </li>
+            </div>
+            <div class="d-flex align-items-center">
+              <i class="fa-solid fa-user iconLogo"></i>
+              <li class="nav-item">
+                <a class="nav-link  headerText me-2" href="/">profile</a>
+              </li>
+            </div>
+            <div class="d-flex align-items-center">
+              <i class="fa-solid fa-right-from-bracket iconLogo"></i>
+              <li class="nav-item">
+                <a class="nav-link  headerText me-2" href="/">déconexion</a>
+              </li>
+            </div>
+          <?php
+          } else {
+          ?>
+            <div class="d-flex align-items-center">
+              <i class="fa-solid fa-user iconLogo"></i>
+              <li class="nav-item">
+                <a class="nav-link  headerText me-2" href="/register">Inscription</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link  headerText ms-2" href="/login">Connexion</a>
+              </li>
+            </div>
+          <?php
+          }
+          ?>
         </ul>
       </div>
     </div>

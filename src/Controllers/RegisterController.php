@@ -31,13 +31,20 @@ class RegisterController extends AbstractController
           $phone =   htmlspecialchars($_POST['phone']);
           $registerDate = date('Y-m-d');
           $passwordHash = password_hash($password, PASSWORD_DEFAULT);
-          $idRole = 1;
+          $idRole = 2;
 
           $user = new Users(null,$mail,$passwordHash,$registerDate,$city,$postal,$street,$firstname,$lastname,$phone,$idRole, null);
           
-          $user->saveUserInfo();
-          $user->saveUser();
-          var_dump($user);
+          $userExist = $user->existingUser($mail);
+
+          if($userExist){
+            $this->redirectToRoute('/login');
+          } else {
+            $user->saveUserInfo();
+            $user->saveUser();
+            $this->redirectToRoute('/');
+          }
+        
       }
     }
     require_once(__DIR__ . "/../Views/security/register.view.php");
