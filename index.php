@@ -2,6 +2,7 @@
 require "vendor/autoload.php";
 session_start();
 
+
 use Config\Router;
 
 $router = new Router();
@@ -13,4 +14,5 @@ $router = new Router();
 $router->addRoute('/', 'HomeController', 'index');
 // inscription / connexion
 $router->addRoute('/register', 'RegisterController', 'index');
+$router->addRoute('/login', 'LoginController', 'index');
 $router->handleRequest();
