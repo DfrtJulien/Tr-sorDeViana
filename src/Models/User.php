@@ -26,4 +26,24 @@ class User extends Users
             return null;
         }
     }
+
+    public function updateUser()
+    {
+        $pdo = DataBase::getConnection();
+        $sql = "UPDATE `user` 
+        SET `mail` = ?
+        WHERE `user`.`id` = ?";
+        $statement = $pdo->prepare($sql);
+        return $statement->execute([$this->mail, $this->id]);
+    }
+
+    public function updateUserInfo()
+    {
+        $pdo = DataBase::getConnection();
+        $sql = "UPDATE `userinfo` 
+        SET `city` = ?, `postal` = ?, `street` = ?, `phoneNumber` = ?
+        WHERE `userinfo`.`id` = ?";
+        $statement = $pdo->prepare($sql);
+        return $statement->execute([$this->city, $this->postal, $this->street , $this->phone_number, $this->id]);
+    }
 }

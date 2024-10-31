@@ -21,5 +21,4 @@ $router->addRoute('/logout', 'LogoutController', 'index');
 $router->addRoute('/profile', 'UserController', 'showProfile');
 
 
-
 $router->handleRequest();
