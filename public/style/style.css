@@ -1,12 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400..900&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap');
 
 root {
-	--title_font : "Cinzel", serif;
-	--sous_tittle_font : "Cinzel Decorative", serif;
-	--text_font :  "Merriweather", serif;
-	--bg_color : #731C37;
-	--title_color : #E7CF47;
-	--text_color : #FFFCFC;
+	--title_font: "Cinzel", serif;
+	--sous_tittle_font: "Cinzel Decorative", serif;
+	--text_font: "Merriweather", serif;
+	--bg_color: #731C37;
+	--title_color: #E7CF47;
+	--text_color: #FFFCFC;
 }
 
 * {
@@ -28,7 +28,7 @@ button {
 	border: none;
 }
 
- /********************************* NAVBAR********************************* */
+/********************************* NAVBAR********************************* */
 .myNav {
 	background-color: #731C37;
 }
@@ -78,7 +78,7 @@ button {
 .errorBtn {
 	background-color: #731C37;
 	padding: 15px;
-	border-radius:10px;
+	border-radius: 10px;
 	transition: all 0.3s ease;
 	margin-left: 25px;
 }
@@ -185,6 +185,39 @@ button {
 	background-color: #a20c3b;
 }
 
+/********************************************** REGISTER PAGE **********************/
+
+.profileContainer {
+	background-color: #731C37;
+	width: 70%;
+	border-radius: 20px;
+	padding: 20px;
+}
+
+.profileContainer label,
+.profileContainer input,
+.submitBtnProfile {
+	margin-bottom: 5px;
+	display: block;
+	font-size: 22px;
+}
+
+.profileContainer input {
+	width: 100%;
+	padding: 5px;
+}
+
+.profileContainer label {
+	color: white;
+}
+
+.submitBtnProfile {
+	background-color: #e78c47;
+	color: #731C37;
+	padding: 10px;
+	border-radius: 5px;
+}
+
 /************************************************ FOOTER ***************************/
 footer {
 	background-color: #232224;
@@ -195,9 +228,9 @@ footer {
 	right: 0; */
 }
 
-@media screen and (max-width : 769px){
+@media screen and (max-width : 769px) {
 
-/********************************* NAVBAR********************************* */
+	/********************************* NAVBAR********************************* */
 	.headerTitle {
 		display: none;
 	}
@@ -236,25 +269,34 @@ footer {
 	.aboutContainer {
 		width: 98%;
 	}
-	
+
 	.aboutInfo {
 		width: 100%;
 	}
-	
+
 	.aboutTitle {
 		font-size: 22px;
 	}
-	
+
 	.aboutText {
 		font-size: 16px;
 	}
 
 	/********************************************* REGISTER PAGE**************************/
 
-.registerForm {
-	width: 100%;
+	.registerForm {
+		width: 100%;
+	}
+
+	/********************************************** REGISTER PAGE **********************/
+
+	.profileContainer {
+		width: 100%;
+	}
+
+	.profileContainer label,
+	.profileContainer input,
+	.submitBtnProfile {
+		font-size: 16px;
+	}
 }
-
-
-}
-

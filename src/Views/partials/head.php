@@ -51,7 +51,7 @@
             <div class="d-flex align-items-center">
               <i class="fa-solid fa-user iconLogo"></i>
               <li class="nav-item">
-                <a class="nav-link  headerText me-2" href="/">profile</a>
+                <a class="nav-link  headerText me-2" href="/profile?id=<?= $_SESSION['user']['idUser'] ?>">profile</a>
               </li>
             </div>
             <div class="d-flex align-items-center">
