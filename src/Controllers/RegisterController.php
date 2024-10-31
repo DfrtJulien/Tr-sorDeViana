@@ -2,7 +2,7 @@
 
 namespace App\Controllers;
 
-use App\Models\User;
+// use App\Models\User;
 use App\Utils\AbstractController;
 use App\Models\Users;
 

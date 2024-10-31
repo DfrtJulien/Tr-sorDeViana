@@ -17,4 +17,9 @@ $router->addRoute('/register', 'RegisterController', 'index');
 $router->addRoute('/login', 'LoginController', 'index');
 // deconnexion
 $router->addRoute('/logout', 'LogoutController', 'index');
+// profile user
+$router->addRoute('/profile', 'UserController', 'showProfile');
+
+
+
 $router->handleRequest();
