@@ -11,7 +11,9 @@ require_once(__DIR__ . '/../partials/head.php');
                 <?php
                 if (isset($this->arrayError['firstname'])) {
                 ?>
-                    <p class='text-danger'><?= $this->arrayError['firstname'] ?></p>
+                    <div class="alert alert-danger" role="alert">
+                        <p class='text-danger'><?= $this->arrayError['firstname'] ?></p>
+                    </div>
                 <?php
                 } ?>
             </div>
@@ -21,7 +23,9 @@ require_once(__DIR__ . '/../partials/head.php');
                 <?php
                 if (isset($this->arrayError['lastname'])) {
                 ?>
-                    <p class='text-danger'><?= $this->arrayError['lastname'] ?></p>
+                    <div class="alert alert-danger" role="alert">
+                        <p class='text-danger'><?= $this->arrayError['lastname'] ?></p>
+                    </div>
                 <?php
                 } ?>
             </div>
@@ -32,7 +36,9 @@ require_once(__DIR__ . '/../partials/head.php');
             <?php
             if (isset($this->arrayError['mail'])) {
             ?>
-                <p class='text-danger'><?= $this->arrayError['mail'] ?></p>
+                <div class="alert alert-danger" role="alert">
+                    <p class='text-danger'><?= $this->arrayError['mail'] ?></p>
+                </div>
             <?php
             } ?>
         </div>
@@ -42,7 +48,9 @@ require_once(__DIR__ . '/../partials/head.php');
             <?php
             if (isset($this->arrayError['password'])) {
             ?>
-                <p class='text-danger'><?= $this->arrayError['password'] ?></p>
+                <div class="alert alert-danger" role="alert">
+                    <p class='text-danger'><?= $this->arrayError['password'] ?></p>
+                </div>
             <?php
             } ?>
         </div>
@@ -52,7 +60,9 @@ require_once(__DIR__ . '/../partials/head.php');
             <?php
             if (isset($this->arrayError['city'])) {
             ?>
-                <p class='text-danger'><?= $this->arrayError['city'] ?></p>
+                <div class="alert alert-danger" role="alert">
+                    <p class='text-danger'><?= $this->arrayError['city'] ?></p>
+                </div>
             <?php
             } ?>
         </div>
@@ -62,11 +72,13 @@ require_once(__DIR__ . '/../partials/head.php');
             <?php
             if (isset($this->arrayError['street'])) {
             ?>
-                <p class='text-danger'><?= $this->arrayError['street'] ?></p>
+                <div class="alert alert-danger" role="alert">
+                    <p class='text-danger'><?= $this->arrayError['street'] ?></p>
+                </div>
             <?php
             } ?>
         </div>
-        
+
         <div class="d-flex p-2">
             <div class="duoInput">
                 <label for="postal">Code Postal : </label>
@@ -74,7 +86,9 @@ require_once(__DIR__ . '/../partials/head.php');
                 <?php
                 if (isset($this->arrayError['postal'])) {
                 ?>
-                    <p class='text-danger'><?= $this->arrayError['postal'] ?></p>
+                    <div class="alert alert-danger" role="alert">
+                        <p class='text-danger'><?= $this->arrayError['postal'] ?></p>
+                    </div>
                 <?php
                 } ?>
             </div>
@@ -84,7 +98,9 @@ require_once(__DIR__ . '/../partials/head.php');
                 <?php
                 if (isset($this->arrayError['phone'])) {
                 ?>
-                    <p class='text-danger'><?= $this->arrayError['phone'] ?></p>
+                    <div class="alert alert-danger" role="alert">
+                        <p class='text-danger'><?= $this->arrayError['phone'] ?></p>
+                    </div>
                 <?php
                 } ?>
             </div>

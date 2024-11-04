@@ -68,15 +68,16 @@ class Users
         $statement = $pdo->prepare($sql);
         $statement->execute([$mail]);
         $row = $statement->fetch(PDO::FETCH_ASSOC);
-        if ($row['id_role'] == 1) {
-            return new Admin($row['id'], $row['mail'], $row['password'], $row['register_date'], null,null,null,null,null,null,null, null);
-        } elseif ($row['id_role'] == 2) {
-            return new User($row['id'], $row['mail'], $row['password'], $row['register_date'], $row['city'], $row['postal'],$row['street'], $row['firstname'], $row['lastname'], $row['phone_number'], $row['id_role'], $row['id_userInfo']);
-        } else {
-            return null;
+        if($row){
+            if ($row['id_role'] === 1) {
+                return new Admin($row['id'], $row['mail'], $row['password'], $row['register_date'], $row['city'], $row['postal'],$row['street'], $row['firstname'], $row['lastname'], $row['phone_number'], $row['id_role'], $row['id_userInfo']);
+            } elseif ($row['id_role'] === 2) {
+                return new User($row['id'], $row['mail'], $row['password'], $row['register_date'], $row['city'], $row['postal'],$row['street'], $row['firstname'], $row['lastname'], $row['phone_number'], $row['id_role'], $row['id_userInfo']);
+            } else {
+                return null;
+            }
         }
     }
-    // , $row['city'], $row['postal'], $row['street'], $row['firstname'], $row['lastname'], $row['phone_number'], $row['id_role'], $row['id_userInfo'
     public function getId(): ?int
     {
         return $this->id;
