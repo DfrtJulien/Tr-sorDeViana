@@ -16,6 +16,7 @@ $router->addRoute('/login', 'LoginController', 'index');
 $router->addRoute('/logout', 'LogoutController', 'index');
 // profile user
 $router->addRoute('/profile', 'UserController', 'showProfile');
-
-
+// article
+// ajouter un article 
+$router->addRoute('/addArticle', 'ArticlesController', 'addArticle');
 $router->handleRequest();
