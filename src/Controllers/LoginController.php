@@ -40,6 +40,8 @@ class LoginController extends AbstractController
             } else {
                 $error = "Le mail ou mot de passe n'est pas correct";
             }
+        } else {
+            $error = "Le mail ou mot de passe n'est pas correct";
         }
     }
     if (isset($_SESSION['user'])) {
