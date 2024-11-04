@@ -41,7 +41,17 @@
 
           <?php
           if (isset($_SESSION['user'])) {
+            if ($_SESSION['user']['id_role'] == 1) {
           ?>
+              <div class="d-flex align-items-center">
+                <i class="fa-solid fa-plus iconLogo"></i>
+                <li class="nav-item">
+                  <a class="nav-link  headerText me-2" href="/addArticle">Ajouter un article</a>
+                </li>
+              </div>
+            <?php
+            }
+            ?>
             <div class="d-flex align-items-center">
               <i class="fa-solid fa-cart-shopping iconLogo"></i>
               <li class="nav-item">

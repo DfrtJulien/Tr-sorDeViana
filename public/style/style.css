@@ -142,7 +142,8 @@ button {
 
 /********************************************* REGISTER PAGE**************************/
 
-.registerForm {
+.registerForm,
+.addArticleForm {
 	border: 3px solid #731C37;
 	width: 40%;
 	margin: auto;
@@ -157,12 +158,14 @@ button {
 	background-color: #731C37;
 }
 
-.registerForm label {
+.registerForm label,
+.addArticleForm label {
 	font-size: 22px;
 	margin-bottom: 5px;
 }
 
 .registerForm input,
+.addArticleForm input,
 .duoInput input {
 	/* display: block; */
 	width: 100%;
@@ -216,6 +219,15 @@ button {
 	color: #731C37;
 	padding: 10px;
 	border-radius: 5px;
+}
+
+/**************************************** ADD ARTICLE FORM ****************************/
+.addArticleForm textarea,
+.addArticleForm select {
+	width: 100%;
+	padding: 8px;
+	font-size: 18px;
+	max-height: 150px;
 }
 
 /************************************************ FOOTER ***************************/

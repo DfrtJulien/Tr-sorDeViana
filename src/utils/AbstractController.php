@@ -30,6 +30,12 @@ abstract class AbstractController
         $regexAdress = '/^[a-zA-Zà-üÀ-Ü0-9 -]{2,255}$/';
         $regexPhoneNumber = '/^(?:([+]\d{1,11})[-.\s]?)?(?:[0](\d{1,9}))?$/';
         $regexPostal = '/^[0-9]{5}$/';
+        $regexTitle = '/^[a-zA-Zà-üÀ-Ü -]{2,255}$/';
+        $regexDescription = '/^[a-zA-Zà-üÀ-Ü0-9 -,.]{2, }$/';
+        $regexPriceWithoutTaxe = '/^[0-9 ,]/';
+        $regexType = '/^collier|boucles|chale/';
+        $regexQuantity = '/^[0-9]/';
+        $regexMaterial = '/^or|argent$/';
 
         switch ($nameInput) {
             case 'firstname':
@@ -75,6 +81,36 @@ abstract class AbstractController
             case 'phone':
                 if (!preg_match($regexPhoneNumber, $value)) {
                     $this->arrayError['phone'] = 'Merci de renseigner une numéro de téléphone correcte!';
+                }
+                break;
+            case 'title':
+                if(!preg_match($regexTitle, $value)) {
+                    $this->arrayError['title'] = 'Merci de renseigner un titre correcte !';
+                }
+                break;
+            case 'description':
+                if(!preg_match($regexDescription, $value)) {
+                    $this->arrayError['description'] = 'Merci de renseigner une description correcte !';
+                }
+                break;
+            case 'priceExcludingTax': 
+                if(!preg_match($regexPriceWithoutTaxe, $value)){
+                    $this->arrayError['priceExcludingTax'] = 'Merci de renseigner un prix correcte !';
+                }
+                break;
+            case 'type':
+                if(!preg_match($regexType, $value)){
+                    $this->arrayError['type'] = 'Merci de renseigner un type correcte';
+                }
+                break;
+            case 'quantity':
+                if(!preg_match($regexQuantity, $value)){
+                    $this->arrayError['quantity'] = 'Merci de renseigner une quantité correcte';
+                }
+                break;
+            case 'material':
+                if(!preg_match($regexMaterial, $value)){
+                    $this->arrayError['material'] = 'Merci de renseigner un matériaux  correcte';
                 }
                 break;
         }
