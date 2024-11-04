@@ -47,10 +47,6 @@ class UserController extends AbstractController
 
     public function updateProfile()
     {
-        // if(isset($_POST['mail'])){
-        //     var_dump("oui");
-           
-        // }
         require_once(__DIR__ . '/../Views/updateProfile.view.php');
     }
 }
