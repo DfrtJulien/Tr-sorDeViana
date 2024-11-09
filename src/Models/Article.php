@@ -16,7 +16,7 @@ class Article
     protected ?int $quantity;
     protected ?string $material;
 
-    public function __construct(?int $id,?string $title, ?string $description,  ?float $priceExcludingTax,  ?int $tva, ?string $category,  ?int $quantity, ?string $material)
+    public function __construct(?int $id, ?string $title, ?string $description,  ?float $priceExcludingTax,  ?int $tva, ?string $category,  ?int $quantity, ?string $material)
     {
         $this->id = $id;
         $this->title = $title;
@@ -27,7 +27,15 @@ class Article
         $this->quantity = $quantity;
         $this->material = $material;
     }
-    
+
+    public function addArticle()
+    {
+        $pdo = DataBase::getConnection();
+        $sql = "INSERT INTO article (id, title, description, priceExcludingTax, tva, category, quantity, material) VALUES (?,?,?,?,?,?,?,?)";
+        $statement = $pdo->prepare($sql);
+        return $statement->execute([$this->id, $this->title, $this->description, $this->priceExcludingTax, $this->tva, $this->category, $this->quantity,  $this->material]);
+    }
+
     public function getId(): ?int
     {
         return $this->id;
