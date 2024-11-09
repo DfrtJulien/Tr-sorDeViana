@@ -52,6 +52,13 @@ require_once(__DIR__ . "/../partials/head.php");
                 <h1><?= $article->getTitle() ?></h1>
                 <p><?= $price ?>€</p>
                 <a href="#" class="showMoreArticle">Voir plus</a>
+                <?php
+                if ($_SESSION['user']['id_role'] == 1) {
+                ?>
+                    <a href="/updateArticle?id=<?= $article->getId() ?>" class="updateArticleBtn">Modifier l'article</a>
+                <?php
+                }
+                ?>
             </div>
 
         <?php

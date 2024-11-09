@@ -53,6 +53,30 @@ class Article
         }
     }
 
+    public function getArticleById()
+    {
+        $pdo = DataBase::getConnection();
+        $sql = "SELECT * FROM `article` WHERE id = ?";
+        $statement = $pdo->prepare($sql);
+        $statement->execute([$this->id]);
+        $row = $statement->fetch(PDO::FETCH_ASSOC);
+        if ($row) {
+            return new Article($row['id'], $row['title'], $row['description'], $row['priceExcludingTax'], $row['tva'], $row['category'], $row['quantity'], $row['material']);
+        } else {
+            return null;
+        }
+    }
+
+    public function updateArticle()
+    {
+        $pdo = DataBase::getConnection();
+        $sql = "UPDATE `article` 
+        SET `title` = ?, `description` = ?, `priceExcludingTax` = ?, `tva` = ?, `category` = ?, `quantity` = ?, `material` = ?
+        WHERE `article`.`id` = ?";
+        $statement = $pdo->prepare($sql);
+        return $statement->execute([$this->title, $this->description, $this->priceExcludingTax, $this->tva, $this->category, $this->quantity,  $this->material, $this->id]);
+    }
+
     public function getId(): ?int
     {
         return $this->id;
