@@ -36,6 +36,23 @@ class Article
         return $statement->execute([$this->id, $this->title, $this->description, $this->priceExcludingTax, $this->tva, $this->category, $this->quantity,  $this->material]);
     }
 
+    public function getAllArticle()
+    {
+        $pdo = DataBase::getConnection();
+        $sql = "SELECT * FROM article";
+        $statement = $pdo->prepare($sql);
+        $statement->execute();
+        $resultFetch = $statement->fetchAll(PDO::FETCH_ASSOC);
+        $articles = [];
+        if ($resultFetch) {
+            foreach ($resultFetch as $row) {
+                $article = new Article($row['id'], $row['title'], $row['description'], $row['priceExcludingTax'], $row['tva'], $row['category'], $row['quantity'], $row['material']);
+                $articles[] = $article;
+            }
+            return $articles;
+        }
+    }
+
     public function getId(): ?int
     {
         return $this->id;
