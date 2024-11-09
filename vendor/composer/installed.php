@@ -1,19 +1,19 @@
 <?php return array(
     'root' => array(
-        'name' => 'defre/todo',
-        'pretty_version' => '1.0.0+no-version-set',
-        'version' => '1.0.0.0',
-        'reference' => null,
+        'name' => 'defre/tresordeviana',
+        'pretty_version' => 'dev-main',
+        'version' => 'dev-main',
+        'reference' => '036e7369f820b4d4fb1639d376bbfe87f5a00658',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
         'dev' => true,
     ),
     'versions' => array(
-        'defre/todo' => array(
-            'pretty_version' => '1.0.0+no-version-set',
-            'version' => '1.0.0.0',
-            'reference' => null,
+        'defre/tresordeviana' => array(
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
+            'reference' => '036e7369f820b4d4fb1639d376bbfe87f5a00658',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
