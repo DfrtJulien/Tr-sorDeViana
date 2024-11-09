@@ -289,6 +289,24 @@ button {
 	height: 291px;
 	margin-top: 30px;
 }
+
+.showMoreArticle,
+.updateArticleBtn {
+	padding: 5px;
+	margin: 5px;
+	border-radius: 5px;
+}
+
+.showMoreArticle {
+	background-color: #731C37;
+	color: white;
+}
+
+.updateArticleBtn {
+	background-color: #e78c47;
+	color: white;
+}
+
 /************************************************ FOOTER ***************************/
 footer {
 	background-color: #232224;
