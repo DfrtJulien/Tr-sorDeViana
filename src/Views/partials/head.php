@@ -55,7 +55,7 @@
             <div class="d-flex align-items-center">
               <i class="fa-solid fa-cart-shopping iconLogo"></i>
               <li class="nav-item">
-                <a class="nav-link  headerText me-2" href="/">Boutique</a>
+                <a class="nav-link  headerText me-2" href="/allArticle">Boutique</a>
               </li>
             </div>
             <div class="d-flex align-items-center">

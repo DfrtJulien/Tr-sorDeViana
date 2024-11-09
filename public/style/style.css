@@ -230,6 +230,65 @@ button {
 	max-height: 150px;
 }
 
+/*********************************** ALL ARTICLE PAGE  *****************/
+.articlesSection {
+	width: 85%;
+	margin: 100px auto;
+}
+
+.filterContainer {
+	background-color: #731c388f;
+	margin-right: 50px;
+	padding: 25px;
+	width: 350px;
+	margin-top: 30px;
+	max-height: 450px;
+}
+
+.filterContainer h3 {
+	font-size: 22px;
+	font-family: "Cinzel Decorative", serif;
+	margin: 10px;
+}
+
+.filterContainer label {
+	font-size: 18px;
+	font-family:  "Merriweather", serif;
+	margin: 5px;
+}
+
+.filterContainer input {
+	background-color: #731C37;
+	padding: 5px;
+}
+
+.filterBtn {
+	padding: 10px;
+	background-color: #731C37;
+	color: white;
+	border-radius: 5px;
+	margin-top: 10px;
+	font-size: 20px;
+	font-family: "Merriweather", serif;
+	transition: all 0.3s ease;
+}
+
+.filterBtn:hover {
+	background-color: #a20c3b;
+}
+
+.articleContainer {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+}
+
+.cardArticle {
+	border: 2px solid black;
+	width: 350px;
+	height: 291px;
+	margin-top: 30px;
+}
 /************************************************ FOOTER ***************************/
 footer {
 	background-color: #232224;
@@ -311,4 +370,18 @@ footer {
 	.submitBtnProfile {
 		font-size: 16px;
 	}
+
+/*********************************** ALL ARTICLE PAGE  *****************/
+.articlesSection {
+	width: 95%;
+}
+
+.filterContainer {
+	background-color: #731c388f;
+	margin-right: 50px;
+	padding: 25px;
+	width: 350px;
+	margin-top: 30px;
+	max-height: 450px;
+}
 }

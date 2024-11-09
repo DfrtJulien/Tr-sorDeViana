@@ -19,4 +19,6 @@ $router->addRoute('/profile', 'UserController', 'showProfile');
 // article
 // ajouter un article 
 $router->addRoute('/addArticle', 'ArticlesController', 'addArticle');
+// afficher tout les articles
+$router->addRoute('/allArticle', 'ArticlesController', 'showAllArticle');
 $router->handleRequest();

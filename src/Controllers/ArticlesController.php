@@ -36,4 +36,12 @@ class ArticlesController extends AbstractController
             require_once(__DIR__ . '/../Views/error/404.php');
         }
     }
+
+    public function showAllArticle()
+    {
+        $article = new Article(null, null, null, null, null, null, null, null);
+
+        $articles = $article->getAllArticle();
+        require_once(__DIR__ . "/../Views/article/allArticle.view.php");
+    }
 }

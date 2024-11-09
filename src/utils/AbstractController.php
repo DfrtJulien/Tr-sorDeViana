@@ -30,7 +30,7 @@ abstract class AbstractController
         $regexAdress = '/^[a-zA-Zà-üÀ-Ü0-9 -]{2,255}$/';
         $regexPhoneNumber = '/^(?:([+]\d{1,11})[-.\s]?)?(?:[0](\d{1,9}))?$/';
         $regexPostal = '/^[0-9]{5}$/';
-        $regexTitle = '/^[a-zA-Zà-üÀ-Ü \d]{2,255}$/';
+        $regexTitle = '/^[a-zA-Zà-üÀ-Ü \'\d]{2,255}$/';
         $regexDescription = '/^[a-zA-Zà-üÀ-Ü0-9 \-,\'\n".:]{2, }$/';
         $regexPriceWithoutTaxe = '/^[0-9 ,]/';
         $regexType = '/^collier|boucles|chale/';
