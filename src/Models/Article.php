@@ -21,8 +21,10 @@ class Article
     protected string|null $modification_date;
     protected ?int $id_user;
     protected ?int $id_article;
+    protected ?string $firstname;
+    protected ?string $lastname;
 
-    public function __construct(?int $id, ?string $title, ?string $description,  ?float $priceExcludingTax,  ?int $tva, ?string $category,  ?int $quantity, ?string $material, ?string $content, ?string $creation_date, string|null $modification_date, ?int $id_user, ?int $id_article)
+    public function __construct(?int $id, ?string $title, ?string $description,  ?float $priceExcludingTax,  ?int $tva, ?string $category,  ?int $quantity, ?string $material, ?string $content, ?string $creation_date, string|null $modification_date, ?int $id_user, ?int $id_article, ?string $firstname, ?string $lastname)
     {
         $this->id = $id;
         $this->title = $title;
@@ -37,6 +39,8 @@ class Article
         $this->modification_date = $modification_date;
         $this->id_user = $id_user;
         $this->id_article = $id_article;
+        $this->firstname = $firstname;
+        $this->lastname = $lastname;
     }
 
     public function addArticle()
@@ -57,7 +61,7 @@ class Article
         $articles = [];
         if ($resultFetch) {
             foreach ($resultFetch as $row) {
-                $article = new Article($row['id'], $row['title'], $row['description'], $row['priceExcludingTax'], $row['tva'], $row['category'], $row['quantity'], $row['material'], null, null, null, null, null);
+                $article = new Article($row['id'], $row['title'], $row['description'], $row['priceExcludingTax'], $row['tva'], $row['category'], $row['quantity'], $row['material'], null, null, null, null, null, null, null);
                 $articles[] = $article;
             }
             return $articles;
@@ -72,7 +76,7 @@ class Article
         $statement->execute([$this->id]);
         $row = $statement->fetch(PDO::FETCH_ASSOC);
         if ($row) {
-            return new Article($row['id'], $row['title'], $row['description'], $row['priceExcludingTax'], $row['tva'], $row['category'], $row['quantity'], $row['material'], null, null, null, null, null);
+            return new Article($row['id'], $row['title'], $row['description'], $row['priceExcludingTax'], $row['tva'], $row['category'], $row['quantity'], $row['material'], null, null, null, null, null, null, null);
         } else {
             return null;
         }
@@ -106,7 +110,7 @@ class Article
         $articles = [];
         if ($resultFetch) {
             foreach ($resultFetch as $row) {
-                $article = new Article($row['id'], $row['title'], $row['description'], $row['priceExcludingTax'], $row['tva'], $row['category'], $row['quantity'], $row['material'], null, null, null, null, null);
+                $article = new Article($row['id'], $row['title'], $row['description'], $row['priceExcludingTax'], $row['tva'], $row['category'], $row['quantity'], $row['material'], null, null, null, null, null, null, null);
                 $articles[] = $article;
             }
             return $articles;
@@ -119,6 +123,27 @@ class Article
         $sql = "INSERT INTO `comment` (`content`,`creation_date`,`modification_date`,`id_user`,`id_article`) VALUE (?,?,?,?,?)";
         $statement = $pdo->prepare($sql);
         return $statement->execute([$this->content, $this->creation_date, $this->modification_date, $this->id_user, $this->id_article]);
+    }
+
+    public function getComment()
+    {
+        $pdo = DataBase::getConnection();
+        $sql = "SELECT `comment`.`content`, `comment`.`creation_date`, `userinfo`.`firstname`, `userinfo`.`lastname`, `article`.`id`
+                FROM `comment`
+                RIGHT JOIN `userinfo` ON `comment`.`id_user` = `userinfo`.`id`
+                LEFT JOIN `article` ON `comment`.`id_article` = `article`.`id`
+                WHERE `comment`.`id_article` = ?;";
+        $statement = $pdo->prepare($sql);
+        $statement->execute([$this->id]);
+        $resultFetch = $statement->fetchAll(PDO::FETCH_ASSOC);
+        $comments = [];
+        if ($resultFetch) {
+            foreach ($resultFetch as $row) {
+                $comment = new Article(null, null, null, null, null, null, null, null, $row['content'], $row['creation_date'], null, null, null, $row['firstname'], $row['lastname']);
+                $comments[] = $comment;
+            }
+            return $comments;
+        }
     }
 
     public function getId(): ?int
@@ -166,7 +191,7 @@ class Article
         return $this->content;
     }
 
-    public function getCreationDate(): ?DateTime
+    public function getCreationDate(): ?string
     {
         return $this->creation_date;
     }
@@ -184,6 +209,16 @@ class Article
     public function getIdArticle(): ?int
     {
         return $this->id_article;
+    }
+
+    public function getFirstname(): ?string
+    {
+        return $this->firstname;
+    }
+
+    public function getLastname(): ?string
+    {
+        return $this->lastname;
     }
 
     public function setId(int $id): static
@@ -261,6 +296,18 @@ class Article
     public function setIdArticle($id_article): static
     {
         $this->id_article = $id_article;
+        return $this;
+    }
+
+    public function setFirstname($firstname): static
+    {
+        $this->firstname = $firstname;
+        return $this;
+    }
+
+    public function setLastname($lastname): static
+    {
+        $this->lastname = $lastname;
         return $this;
     }
 }

@@ -452,6 +452,46 @@ button {
 	padding: 15px;
 }
 
+.commentContainer {
+	margin: 50px auto;
+	width: 75%;
+}
+
+.comment {
+	margin-top: 50px;
+}
+
+.userInfo {
+	margin-right: 150px;
+}
+
+.commentContainer h3 {
+	margin-bottom: 45px;
+	font-weight: bold;
+}
+
+.userImgContainer {
+	margin-right: 50px;
+}
+
+.commentUserName {
+	font-weight: bold;
+	font-size: 25px;
+	margin-bottom: 15px;
+}
+
+.commentUserDate {
+	font-size: 20px;
+	font-family:  "Merriweather", serif;
+	font-style: italic;
+	color: #2322248e;
+}
+
+.commentUserComment {
+	font-size: 20px;
+	font-family:  "Merriweather", serif;
+}
+
 /************************************************ FOOTER ***************************/
 footer {
 	background-color: #232224;
