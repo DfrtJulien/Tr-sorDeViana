@@ -77,6 +77,14 @@ class Article
         return $statement->execute([$this->title, $this->description, $this->priceExcludingTax, $this->tva, $this->category, $this->quantity,  $this->material, $this->id]);
     }
 
+    public function deleteArticle()
+    {
+        $pdo = DataBase::getConnection();
+        $sql = 'DELETE FROM `article` WHERE `id` = ?';
+        $statement = $pdo->prepare($sql);
+        return $statement->execute([$this->id]);
+    }
+
     public function getId(): ?int
     {
         return $this->id;

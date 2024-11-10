@@ -291,7 +291,8 @@ button {
 }
 
 .showMoreArticle,
-.updateArticleBtn {
+.updateArticleBtn,
+.deleteArticleBtn {
 	padding: 5px;
 	margin: 5px;
 	border-radius: 5px;
@@ -305,6 +306,12 @@ button {
 .updateArticleBtn {
 	background-color: #e78c47;
 	color: white;
+}
+
+.deleteArticleBtn {
+	background-color: red;
+	color: white;
+	margin-top: 10px;
 }
 
 /************************************************ FOOTER ***************************/

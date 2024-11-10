@@ -18,12 +18,12 @@ class ArticlesController extends AbstractController
                 $this->check('quantity', $_POST['quantity']);
                 $this->check('material', $_POST['material']);
                 if (empty($this->arrayError)) {
-                    $title = $_POST['title'];
-                    $description = $_POST['description'];
-                    $priceExcludingTax = $_POST['priceExcludingTax'];
-                    $type = $_POST['type'];
-                    $quantity = $_POST['quantity'];
-                    $material = $_POST['material'];
+                    $title = htmlspecialchars($_POST['title']);
+                    $description = htmlspecialchars($_POST['description']);
+                    $priceExcludingTax = htmlspecialchars($_POST['priceExcludingTax']);
+                    $type = htmlspecialchars($_POST['type']);
+                    $quantity = htmlspecialchars($_POST['quantity']);
+                    $material = htmlspecialchars($_POST['material']);
                     $tva = 20;
 
                     $article = new Article(null, $title, $description, $priceExcludingTax, $tva, $type, $quantity, $material);
@@ -49,7 +49,7 @@ class ArticlesController extends AbstractController
     {
         if ($_SESSION['user']['id_role'] == 1) {
             if (isset($_GET['id'])) {
-                $idArticle = $_GET['id'];
+                $idArticle = htmlspecialchars($_GET['id']);
                 $article = new Article($idArticle, null, null, null, null, null, null, null);
 
                 $myArticle = $article->getArticleById();
@@ -65,12 +65,12 @@ class ArticlesController extends AbstractController
                     $this->check('quantity', $_POST['quantity']);
                     $this->check('material', $_POST['material']);
                     if (empty($this->arrayError)) {
-                        $title = $_POST['title'];
-                        $description = $_POST['description'];
-                        $priceExcludingTax = $_POST['priceExcludingTax'];
-                        $type = $_POST['type'];
-                        $quantity = $_POST['quantity'];
-                        $material = $_POST['material'];
+                        $title = htmlspecialchars($_POST['title']);
+                        $description = htmlspecialchars($_POST['description']);
+                        $priceExcludingTax = htmlspecialchars($_POST['priceExcludingTax']);
+                        $type = htmlspecialchars($_POST['type']);
+                        $quantity = htmlspecialchars($_POST['quantity']);
+                        $material = htmlspecialchars($_POST['material']);
                         $tva = 20;
 
                         $article = new Article($idArticle, $title, $description, $priceExcludingTax, $tva, $type, $quantity, $material);
@@ -83,6 +83,16 @@ class ArticlesController extends AbstractController
             require_once(__DIR__ . "/../Views/article/updateArticle.view.php");
         } else {
             $this->redirectToRoute('/404');
+        }
+    }
+
+    public function deleteArticle()
+    {
+        if (isset($_POST['id'])) {
+            $idArticle = htmlspecialchars($_POST['id']);
+            $article = new Article($idArticle, null, null, null, null, null, null, null);
+            $article->deleteArticle();
+            $this->redirectToRoute('/');
         }
     }
 }
