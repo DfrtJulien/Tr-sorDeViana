@@ -85,6 +85,7 @@ class Article
         return $statement->execute([$this->id]);
     }
 
+
     public function getId(): ?int
     {
         return $this->id;
