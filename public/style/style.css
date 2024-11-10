@@ -9,6 +9,14 @@ root {
 	--text_color: #FFFCFC;
 }
 
+h1,h2,h3,h4 {
+	font-family: "Cinzel Decorative", serif;
+}
+
+p {
+	font-family: "Merriweather", serif;
+}
+
 * {
 	padding: 0;
 	margin: 0;
@@ -314,6 +322,62 @@ button {
 	margin-top: 10px;
 }
 
+/********************************** ARTICLE INFO ***********************************/
+
+.infoArticleContainer {
+	margin: 50px auto;
+	width: 60%;
+}
+
+.flexContainer {
+	display: flex;
+	justify-content: space-between;
+}
+
+.infoContainer {
+	width: 60%;
+}
+
+.articleTitle {
+	font-size: 40px;
+	font-weight: bold;
+	margin-bottom: 30px;
+}
+
+.articleDescription {
+	font-size: 25px;
+}
+
+.priceAndBtn {
+	display: flex;
+	align-items: center;
+	margin-top: 40px;
+}
+
+.articlePrice {
+	font-size: 30px;
+}
+
+.addToCartBtn {
+	font-size: 25px;
+	font-weight: bold;
+	font-family: "Cinzel Decorative", serif;
+	padding: 15px;
+	color: #E7CF47;
+	border-radius: 21px;
+	background-color: #731C37;
+	margin-left: 50px;
+}
+
+.iconAddToCart {
+	margin-right: 15px;
+}
+
+.infoArticleHr {
+	height: 8px;
+	background-color: #731C37;
+}
+
 /************************************************ FOOTER ***************************/
 footer {
 	background-color: #232224;
@@ -408,5 +472,46 @@ footer {
 	width: 350px;
 	margin-top: 30px;
 	max-height: 450px;
+}
+
+/********************************** ARTICLE INFO ***********************************/
+
+.infoArticleContainer {
+	width: 100%;
+}
+
+.flexContainer {
+	display: block;
+}
+
+.infoContainer {
+	width: 100%;
+	padding: 20px;
+}
+
+.articleTitle {
+	font-size: 25px;
+}
+
+.articleDescription {
+	font-size: 18px;
+}
+
+.articlePrice {
+	font-size: 25px;
+	text-align: center;
+	margin: 15px 0;
+}
+
+.priceAndBtn {
+	display: block;
+}	
+
+.addToCartBtn {
+	font-size: 18px;
+}
+
+.iconAddToCart {
+	margin-right: 15px;
 }
 }

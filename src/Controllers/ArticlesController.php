@@ -95,4 +95,20 @@ class ArticlesController extends AbstractController
             $this->redirectToRoute('/');
         }
     }
+
+    public function infoArticle()
+    {
+        if (isset($_GET['id'])) {
+            $idArticle = htmlspecialchars($_GET['id']);
+            $article = new Article($idArticle, null, null, null, null, null, null, null);
+
+            $myArticle = $article->getArticleById();
+
+            if (!$myArticle) {
+                $this->redirectToRoute('/');
+            }
+
+            require_once(__DIR__ . "/../Views/article/article.view.php");
+        }
+    }
 }

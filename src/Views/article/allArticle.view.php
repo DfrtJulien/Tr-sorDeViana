@@ -51,7 +51,7 @@ require_once(__DIR__ . "/../partials/head.php");
             <div class="cardArticle">
                 <h1><?= $article->getTitle() ?></h1>
                 <p><?= $price ?>€</p>
-                <a href="#" class="showMoreArticle">Voir plus</a>
+                <a href="/infoArticle?id=<?= $article->getId() ?>" class="showMoreArticle">Voir plus</a>
                 <?php
                 if ($_SESSION['user']['id_role'] == 1) {
                 ?>
