@@ -27,6 +27,8 @@ $router->addRoute('/addArticle', 'ArticlesController', 'addArticle');
 $router->addRoute('/allArticle', 'ArticlesController', 'showAllArticle');
 // modifier un article
 $router->addRoute('/updateArticle', 'ArticlesController', 'updateArticle');
+// supprimer un article
+$router->addRoute('/deleteArticle', 'ArticlesController', 'deleteArticle');
 
 
 $router->handleRequest();
