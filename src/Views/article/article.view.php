@@ -56,7 +56,40 @@ $price = $priceWithoutTaxe + $calcul;
     ?>
   </div>
 </section>
-
+<hr class="infoArticleHr">
 <?php
-include_once(__DIR__ . "/../partials/footer.php");
+if ($comments) {
 ?>
+  <section class="commentContainer">
+    <h3>Les avis de nos clients :</h3>
+    <?php
+    foreach ($comments as $comment) {
+      $date = date_create($comment->getCreationDate());
+    ?>
+      <div class="d-md-flex comment">
+        <div class="userInfo">
+          <div class="d-flex">
+            <div class="userImgContainer">
+              <img src="" alt="user image">
+            </div>
+            <div>
+              <h4 class="commentUserName"><?= $comment->getFirstname() ?> <?= $comment->getLastname() ?></h4>
+              <p class="commentUserNote">User note</p>
+            </div>
+          </div>
+          <p class="commentUserDate">Avis émis le : <?= date_format($date, "d-m-Y") ?></p>
+        </div>
+
+        <div>
+          <p class="commentUserComment"><?= $comment->getContent() ?></p>
+        </div>
+      </div>
+    <?php
+    }
+    ?>
+  </section>
+<?php
+}
+
+
+include_once(__DIR__ . "/../partials/footer.php");
