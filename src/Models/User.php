@@ -44,6 +44,6 @@ class User extends Users
         SET `city` = ?, `postal` = ?, `street` = ?, `phoneNumber` = ?
         WHERE `userinfo`.`id` = ?";
         $statement = $pdo->prepare($sql);
-        return $statement->execute([$this->city, $this->postal, $this->street , $this->phone_number, $this->id]);
+        return $statement->execute([$this->city, $this->postal, $this->street, $this->phone_number, $this->id]);
     }
 }

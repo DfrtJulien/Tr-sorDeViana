@@ -303,7 +303,8 @@ button {
 
 .showMoreArticle,
 .updateArticleBtn,
-.deleteArticleBtn {
+.deleteArticleBtn,
+.addComentBtn {
 	padding: 5px;
 	margin: 5px;
 	border-radius: 5px;
@@ -354,11 +355,12 @@ button {
 .priceAndBtn {
 	display: flex;
 	align-items: center;
-	margin-top: 40px;
+	margin: 40px 0;
 }
 
 .articlePrice {
 	font-size: 30px;
+	margin: 0;
 }
 
 .addToCartBtn {
@@ -402,6 +404,8 @@ button {
 
 .cardMoreArticle {
 	margin: 70px 110px;
+	border: 2px solid #232224;
+	width: 350px;
 }
 
 .cardMoreArticle h2 {
@@ -412,6 +416,40 @@ button {
 .cardMoreArticle p {
 	color: white;
 	font-size: 30px;
+}
+
+.addCommentBtn {
+	padding: 15px;
+	background-color: #232224;
+	color: white;
+	border-radius: 5px;
+}
+
+
+/********************************* COMMENT *******************************/
+
+.infoContainer label {
+	display: block;
+	font-size: 25px;
+	font-family: "Cinzel", serif;
+	font-weight: bold;
+	margin: 25px 0;
+}
+
+.infoContainer textarea {
+	display: block;
+	width: 100%;
+	margin-bottom: 25px;
+	min-height: 100px;
+	max-height: 250px;
+}
+
+.addComentBtn {
+	background-color: #731C37;
+	color: white;
+	font-family: "Merriweather", serif;
+	font-size: 20px;
+	padding: 15px;
 }
 
 /************************************************ FOOTER ***************************/
