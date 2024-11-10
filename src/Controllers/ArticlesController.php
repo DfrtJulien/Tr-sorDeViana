@@ -103,6 +103,8 @@ class ArticlesController extends AbstractController
             $article = new Article($idArticle, null, null, null, null, null, null, null);
 
             $myArticle = $article->getArticleById();
+            $moreArticle = $myArticle->getArticleByCategory();
+
 
             if (!$myArticle) {
                 $this->redirectToRoute('/');
