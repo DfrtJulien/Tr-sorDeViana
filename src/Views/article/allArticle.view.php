@@ -20,7 +20,7 @@ require_once(__DIR__ . "/../partials/head.php");
             </div>
             <div>
                 <input type="checkbox" id="earrings" name="earrings" />
-                <label for="earrings">Boucles d'oreilles</label>
+                <label for="earrings">Boucles</label>
             </div>
             <div>
                 <input type="checkbox" id="chale" name="chale" />

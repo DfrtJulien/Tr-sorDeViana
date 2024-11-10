@@ -9,7 +9,10 @@ root {
 	--text_color: #FFFCFC;
 }
 
-h1,h2,h3,h4 {
+h1,
+h2,
+h3,
+h4 {
 	font-family: "Cinzel Decorative", serif;
 }
 
@@ -261,7 +264,7 @@ button {
 
 .filterContainer label {
 	font-size: 18px;
-	font-family:  "Merriweather", serif;
+	font-family: "Merriweather", serif;
 	margin: 5px;
 }
 
@@ -376,6 +379,39 @@ button {
 .infoArticleHr {
 	height: 8px;
 	background-color: #731C37;
+	margin: 0;
+}
+
+.moreArticle {
+	overflow: hidden;
+	background-color: #731c38d0;
+}
+
+.moreArticleTitle {
+	margin-top: 50px;
+	margin-left: 150px;
+	font-weight: bold;
+	color: #E7CF47;
+}
+
+.moreArticleContainer {
+	display: flex;
+	flex-wrap: nowrap;
+	animation: 10s linear 1s infinite alternate slide;
+}
+
+.cardMoreArticle {
+	margin: 70px 110px;
+}
+
+.cardMoreArticle h2 {
+	font-size: 25px;
+	color: white;
+}
+
+.cardMoreArticle p {
+	color: white;
+	font-size: 30px;
 }
 
 /************************************************ FOOTER ***************************/
@@ -387,6 +423,20 @@ footer {
 	left: 0;
 	right: 0; */
 }
+
+
+/***************************************** ANIMATION **********************/
+
+@keyframes slide {
+	from {
+		transform: translateX(0);
+	}
+
+	to {
+		transform: translateX(500px);
+	}
+}
+
 
 @media screen and (max-width : 769px) {
 
@@ -460,58 +510,64 @@ footer {
 		font-size: 16px;
 	}
 
-/*********************************** ALL ARTICLE PAGE  *****************/
-.articlesSection {
-	width: 95%;
-}
+	/*********************************** ALL ARTICLE PAGE  *****************/
+	.articlesSection {
+		width: 95%;
+	}
 
-.filterContainer {
-	background-color: #731c388f;
-	margin-right: 50px;
-	padding: 25px;
-	width: 350px;
-	margin-top: 30px;
-	max-height: 450px;
-}
+	/********************************** ARTICLE INFO ***********************************/
 
-/********************************** ARTICLE INFO ***********************************/
+	.infoArticleContainer {
+		width: 100%;
+	}
 
-.infoArticleContainer {
-	width: 100%;
-}
+	.flexContainer {
+		display: block;
+	}
 
-.flexContainer {
-	display: block;
-}
+	.infoContainer {
+		width: 100%;
+		padding: 20px;
+	}
 
-.infoContainer {
-	width: 100%;
-	padding: 20px;
-}
+	.articleTitle {
+		font-size: 25px;
+	}
 
-.articleTitle {
-	font-size: 25px;
-}
+	.articleDescription {
+		font-size: 18px;
+	}
 
-.articleDescription {
-	font-size: 18px;
-}
+	.articlePrice {
+		font-size: 25px;
+		text-align: center;
+		margin: 15px 0;
+	}
 
-.articlePrice {
-	font-size: 25px;
-	text-align: center;
-	margin: 15px 0;
-}
+	.priceAndBtn {
+		display: block;
+	}
 
-.priceAndBtn {
-	display: block;
-}	
+	.addToCartBtn {
+		font-size: 18px;
+	}
 
-.addToCartBtn {
-	font-size: 18px;
-}
+	.iconAddToCart {
+		margin-right: 15px;
+	}
 
-.iconAddToCart {
-	margin-right: 15px;
-}
+	/**************************** MORE ARTICLE *********************/
+
+	.moreArticleTitle {
+		margin-left: 50px;
+	}
+
+	.moreArticleContainer {
+		animation: 5s linear 1s infinite alternate slide;
+	}
+
+	.cardMoreArticle {
+		margin: 70px 50px;
+	}
+
 }
