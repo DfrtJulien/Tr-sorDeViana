@@ -31,5 +31,7 @@ $router->addRoute('/updateArticle', 'ArticlesController', 'updateArticle');
 $router->addRoute('/deleteArticle', 'ArticlesController', 'deleteArticle');
 // afficher la page d'un article
 $router->addRoute('/infoArticle', 'ArticlesController', 'infoArticle');
+// ajouter un commentaire 
+$router->addRoute('/commentArticle', 'ArticlesController', 'addCommentArticle');
 
 $router->handleRequest();

@@ -26,7 +26,7 @@ class ArticlesController extends AbstractController
                     $material = htmlspecialchars($_POST['material']);
                     $tva = 20;
 
-                    $article = new Article(null, $title, $description, $priceExcludingTax, $tva, $type, $quantity, $material);
+                    $article = new Article(null, $title, $description, $priceExcludingTax, $tva, $type, $quantity, $material, null, null, null, null, null);
 
                     $article->addArticle();
                 }
@@ -39,7 +39,7 @@ class ArticlesController extends AbstractController
 
     public function showAllArticle()
     {
-        $article = new Article(null, null, null, null, null, null, null, null);
+        $article = new Article(null, null, null, null, null, null, null, null, null, null, null, null, null);
 
         $articles = $article->getAllArticle();
         require_once(__DIR__ . "/../Views/article/allArticle.view.php");
@@ -50,7 +50,7 @@ class ArticlesController extends AbstractController
         if ($_SESSION['user']['id_role'] == 1) {
             if (isset($_GET['id'])) {
                 $idArticle = htmlspecialchars($_GET['id']);
-                $article = new Article($idArticle, null, null, null, null, null, null, null);
+                $article = new Article($idArticle, null, null, null, null, null, null, null, null, null, null, null, null);
 
                 $myArticle = $article->getArticleById();
 
@@ -73,7 +73,7 @@ class ArticlesController extends AbstractController
                         $material = htmlspecialchars($_POST['material']);
                         $tva = 20;
 
-                        $article = new Article($idArticle, $title, $description, $priceExcludingTax, $tva, $type, $quantity, $material);
+                        $article = new Article($idArticle, $title, $description, $priceExcludingTax, $tva, $type, $quantity, $material, null, null, null, null, null);
 
                         $article->updateArticle();
                         $this->redirectToRoute('allArticle');
@@ -90,7 +90,7 @@ class ArticlesController extends AbstractController
     {
         if (isset($_POST['id'])) {
             $idArticle = htmlspecialchars($_POST['id']);
-            $article = new Article($idArticle, null, null, null, null, null, null, null);
+            $article = new Article($idArticle, null, null, null, null, null, null, null, null, null, null, null, null);
             $article->deleteArticle();
             $this->redirectToRoute('/');
         }
@@ -100,7 +100,7 @@ class ArticlesController extends AbstractController
     {
         if (isset($_GET['id'])) {
             $idArticle = htmlspecialchars($_GET['id']);
-            $article = new Article($idArticle, null, null, null, null, null, null, null);
+            $article = new Article($idArticle, null, null, null, null, null, null, null, null, null, null, null, null);
 
             $myArticle = $article->getArticleById();
             $moreArticle = $myArticle->getArticleByCategory();
@@ -111,6 +111,31 @@ class ArticlesController extends AbstractController
             }
 
             require_once(__DIR__ . "/../Views/article/article.view.php");
+        }
+    }
+
+    public function addCommentArticle()
+    {
+        if (isset($_GET['id'])) {
+
+            $idArticle = htmlspecialchars($_GET['id']);
+            $article = new Article($idArticle, null, null, null, null, null, null, null, null, null, null, null, null);
+
+            $myArticle = $article->getArticleById();
+
+            if (isset($_POST['comment'])) {
+                $this->check('comment', $_POST['comment']);
+                if (empty($this->arrayError)) {
+                    $comment = $_POST['comment'];
+                    $idUser = $_SESSION['user']['idUser'];
+                    $creation_date = date("Y-m-d");
+                    $article = new Article($idArticle, null, null, null, null, null, null, null, $comment, $creation_date, null, $idUser, $idArticle);
+                    $addComment = $article->addComment();
+
+                    $this->redirectToRoute('/');
+                }
+            }
+            require_once(__DIR__ . "/../Views/article/addCommentArticle.view.php");
         }
     }
 }

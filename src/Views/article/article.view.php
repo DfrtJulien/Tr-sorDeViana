@@ -18,6 +18,7 @@ $price = $priceWithoutTaxe + $calcul;
         <p class="articlePrice"><?= $price ?>€</p>
         <button class="addToCartBtn"><i class="fa-solid fa-cart-plus iconAddToCart"></i>Ajouter au panier</button>
       </div>
+      <a href="/commentArticle?id=<?= $myArticle->getId() ?>" class="addCommentBtn">Ajoutez un commentaire</a>
     </div>
   </div>
 </section>

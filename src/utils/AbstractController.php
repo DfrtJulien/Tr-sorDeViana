@@ -31,7 +31,7 @@ abstract class AbstractController
         $regexPhoneNumber = '/^(?:([+]\d{1,11})[-.\s]?)?(?:[0](\d{1,9}))?$/';
         $regexPostal = '/^[0-9]{5}$/';
         $regexTitle = '/^[a-zA-Zà-üÀ-Ü \'\d]{2,255}$/';
-        $regexDescription = '/^[a-zA-Zà-üÀ-Ü0-9 \-,\'\n".:]{2, }$/';
+        $regexDescription = '/^(.|\s)*[a-zA-Z]+(.|\s)*$/';
         $regexPriceWithoutTaxe = '/^[0-9 ,]/';
         $regexType = '/^collier|boucles|chale/';
         $regexQuantity = '/^[0-9]/';
@@ -113,6 +113,10 @@ abstract class AbstractController
                     $this->arrayError['material'] = 'Merci de renseigner un matériaux  correcte';
                 }
                 break;
+            case 'comment':
+                if (!preg_match($regexDescription, $value)) {
+                    $this->arrayError['comment'] = 'Merci de renseigner un commentaire correcte !';
+                }
         }
     }
 
