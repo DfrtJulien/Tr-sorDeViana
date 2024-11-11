@@ -45,7 +45,7 @@ require_once(__DIR__ . '/partials/head.php');
                         <?php
                         } ?>
                     </div>
-                    <div class="d-flex p-2">
+                    <div class="d-md-flex p-2">
                         <div class="duoInput">
                             <label for="postal">Code Postal : </label>
                             <input type="number" name="postal" id="postal" value="<?= $myUser->getPostal() ?>">

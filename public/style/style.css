@@ -431,6 +431,7 @@ button {
 	margin: 70px 110px;
 	border: 2px solid #232224;
 	width: 350px;
+	padding: 25px;
 }
 
 .cardMoreArticle h2 {
@@ -555,7 +556,7 @@ footer {
 	}
 
 	to {
-		transform: translateX(500px);
+		transform: translateX(-500px);
 	}
 }
 
@@ -690,6 +691,45 @@ footer {
 
 	.cardMoreArticle {
 		margin: 70px 50px;
+		padding: 15px;
+	}
+
+	.cardMoreArticle h2 {
+		font-size: 20px;
+	}
+
+	.cardMoreArticle p {
+		font-size: 18px;
+	}
+
+	/************************** COMMENT ******************************/
+
+	.commentContainer {
+		width: 100%;
+	}
+
+	.commentContainer h3 {
+		text-align: center;
+	}
+
+	.userInfo {
+		width: 100%;
+	}
+
+	.comment {
+		padding: 15px;
+	}
+
+	.commentUserName {
+		font-size: 20px;
+	}
+	
+	.commentUserDate {
+		font-size: 16px;
+	}
+	
+	.commentUserComment {
+		font-size: 16px;
 	}
 
 }
