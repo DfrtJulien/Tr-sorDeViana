@@ -180,6 +180,15 @@ class Article
         return $statement->execute([$this->id_comment]);
     }
 
+    public function getNumberComment()
+    {
+        $pdo = DataBase::getConnection();
+        $sql = "SELECT COUNT(content) FROM `comment` WHERE id_article = ?";
+        $statement = $pdo->prepare($sql);
+        $statement->execute([$this->id]);
+        return $resultFetch = $statement->fetch(PDO::FETCH_ASSOC);
+    }
+
     public function getId(): ?int
     {
         return $this->id;

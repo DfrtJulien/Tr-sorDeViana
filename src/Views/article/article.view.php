@@ -4,6 +4,8 @@ $priceWithoutTaxe = $myArticle->getPriceExcludingTax();
 $tva = $myArticle->getTva();
 $calcul = $priceWithoutTaxe / 100 * $tva;
 $price = $priceWithoutTaxe + $calcul;
+$comment = $myArticle->getNumberComment();
+$numberComment = $comment["COUNT(content)"];
 ?>
 
 <section class="infoArticleContainer">
@@ -14,6 +16,16 @@ $price = $priceWithoutTaxe + $calcul;
         <div class="infoContainer">
             <h2 class="articleTitle"><?= $myArticle->getTitle() ?></h2>
             <p class="articleDescription"><?= $myArticle->getDescription() ?></p>
+            <div>
+                <p>note</p>
+                <?php
+                if ($numberComment) {
+                ?>
+                    <a href="#comment" class="numberComment"><?= $numberComment ?> Avis</a>
+                <?php
+                }
+                ?>
+            </div>
             <div class="priceAndBtn">
                 <p class="articlePrice"><?= $price ?>€</p>
                 <button class="addToCartBtn"><i class="fa-solid fa-cart-plus iconAddToCart"></i>Ajouter au panier</button>
@@ -60,7 +72,7 @@ $price = $priceWithoutTaxe + $calcul;
 <?php
 if ($comments) {
 ?>
-    <section class="commentContainer">
+    <section class="commentContainer" id="comment">
         <h3>Les avis de nos clients :</h3>
         <?php
         foreach ($comments as $comment) {

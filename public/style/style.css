@@ -341,6 +341,16 @@ button {
 	margin-top: 10px;
 }
 
+.numberCommentLink,
+.numberComment {
+	margin-left: 5px;
+	font-size: 15px;
+	font-weight: bold;
+	color: #E7CF47;
+	font-family: "Cinzel Decorative", serif;
+	text-decoration: underline;
+}
+
 /********************************** ARTICLE INFO ***********************************/
 
 .infoArticleContainer {
@@ -440,6 +450,10 @@ button {
 	border-radius: 5px;
 }
 
+.numberComment {
+	color: #731C37;
+	font-size: 25px;
+}
 
 /********************************* COMMENT *******************************/
 
