@@ -43,13 +43,26 @@ require_once(__DIR__ . "/../partials/head.php");
     <div class="articleContainer">
         <?php
         foreach ($articles as $article) {
+            $comment = $article->getNumberComment();
+            $numberComment = $comment["COUNT(content)"];
             $priceWithoutTaxe = $article->getPriceExcludingTax();
             $tva = $article->getTva();
             $calcul = $priceWithoutTaxe / 100 * $tva;
             $price = $priceWithoutTaxe + $calcul;
+
         ?>
             <div class="cardArticle">
                 <h1><?= $article->getTitle() ?></h1>
+                <div class="d-flex">
+                    <p>note</p>
+                    <?php
+                    if ($numberComment) {
+                    ?>
+                        <a href="/infoArticle?id=<?= $article->getId() ?>#comment" class="numberCommentLink"><?= $numberComment ?> avis</a>
+                    <?php
+                    }
+                    ?>
+                </div>
                 <p><?= $price ?>€</p>
                 <a href="/infoArticle?id=<?= $article->getId() ?>" class="showMoreArticle">Voir plus</a>
                 <?php

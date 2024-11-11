@@ -42,6 +42,8 @@ class ArticlesController extends AbstractController
         $article = new Article(null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
 
         $articles = $article->getAllArticle();
+
+
         require_once(__DIR__ . "/../Views/article/allArticle.view.php");
     }
 
