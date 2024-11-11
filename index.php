@@ -33,5 +33,7 @@ $router->addRoute('/deleteArticle', 'ArticlesController', 'deleteArticle');
 $router->addRoute('/infoArticle', 'ArticlesController', 'infoArticle');
 // ajouter un commentaire 
 $router->addRoute('/commentArticle', 'ArticlesController', 'addCommentArticle');
+// modifier son commentaire
+$router->addRoute('/editComment', 'ArticlesController', 'editComment');
 
 $router->handleRequest();

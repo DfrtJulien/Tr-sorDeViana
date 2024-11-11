@@ -77,11 +77,29 @@ if ($comments) {
               <p class="commentUserNote">User note</p>
             </div>
           </div>
-          <p class="commentUserDate">Avis émis le : <?= date_format($date, "d-m-Y") ?></p>
+          <?php
+          if (!$comment->getModificationDate()) {
+          ?>
+            <p class="commentUserDate">Avis émis le : <?= date_format($date, "d-m-Y") ?></p>
+          <?php
+          } else {
+            $modificationDate = date_create($comment->getModificationDate());
+          ?>
+            <p class="commentUserDate">Modifié le : <?= date_format($modificationDate, "d-m-Y") ?></p>
+          <?php
+          }
+          ?>
         </div>
 
         <div>
           <p class="commentUserComment"><?= $comment->getContent() ?></p>
+          <?php
+          if ($_SESSION['user']['idUser'] == $comment->getIdUser()) {
+          ?>
+            <a href="/editComment?id=<?= $myArticle->getId() ?>&idComment=<?= $comment->getIdComment() ?>" class="editCommentBtn">Modifier le commentaire</a>
+          <?php
+          }
+          ?>
         </div>
       </div>
     <?php

@@ -490,6 +490,14 @@ button {
 .commentUserComment {
 	font-size: 20px;
 	font-family:  "Merriweather", serif;
+	margin-bottom: 25px;
+}
+
+.editCommentBtn {
+	background-color: green;
+	padding: 10px;
+	border-radius: 5px;
+	color: white;
 }
 
 /************************************************ FOOTER ***************************/
