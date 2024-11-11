@@ -117,6 +117,10 @@ abstract class AbstractController
                 if (!preg_match($regexDescription, $value)) {
                     $this->arrayError['comment'] = 'Merci de renseigner un commentaire correcte !';
                 }
+            case 'editComment':
+                if (!preg_match($regexDescription, $value)) {
+                    $this->arrayError['editComment'] = 'Merci de renseigner un commentaire correcte !';
+                }
         }
     }
 
