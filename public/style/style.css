@@ -199,7 +199,22 @@ button {
 	background-color: #a20c3b;
 }
 
-/********************************************** REGISTER PAGE **********************/
+.registerP {
+	margin: 15px;
+	font-size: 20px;
+	font-weight: bold;
+}
+
+.registerLink {
+	color: #731C37;
+	transition: all 0.3s;
+}
+
+.registerLink:hover {
+	text-decoration: underline;
+}
+
+/********************************************** RPROFILE **********************/
 
 .profileContainer {
 	background-color: #731C37;
@@ -463,6 +478,7 @@ button {
 
 .userInfo {
 	margin-right: 150px;
+	width: 400px;
 }
 
 .commentContainer h3 {
@@ -493,11 +509,17 @@ button {
 	margin-bottom: 25px;
 }
 
-.editCommentBtn {
+.editCommentBtn,
+.deleteCommentBtn {
 	background-color: green;
 	padding: 10px;
 	border-radius: 5px;
 	color: white;
+}
+
+.deleteCommentBtn {
+	background-color: red;
+	margin-right: 15px;
 }
 
 /************************************************ FOOTER ***************************/

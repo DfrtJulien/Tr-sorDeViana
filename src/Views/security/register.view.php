@@ -106,6 +106,7 @@ require_once(__DIR__ . '/../partials/head.php');
             </div>
         </div>
         <button type="submit" class="submitBtn my-3">S'inscrire</button>
+        <p class="registerP">Déjà inscri ? <a href="/login" class="registerLink">connecter vous</a> !</p>
     </form>
 </div>
 <?php

@@ -111,6 +111,13 @@ class ArticlesController extends AbstractController
                 $this->redirectToRoute('/');
             }
 
+            if (isset($_POST['idCommentDelete'])) {
+                $idComment = $_POST['idCommentDelete'];
+                $comment = new Article($idArticle, null, null, null, null, null, null, null, null, null, null, null, null, null, null, $idComment);
+                $comment->deleteComment();
+                header("Refresh:0");
+            }
+
             require_once(__DIR__ . "/../Views/article/article.view.php");
         }
     }
@@ -133,7 +140,8 @@ class ArticlesController extends AbstractController
                     $article = new Article($idArticle, null, null, null, null, null, null, null, $comment, $creation_date, null, $idUser, $idArticle, null, null, null);
                     $addComment = $article->addComment();
 
-                    $this->redirectToRoute('/');
+
+                    $this->redirectToRoute("/allArticle");
                 }
             }
             require_once(__DIR__ . "/../Views/article/addCommentArticle.view.php");

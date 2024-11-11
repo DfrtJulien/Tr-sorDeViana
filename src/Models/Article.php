@@ -172,6 +172,14 @@ class Article
         return $statement->execute([$this->content, $this->modification_date, $this->id_comment]);
     }
 
+    public function deleteComment()
+    {
+        $pdo = DataBase::getConnection();
+        $sql = "DELETE FROM `comment` WHERE `id` = ?";
+        $statement = $pdo->prepare($sql);
+        return $statement->execute([$this->id_comment]);
+    }
+
     public function getId(): ?int
     {
         return $this->id;
