@@ -23,6 +23,7 @@ require_once(__DIR__ . '/../partials/head.php');
             <input type="password" name="password" id="password">
         </div>
         <button type="submit" class="submitBtn my-3">Se Connecter</button>
+        <p class="registerP">Pas encore inscri ? <a href="/register" class="registerLink">inscriver vous</a> !</p>
     </form>
 </div>
 <?php
