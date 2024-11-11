@@ -16,7 +16,7 @@ $numberComment = $comment["COUNT(content)"];
         <div class="infoContainer">
             <h2 class="articleTitle"><?= $myArticle->getTitle() ?></h2>
             <p class="articleDescription"><?= $myArticle->getDescription() ?></p>
-            <div>
+            <div class="d-flex">
                 <p>note</p>
                 <?php
                 if ($numberComment) {
