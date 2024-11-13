@@ -1,21 +1,30 @@
 <?php
-    require_once (__DIR__ . '/partials/head.php');
+if (!$_SESSION) {
+    require_once(__DIR__ . '/partials/head.php');
+} else {
+    if ($_SESSION['user']['id_role'] == 1) {
+        require_once(__DIR__ . '/partials/adminHead.php');
+    } else {
+        require_once(__DIR__ . '/partials/head.php');
+    }
+}
+
 ?>
 
 <section class="selectionContainer d-flex">
     <!-- <div class="d-flex"> -->
-            <div class="homeImgContainer">
-                <a href="#" class="homeLink title">Colliers</a>
-                <img src="/public//img//img_collar_home.png" alt="photo de colliers">
-            </div>
-            <div class="homeImgContainer">
-                <a href="#" class="homeLink title">Boucles</a>
-                <img src="/public//img//img_boucle_home.png" alt="photo de boucles">
-            </div>
-            <div class="homeImgContainer">
-                <a href="#" class="homeLink title">Châles</a>
-                <img src="/public//img//img_chale_home.png" alt="photo de châles">
-            </div>
+    <div class="homeImgContainer">
+        <a href="#" class="homeLink title">Colliers</a>
+        <img src="/public//img//img_collar_home.png" alt="photo de colliers">
+    </div>
+    <div class="homeImgContainer">
+        <a href="#" class="homeLink title">Boucles</a>
+        <img src="/public//img//img_boucle_home.png" alt="photo de boucles">
+    </div>
+    <div class="homeImgContainer">
+        <a href="#" class="homeLink title">Châles</a>
+        <img src="/public//img//img_chale_home.png" alt="photo de châles">
+    </div>
     </div>
 </section>
 <section class="aboutContainer">
@@ -30,5 +39,5 @@
     </div>
 </section>
 <?php
-    include_once (__DIR__ . '/partials/footer.php');
+include_once(__DIR__ . '/partials/footer.php');
 ?>
