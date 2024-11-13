@@ -43,6 +43,12 @@
           if (isset($_SESSION['user'])) {
           ?>
             <div class="d-flex align-items-center">
+              <i class="fa-solid fa-plus iconLogo"></i>
+              <li class="nav-item">
+                <a class="nav-link  headerText me-2" href="/addArticle">Ajouter un article</a>
+              </li>
+            </div>
+            <div class="d-flex align-items-center">
               <i class="fa-solid fa-cart-shopping iconLogo"></i>
               <li class="nav-item">
                 <a class="nav-link  headerText me-2" href="/allArticle">Boutique</a>
@@ -58,18 +64,6 @@
               <i class="fa-solid fa-right-from-bracket iconLogo"></i>
               <li class="nav-item">
                 <a class="nav-link  headerText me-2" href="/logout">déconexion</a>
-              </li>
-            </div>
-          <?php
-          } else {
-          ?>
-            <div class="d-flex align-items-center">
-              <i class="fa-solid fa-user iconLogo"></i>
-              <li class="nav-item">
-                <a class="nav-link  headerText me-2" href="/register">Inscription</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link  headerText ms-2" href="/login">Connexion</a>
               </li>
             </div>
           <?php
