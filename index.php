@@ -14,6 +14,11 @@ $router->addRoute('/', 'HomeController', 'index');
 // inscription / connexion
 $router->addRoute('/register', 'RegisterController', 'index');
 $router->addRoute('/login', 'LoginController', 'index');
+//page connecion/inscription pour les Admin
+$router->addRoute('/adminRegister', 'RegisterController', 'admin');
+$router->addRoute('/adminLogin', 'LoginController', 'admin');
+
+
 // deconnexion
 $router->addRoute('/logout', 'LogoutController', 'index');
 // profile user
