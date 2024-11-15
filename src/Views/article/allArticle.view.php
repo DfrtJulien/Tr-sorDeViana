@@ -9,6 +9,7 @@ if (!$_SESSION) {
     }
 }
 
+use App\Models\Note;
 ?>
 
 <section class="articlesSection d-md-flex">
@@ -59,15 +60,88 @@ if (!$_SESSION) {
             $calcul = $priceWithoutTaxe / 100 * $tva;
             $price = $priceWithoutTaxe + $calcul;
 
+            $idArticle = $article->getId();
+
+            $notes = new Note(null, null, null, $idArticle);
+            $numberNote = $notes->countNoteByArticleId();
+            $numberNoteToInt = reset($numberNote);
+            $sumNote = $notes->sumArticleNote();
+            $sumNoteInt = intval(reset($sumNote));
+
+            if($numberNoteToInt !== 0){
+            $note = $sumNoteInt / $numberNoteToInt;
+            } else {
+                $note = 0;
+            }
         ?>
             <div class="cardArticle">
                 <div class="articleImg">
                     <img src="public/img/<?= $article->getImgArticle() ?>" alt="">
                 </div>
                 <h2><?= $article->getTitle() ?></h2>
-                <div class="d-flex mt-2">
-                    <p>note</p>
+                <div class="d-flex mt-3">
                     <?php
+                    if ($note) {
+                    ?>
+                        <div class="iconContainer">
+                            <?php
+                            if ($note === 6) {
+                            ?>
+                                <i class="fa-regular fa-star"></i>
+                                <i class="fa-regular fa-star"></i>
+                                <i class="fa-regular fa-star"></i>
+                                <i class="fa-regular fa-star"></i>
+                                <i class="fa-regular fa-star"></i>
+                            <?php
+                            } else if ($note === 1) {
+                            ?>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-regular fa-star"></i>
+                                <i class="fa-regular fa-star"></i>
+                                <i class="fa-regular fa-star"></i>
+                                <i class="fa-regular fa-star"></i>
+                            <?php
+                            } else if ($note === 2) {
+                            ?>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-regular fa-star"></i>
+                                <i class="fa-regular fa-star"></i>
+                                <i class="fa-regular fa-star"></i>
+                            <?php
+                            } else if ($note === 3) {
+                            ?>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-regular fa-star"></i>
+                                <i class="fa-regular fa-star"></i>
+                            <?php
+                            } else if ($note === 4) {
+                            ?>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-regular fa-star"></i>
+                            <?php
+                            } else if ($note === 5) {
+                            ?>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                            <?php
+                            }
+                            ?>
+                        </div>
+                    <?php
+                    } else {
+                    ?>
+                        
+                    <?php
+                    }
                     if ($numberComment) {
                     ?>
                         <a href="/infoArticle?id=<?= $article->getId() ?>#comment" class="numberCommentLink"><?= $numberComment ?> avis</a>
@@ -79,7 +153,7 @@ if (!$_SESSION) {
                 <div clss="seeMoreContainer">
                     <a href="/infoArticle?id=<?= $article->getId() ?>" class="showMoreArticle">Voir plus</a>
                 </div>
-                
+
                 <?php
                 if ($_SESSION['user']['id_role'] == 1) {
                 ?>

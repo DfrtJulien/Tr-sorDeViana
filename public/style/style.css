@@ -370,7 +370,7 @@ button {
 .cardArticle {
 	border: 2px solid black;
 	width: 350px;
-	/* height: 600px; */
+	height: 600px;
 	margin-top: 30px;
 	background-color: #731C37;
 }
@@ -435,7 +435,7 @@ button {
 .numberCommentLink,
 .numberComment {
 	margin-left: 5px;
-	font-size: 15px;
+	font-size: 25px;
 	font-weight: bold;
 	color: #E7CF47;
 	font-family: "Cinzel Decorative", serif;
@@ -466,6 +466,21 @@ button {
 
 .articleDescription {
 	font-size: 25px;
+}
+
+.articleNoteContainer {
+	display: flex;
+	align-items: center;
+}
+
+.iconContainer {
+	margin-right: 20px;
+	margin-left: 20px;
+	color: #E7CF47;
+}
+
+.iconContainer i {
+	font-size: 22px;
 }
 
 .priceAndBtn {
@@ -522,17 +537,22 @@ button {
 	margin: 70px 110px;
 	border: 2px solid #232224;
 	width: 350px;
-	padding: 25px;
+	background-color: #731C37;
+	height: 400px;
 }
 
 .cardMoreArticle h2 {
-	font-size: 25px;
+	font-size: 22px;
 	color: white;
+	padding: 5px;
+	color: #E7CF47;
+	font-weight: bold;
 }
 
 .cardMoreArticle p {
 	color: white;
-	font-size: 30px;
+	font-size: 22px;
+	margin-left: 5px;
 }
 
 .addCommentBtn {

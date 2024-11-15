@@ -36,6 +36,7 @@ abstract class AbstractController
         $regexType = '/^collier|boucles|chale/';
         $regexQuantity = '/^[0-9]/';
         $regexMaterial = '/^or|argent|coton$/';
+        $regexNote = '/^(5(?:[.,]0{1,2})?|[0-4](?:[.,]\d{1,2})?)$/';
 
         switch ($nameInput) {
             case 'firstname':
@@ -121,6 +122,10 @@ abstract class AbstractController
                 if (!preg_match($regexDescription, $value)) {
                     $this->arrayError['editComment'] = 'Merci de renseigner un commentaire correcte !';
                 }
+            // case 'note':
+            //     if(!preg_match($regexNote, $value)) {
+            //         $this->arrayError['note'] = "Entrez une note correcte";
+            //     }
         }
     }
 

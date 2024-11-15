@@ -15,6 +15,7 @@ $priceWithoutTaxe = $myArticle->getPriceExcludingTax();
 $tva = $myArticle->getTva();
 $calcul = $priceWithoutTaxe / 100 * $tva;
 $price = $priceWithoutTaxe + $calcul;
+
 ?>
 
 <section class="infoArticleContainer">
@@ -26,6 +27,15 @@ $price = $priceWithoutTaxe + $calcul;
       <h2 class="articleTitle"><?= $myArticle->getTitle() ?></h2>
       <p class="articleDescription"><?= $myArticle->getDescription() ?></p>
       <form method="POST">
+        <label for="note">Ajoutez une note</label>
+          <select name="note" id="note">
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
         <label for="comment">Veuillez entrer votre commentaire :</label>
         <textarea name="comment" id="comment"></textarea>
         <?php

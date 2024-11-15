@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Utils\AbstractController;
 use App\Models\Article;
+use App\Models\Note;
 
 
 class ArticlesController extends AbstractController
@@ -117,11 +118,23 @@ class ArticlesController extends AbstractController
         if (isset($_GET['id'])) {
             $idArticle = htmlspecialchars($_GET['id']);
             $article = new Article($idArticle, null, null, null, null, null, null, null, null, null,null, null, null, null, null, null, null);
+            $notes = new Note(null,null,null,$idArticle);
+
+            $numberNote = $notes->countNoteByArticleId();
+            $numberNoteToInt = reset($numberNote);
+            $sumNote = $notes->sumArticleNote();
+            $sumNoteInt = intval(reset($sumNote));
+          
+            if($numberNoteToInt !== 0){
+                $note = $sumNoteInt / $numberNoteToInt;
+                } else {
+                    $note = 0;
+                }
 
             $myArticle = $article->getArticleById();
             $moreArticle = $myArticle->getArticleByCategory();
             $comments = $myArticle->getComment();
-
+            var_dump($comments);
 
             if (!$myArticle) {
                 $this->redirectToRoute('/');
@@ -147,13 +160,18 @@ class ArticlesController extends AbstractController
 
             $myArticle = $article->getArticleById();
 
-            if (isset($_POST['comment'])) {
+            if (isset($_POST['comment'], $_POST['note'])) {
                 $this->check('comment', $_POST['comment']);
+        
                 if (empty($this->arrayError)) {
+                    $note = intval($_POST['note']);
                     $comment = $_POST['comment'];
                     $idUser = $_SESSION['user']['idUser'];
                     $creation_date = date("Y-m-d");
                     $article = new Article($idArticle, null, null, null, null, null, null,null, null, $comment, $creation_date, null, $idUser, $idArticle, null, null, null);
+                    $myNote = new Note(null,$note,$idUser,$idArticle);
+                    
+                    $myNote->addNoteToArticle();
                     $addComment = $article->addComment();
 
 
