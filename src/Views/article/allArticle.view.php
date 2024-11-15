@@ -61,8 +61,11 @@ if (!$_SESSION) {
 
         ?>
             <div class="cardArticle">
-                <h1><?= $article->getTitle() ?></h1>
-                <div class="d-flex">
+                <div class="articleImg">
+                    <img src="public/img/<?= $article->getImgArticle() ?>" alt="">
+                </div>
+                <h2><?= $article->getTitle() ?></h2>
+                <div class="d-flex mt-2">
                     <p>note</p>
                     <?php
                     if ($numberComment) {
@@ -73,7 +76,10 @@ if (!$_SESSION) {
                     ?>
                 </div>
                 <p><?= $price ?>€</p>
-                <a href="/infoArticle?id=<?= $article->getId() ?>" class="showMoreArticle">Voir plus</a>
+                <div clss="seeMoreContainer">
+                    <a href="/infoArticle?id=<?= $article->getId() ?>" class="showMoreArticle">Voir plus</a>
+                </div>
+                
                 <?php
                 if ($_SESSION['user']['id_role'] == 1) {
                 ?>

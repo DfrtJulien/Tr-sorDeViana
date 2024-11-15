@@ -58,6 +58,10 @@ $numberComment = $comment["COUNT(content)"];
             if ($article->getTitle() !== $myArticle->getTitle()) {
         ?>
                 <div class="cardMoreArticle">
+                    <div>
+                        <img src="<?= $article->getImgArticle() ?>" alt="">
+                    </div>
+
                     <h2><?= $article->getTitle() ?></h2>
                     <p><?= $price ?>€</p>
                     <a href="/infoArticle?id=<?= $article->getId() ?>" class="showMoreArticle">Voir plus</a>

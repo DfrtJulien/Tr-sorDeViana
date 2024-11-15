@@ -17,6 +17,11 @@ class ArticlesController extends AbstractController
                 $this->check('type', $_POST['type']);
                 $this->check('quantity', $_POST['quantity']);
                 $this->check('material', $_POST['material']);
+
+                $target_dir = "public/img/";
+                $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+                $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+
                 if (empty($this->arrayError)) {
                     $title = htmlspecialchars($_POST['title']);
                     $description = htmlspecialchars($_POST['description']);
@@ -25,8 +30,12 @@ class ArticlesController extends AbstractController
                     $quantity = htmlspecialchars($_POST['quantity']);
                     $material = htmlspecialchars($_POST['material']);
                     $tva = 20;
-
-                    $article = new Article(null, $title, $description, $priceExcludingTax, $tva, $type, $quantity, $material, null, null, null, null, null, null, null, null);
+                   
+                    if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+                        $img = htmlspecialchars( basename( $_FILES["fileToUpload"]["name"]));
+                        $img_path =  $img;
+                    }
+                    $article = new Article(null, $title, $description, $priceExcludingTax, $tva, $type, $quantity, $material,$img_path, null, null, null, null, null, null, null, null);
 
                     $article->addArticle();
                 }
@@ -39,7 +48,7 @@ class ArticlesController extends AbstractController
 
     public function showAllArticle()
     {
-        $article = new Article(null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
+        $article = new Article(null, null, null, null, null, null, null, null,null, null, null, null, null, null, null, null, null);
 
         $articles = $article->getAllArticle();
 
@@ -52,7 +61,7 @@ class ArticlesController extends AbstractController
         if ($_SESSION['user']['id_role'] == 1) {
             if (isset($_GET['id'])) {
                 $idArticle = htmlspecialchars($_GET['id']);
-                $article = new Article($idArticle, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
+                $article = new Article($idArticle, null, null, null, null, null, null,null, null, null, null, null, null, null, null, null, null);
 
                 $myArticle = $article->getArticleById();
 
@@ -74,8 +83,10 @@ class ArticlesController extends AbstractController
                         $quantity = htmlspecialchars($_POST['quantity']);
                         $material = htmlspecialchars($_POST['material']);
                         $tva = 20;
+                        $img_path = "";
 
-                        $article = new Article($idArticle, $title, $description, $priceExcludingTax, $tva, $type, $quantity, $material, null, null, null, null, null, null, null, null);
+
+                        $article = new Article($idArticle, $title, $description, $priceExcludingTax, $tva, $type, $quantity, $material,$img_path, null, null, null, null, null, null, null, null);
 
                         $article->updateArticle();
                         $this->redirectToRoute('allArticle');
@@ -92,7 +103,10 @@ class ArticlesController extends AbstractController
     {
         if (isset($_POST['id'])) {
             $idArticle = htmlspecialchars($_POST['id']);
-            $article = new Article($idArticle, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
+            $article = new Article($idArticle, null, null, null, null, null, null, null, null, null,null, null, null, null, null, null, null);
+            $myArticle = $article->getArticleById();
+            $articleImg = $myArticle->getImgArticle();
+            unlink("public/img/" . $articleImg);
             $article->deleteArticle();
             $this->redirectToRoute('/');
         }
@@ -102,7 +116,7 @@ class ArticlesController extends AbstractController
     {
         if (isset($_GET['id'])) {
             $idArticle = htmlspecialchars($_GET['id']);
-            $article = new Article($idArticle, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
+            $article = new Article($idArticle, null, null, null, null, null, null, null, null, null,null, null, null, null, null, null, null);
 
             $myArticle = $article->getArticleById();
             $moreArticle = $myArticle->getArticleByCategory();
@@ -115,7 +129,7 @@ class ArticlesController extends AbstractController
 
             if (isset($_POST['idCommentDelete'])) {
                 $idComment = $_POST['idCommentDelete'];
-                $comment = new Article($idArticle, null, null, null, null, null, null, null, null, null, null, null, null, null, null, $idComment);
+                $comment = new Article($idArticle, null, null, null, null, null, null, null, null, null,null, null, null, null, null, null, $idComment);
                 $comment->deleteComment();
                 header("Refresh:0");
             }
@@ -129,7 +143,7 @@ class ArticlesController extends AbstractController
         if (isset($_GET['id'])) {
 
             $idArticle = htmlspecialchars($_GET['id']);
-            $article = new Article($idArticle, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
+            $article = new Article($idArticle, null, null, null, null, null, null, null, null, null,null, null, null, null, null, null, null);
 
             $myArticle = $article->getArticleById();
 
@@ -139,7 +153,7 @@ class ArticlesController extends AbstractController
                     $comment = $_POST['comment'];
                     $idUser = $_SESSION['user']['idUser'];
                     $creation_date = date("Y-m-d");
-                    $article = new Article($idArticle, null, null, null, null, null, null, null, $comment, $creation_date, null, $idUser, $idArticle, null, null, null);
+                    $article = new Article($idArticle, null, null, null, null, null, null,null, null, $comment, $creation_date, null, $idUser, $idArticle, null, null, null);
                     $addComment = $article->addComment();
 
 
@@ -155,7 +169,7 @@ class ArticlesController extends AbstractController
         if (isset($_GET['id'], $_GET['idComment'])) {
             $idArticle = htmlspecialchars($_GET['id']);
             $idComment = htmlspecialchars($_GET['idComment']);
-            $article = new Article($idArticle, null, null, null, null, null, null, null, null, null, null, null, null, null, null, $idComment);
+            $article = new Article($idArticle, null, null, null, null, null, null, null, null,null, null, null, null, null, null, null, $idComment);
 
             $myArticle = $article->getArticleById();
             $comment = $article->getCommentById();
@@ -167,7 +181,7 @@ class ArticlesController extends AbstractController
                     $updatedComment = $_POST['editComment'];
                     $modificationDate = date("Y-m-d");
 
-                    $newComment = new Article($idArticle, null, null, null, null, null, null, null, $updatedComment, null, $modificationDate, null, null, null, null, $idComment);
+                    $newComment = new Article($idArticle, null, null, null, null, null,null, null, null, $updatedComment, null, $modificationDate, null, null, null, null, $idComment);
 
                     $newComment->editComment();
                     $this->redirectToRoute('/');

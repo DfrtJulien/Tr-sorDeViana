@@ -13,8 +13,12 @@ if (!$_SESSION) {
 <h2>ajouter un article</h2>
 
 <div class="container">
-    <form method="POST" class="addArticleForm">
+    <form method="POST" enctype="multipart/form-data" class="addArticleForm">
         <span class="form-span"></span>
+        <div class="p-2">
+            <label for="fileToUpload">Ajouter votre photo de l'article :</label>
+            <input type="file" name="fileToUpload" id="fileToUpload">
+        </div>
         <div class="p-2">
             <label for="title">Titre : </label>
             <input type="text" name="title" id="title">
