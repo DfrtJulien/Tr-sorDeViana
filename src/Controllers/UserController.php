@@ -72,7 +72,7 @@ class UserController extends AbstractController
                           echo "Sorry, there was an error uploading your file.";
                         }
                       }
-
+                      
                     unlink('public/uploads/'. $myUserImg);
                     $user = new User($userId, $mail, null, null, $city, $postal, $street, null, null, $phone,$img, null, null);
                     $user->updateUser();
