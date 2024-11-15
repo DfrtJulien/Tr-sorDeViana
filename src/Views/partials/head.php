@@ -48,18 +48,27 @@
                 <a class="nav-link  headerText me-2" href="/allArticle">Boutique</a>
               </li>
             </div>
-            <div class="d-flex align-items-center">
-              <i class="fa-solid fa-user iconLogo"></i>
-              <li class="nav-item">
-                <a class="nav-link  headerText me-2" href="/profile?id=<?= $_SESSION['user']['idUser'] ?>">profile</a>
-              </li>
+            <div class="d-flex align-items-center imgHeaderContainer">
+              <div class="imgUserController">
+                <img src="/public/uploads/<?= $_SESSION['user']['img_path'] !==  null ? $_SESSION['user']['img_path'] : "img_default.png" ?>" alt="photo de profile de l'utilisateur" id="imgUser">
+              </div>
+              <div class="hidden" id="showContainer">
+              <i class="fa-solid fa-xmark" id="closeContainerIcon"></i>
+                <div>
+                  <li class="nav-item">
+                    <a class="nav-link  headerText me-2" href="/profile?id=<?= $_SESSION['user']['idUser'] ?>">profile</a>
+                  </li>
+                </div>
+                <div class="d-flex align-items-center">
+                  <i class="fa-solid fa-right-from-bracket iconLogo"></i>
+                  <li class="nav-item">
+                    <a class="nav-link  headerText me-2" href="/logout">déconexion</a>
+                  </li>
+                </div>
+              </div>
+
             </div>
-            <div class="d-flex align-items-center">
-              <i class="fa-solid fa-right-from-bracket iconLogo"></i>
-              <li class="nav-item">
-                <a class="nav-link  headerText me-2" href="/logout">déconexion</a>
-              </li>
-            </div>
+
           <?php
           } else {
           ?>

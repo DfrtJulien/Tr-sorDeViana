@@ -35,7 +35,7 @@ class RegisterController extends AbstractController
         $passwordHash = password_hash($password, PASSWORD_DEFAULT);
         $idRole = 2;
 
-        $user = new Users(null, $mail, $passwordHash, $registerDate, $city, $postal, $street, $firstname, $lastname, $phone, $idRole, null);
+        $user = new Users(null, $mail, $passwordHash, $registerDate, $city, $postal, $street, $firstname, $lastname, $phone, null, $idRole, null);
 
         $userExist = $user->existingUser($mail);
 
@@ -76,7 +76,7 @@ class RegisterController extends AbstractController
         $passwordHash = password_hash($password, PASSWORD_DEFAULT);
         $idRole = 1;
 
-        $user = new Admin(null, $mail, $passwordHash, $registerDate, $city, $postal, $street, $firstname, $lastname, $phone, $idRole, null);
+        $user = new Admin(null, $mail, $passwordHash, $registerDate, $city, $postal, $street, $firstname, $lastname, $phone,null, $idRole, null);
 
         $userExist = $user->existingUser($mail);
 

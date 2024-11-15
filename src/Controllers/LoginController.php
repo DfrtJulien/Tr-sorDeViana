@@ -18,7 +18,7 @@ class LoginController extends AbstractController
                 $mail = htmlspecialchars($_POST['mail']);
                 $password = htmlspecialchars($_POST['password']);
 
-                $user = new User(null, $mail, $password, null, null, null, null, null, null, null, null, null);
+                $user = new User(null, $mail, $password, null, null, null, null,null, null, null, null, null, null);
                 $responseGetUser = $user->login($mail);
 
 
@@ -31,7 +31,8 @@ class LoginController extends AbstractController
                             'mail' => $responseGetUser->getMail(),
                             'register_date' => $responseGetUser->getRegisterDate(),
                             'idUser' => $responseGetUser->getId(),
-                            'id_role' => $responseGetUser->getId_role()
+                            'id_role' => $responseGetUser->getId_role(),
+                            'img_path' => $responseGetUser->getImg()
                         ];
                         $this->redirectToRoute('/');
                     } else {
@@ -60,7 +61,7 @@ class LoginController extends AbstractController
                 $mail = htmlspecialchars($_POST['mail']);
                 $password = htmlspecialchars($_POST['password']);
 
-                $user = new Admin(null, $mail, $password, null, null, null, null, null, null, null, null, null);
+                $user = new Admin(null, $mail, $password, null, null, null, null, null,null, null, null, null, null);
                 $responseGetUser = $user->login($mail);
 
 

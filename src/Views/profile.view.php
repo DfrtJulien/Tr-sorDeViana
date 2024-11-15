@@ -8,22 +8,18 @@ if (!$_SESSION) {
         require_once(__DIR__ . '/partials/head.php');
     }
 }
-
 ?>
 
 <section class="container my-5">
     <div class="profileContainer">
-        <div class="d-flex">
-            <div class="imgProfileContainer">
-                <img src="" alt="Photo de profile">
-                <form action="your_processing_script.php" method="post" enctype="multipart/form-data">
-                    <label for="myFileUpload">Ajouter votre photo de profile :</label>
-                    <input type="file" id="myFileUpload" name="profilePicture">
-                    <button type="submit">Ajoutez</button>
-                </form>
-            </div>
-            <div>
-                <form method="POST">
+        <form method="POST" enctype="multipart/form-data">
+            <div class="d-md-flex">
+                <div class="imgProfileContainer">
+                    <img src="/public/uploads/<?= $myUserImg ? $myUserImg : "img_default.png" ?>" alt="Photo de profile">
+                    <label for="fileToUpload">Ajouter votre photo de profile :</label>
+                    <input type="file"  name="fileToUpload" id="fileToUpload">
+                </div>
+                <div>
                     <div class="p-2">
                         <label for="mail">Mail : </label>
                         <input type="email" name="mail" id="mail" value="<?= $myUser->getMail() ?>">
@@ -76,11 +72,10 @@ if (!$_SESSION) {
                             } ?>
                         </div>
                     </div>
-                    <button type="submit" class="submitBtnProfile my-3">Sauvegarder</button>
-                </form>
+                </div>
             </div>
-        </div>
-    </div>
+            <button type="submit" class="submitBtnProfile my-3">Sauvegarder</button>
+        </form>
 </section>
 
 <?php
