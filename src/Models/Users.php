@@ -19,10 +19,11 @@ class Users
     protected ?string $firstname;
     protected ?string $lastname;
     protected ?string $phone_number;
+    protected ?string $img_path;
     protected int|string|null $id_role;
     protected int|string|null $id_userInfo;
 
-    public function __construct(?int $id,?string $mail, ?string $password,  ?string $register_date,  ?string $city, ?string $postal,  ?string $street, ?string $firstname, ?string $lastname, ?string $phone_number, int|string|null $id_role, int|string|null $id_userInfo)
+    public function __construct(?int $id,?string $mail, ?string $password,  ?string $register_date, ?string $city, ?string $postal,  ?string $street, ?string $firstname, ?string $lastname, ?string $phone_number, ?string $img_path, int|string|null $id_role, int|string|null $id_userInfo)
     {
         $this->id = $id;
         $this->mail = $mail;
@@ -34,6 +35,7 @@ class Users
         $this->firstname = $firstname;
         $this->lastname = $lastname;
         $this->phone_number = $phone_number;
+        $this->img_path = $img_path;
         $this->id_role = $id_role;
         $this->id_userInfo = $id_userInfo;
     }
@@ -47,9 +49,9 @@ class Users
 
     public function saveUserInfo(){
         $pdo = DataBase::getConnection();
-        $sql = "INSERT INTO userinfo (id,city,postal,street,firstname,lastname,phoneNumber) VALUES (?,?,?,?,?,?,?)";
+        $sql = "INSERT INTO userinfo (id,city,postal,street,firstname,lastname,phoneNumber,img_path) VALUES (?,?,?,?,?,?,?,?)";
         $statement = $pdo->prepare($sql);
-        return $statement->execute([$this->id, $this->city, $this->postal, $this->street, $this->firstname, $this->lastname, $this->phone_number]);
+        return $statement->execute([$this->id, $this->city, $this->postal, $this->street, $this->firstname, $this->lastname, $this->phone_number, $this->img_path]);
     }
 
     public function existingUser($mail)
@@ -64,15 +66,18 @@ class Users
     public function login($mail)
     {
         $pdo = DataBase::getConnection();
-        $sql = "SELECT * FROM `user` WHERE mail = ?";
+        $sql = "SELECT `user`.`id`, `user`.`mail`, `user`.`password`,`user`.`register_date`,`user`.`id_role`, `userinfo`.`img_path` 
+        FROM `user`
+        INNER JOIN `userinfo` ON `user`.`id` = `userinfo`.`id`
+        WHERE mail = ?";
         $statement = $pdo->prepare($sql);
         $statement->execute([$mail]);
         $row = $statement->fetch(PDO::FETCH_ASSOC);
         if($row){
             if ($row['id_role'] === 1) {
-                return new Admin($row['id'], $row['mail'], $row['password'], $row['register_date'], $row['city'], $row['postal'],$row['street'], $row['firstname'], $row['lastname'], $row['phone_number'], $row['id_role'], $row['id_userInfo']);
+                return new Admin($row['id'], $row['mail'], $row['password'], $row['register_date'], $row['city'], $row['postal'],$row['street'], $row['firstname'], $row['lastname'], $row['phone_number'], $row['img_path'], $row['id_role'], $row['id_userInfo']);
             } elseif ($row['id_role'] === 2) {
-                return new User($row['id'], $row['mail'], $row['password'], $row['register_date'], $row['city'], $row['postal'],$row['street'], $row['firstname'], $row['lastname'], $row['phone_number'], $row['id_role'], $row['id_userInfo']);
+                return new User($row['id'], $row['mail'], $row['password'], $row['register_date'], $row['city'], $row['postal'],$row['street'], $row['firstname'], $row['lastname'], $row['phone_number'], $row['img_path'], $row['id_role'], $row['id_userInfo']);
             } else {
                 return null;
             }
@@ -126,6 +131,11 @@ class Users
     public function getPhoneNumber(): ?string
     {
         return $this->phone_number;
+    }
+
+    public function getImg(): ?string
+    {
+        return $this->img_path;
     }
 
     public function getId_role(): ?int

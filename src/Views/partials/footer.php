@@ -4,6 +4,7 @@
     © Copyright : Julien <?=  date("Y") ?>
   </div>
 </footer>
+<script type ="text/javascript" src="/public/js/script.js"></script>
 </body>
 
 </html>

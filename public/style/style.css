@@ -42,9 +42,11 @@ button {
 /********************************* NAVBAR********************************* */
 .myNav {
 	background-color: #731C37;
+	position: relative;
 }
 
-.iconLogo {
+.iconLogo,
+#closeContainerIcon {
 	color: #FFFCFC;
 	font-size: 19px;
 	margin-left: 5px;
@@ -67,10 +69,44 @@ button {
 	border: none;
 }
 
+.imgUserController {
+	width: 50px;
+	height: 50px;
+	
+}
+
+.imgUserController img {
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+}
+
+.imgUserController img:hover {
+	cursor: pointer;
+}
+
 .headerText {
 	color: #FFFCFC;
 	font-size: 19px;
 	font-family: "Cinzel", serif;
+}
+
+.hidden {
+	display: none;
+}
+
+#showContainer {
+	position: absolute;
+	background-color: #232224;
+	top: 78px;
+	right: 50px;
+	z-index: 2;
+	padding: 15px;
+
+}
+
+#closeContainerIcon {
+	cursor: pointer;
 }
 
 /*********************************************** 404 ********************************/
@@ -218,9 +254,24 @@ button {
 
 .profileContainer {
 	background-color: #731C37;
-	width: 70%;
+	width: 75%;
 	border-radius: 20px;
 	padding: 20px;
+}
+
+.imgProfileContainer {
+	padding: 25px;
+	width: 300px;
+	height: 300px;
+	margin-right: 100px;
+}
+
+.imgProfileContainer img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	border-radius: 50%;
+	margin-bottom: 15px;
 }
 
 .profileContainer label,
@@ -241,10 +292,17 @@ button {
 }
 
 .submitBtnProfile {
-	background-color: #e78c47;
+	background-color: #ffffff;
 	color: #731C37;
 	padding: 10px;
 	border-radius: 5px;
+	text-align: center;
+	margin-left: 25px;
+	transition: all 0.3s ease;
+}
+
+.submitBtnProfile:hover {
+	transform: scale(1.2);
 }
 
 /**************************************** ADD ARTICLE FORM ****************************/
@@ -581,6 +639,16 @@ footer {
 		border-bottom: 2px solid #E7CF47;
 		width: 100%;
 		display: block;
+	}
+
+	.imgHeaderContainer {
+		margin-top: 25px;
+	}
+
+	#showContainer {
+		top: 200px;
+		right: 0;
+		left: 0;
 	}
 
 	/*********************************************** 404 ********************************/
