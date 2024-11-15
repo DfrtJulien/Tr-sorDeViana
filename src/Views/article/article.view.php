@@ -22,13 +22,65 @@ $numberComment = $comment["COUNT(content)"];
 <section class="infoArticleContainer">
     <div class="flexContainer">
         <div>
-            <img src="" alt="<?= $myArticle->getTitle() ?>" class="articleImg">
+            <img src="/public/img/<?= $myArticle->getImgArticle() ?>" alt="<?= $myArticle->getTitle() ?>" class="articleImg">
         </div>
         <div class="infoContainer">
             <h2 class="articleTitle"><?= $myArticle->getTitle() ?></h2>
             <p class="articleDescription"><?= $myArticle->getDescription() ?></p>
-            <div class="d-flex">
-                <p>note</p>
+            <div class="articleNoteContainer">
+                <div class="iconContainer">
+                <?php
+                    if($note === 0){
+                        ?>
+                        <i class="fa-regular fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                        <?php
+                    } else if ($note === 1){
+                        ?>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                        <?php
+                    } else if ($note === 2){
+                        ?>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                        <?php
+                    } else if ($note === 3){
+                        ?>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                        <?php
+                    } else if ($note === 4){
+                        ?>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                        <?php
+                    } else if ($note === 5){
+                        ?>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <?php
+                    }
+                ?>
+                 </div>
                 <?php
                 if ($numberComment) {
                 ?>
@@ -59,7 +111,7 @@ $numberComment = $comment["COUNT(content)"];
         ?>
                 <div class="cardMoreArticle">
                     <div>
-                        <img src="<?= $article->getImgArticle() ?>" alt="">
+                        <img src="/public/img/<?= $article->getImgArticle() ?>" alt="">
                     </div>
 
                     <h2><?= $article->getTitle() ?></h2>
