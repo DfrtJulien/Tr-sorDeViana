@@ -41,4 +41,8 @@ $router->addRoute('/commentArticle', 'ArticlesController', 'addCommentArticle');
 // modifier son commentaire
 $router->addRoute('/editComment', 'ArticlesController', 'editComment');
 
+//pannier
+$router->addRoute('/cart', 'CartController', 'index');
+
+
 $router->handleRequest();
