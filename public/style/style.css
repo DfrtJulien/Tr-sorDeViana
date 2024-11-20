@@ -72,7 +72,7 @@ button {
 .imgUserController {
 	width: 50px;
 	height: 50px;
-	
+
 }
 
 .imgUserController img {
@@ -624,14 +624,14 @@ button {
 
 .commentUserDate {
 	font-size: 20px;
-	font-family:  "Merriweather", serif;
+	font-family: "Merriweather", serif;
 	font-style: italic;
 	color: #2322248e;
 }
 
 .commentUserComment {
 	font-size: 20px;
-	font-family:  "Merriweather", serif;
+	font-family: "Merriweather", serif;
 	margin-bottom: 25px;
 }
 
@@ -646,6 +646,26 @@ button {
 .deleteCommentBtn {
 	background-color: red;
 	margin-right: 15px;
+}
+
+/******************************************** CART **********************************/
+
+.cartContainer {
+	width: 80%;
+	margin: 80px auto;
+}
+
+.cart {
+	width: 60%;
+	margin: auto;
+}
+
+.imgCart {
+	margin-right: 50px;
+}
+
+.imgCart img {
+	width: 100%;
 }
 
 /************************************************ FOOTER ***************************/
@@ -844,13 +864,28 @@ footer {
 	.commentUserName {
 		font-size: 20px;
 	}
-	
+
 	.commentUserDate {
 		font-size: 16px;
 	}
-	
+
 	.commentUserComment {
 		font-size: 16px;
+	}
+
+	/******************************************** CART **********************************/
+
+	.cartContainer {
+		width: 100%;
+	}
+
+	.cart {
+		width: 100%;
+		padding: 15px;
+	}
+
+	.imgCart {
+		margin-right: 10px;
 	}
 
 }

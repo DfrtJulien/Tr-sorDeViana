@@ -6,6 +6,7 @@ namespace App\Utils;
 abstract class AbstractController
 {
     protected array $arrayError = [];
+    protected array  $cart = [];
 
     public function redirectToRoute($route)
     {
@@ -122,10 +123,10 @@ abstract class AbstractController
                 if (!preg_match($regexDescription, $value)) {
                     $this->arrayError['editComment'] = 'Merci de renseigner un commentaire correcte !';
                 }
-            // case 'note':
-            //     if(!preg_match($regexNote, $value)) {
-            //         $this->arrayError['note'] = "Entrez une note correcte";
-            //     }
+                // case 'note':
+                //     if(!preg_match($regexNote, $value)) {
+                //         $this->arrayError['note'] = "Entrez une note correcte";
+                //     }
         }
     }
 

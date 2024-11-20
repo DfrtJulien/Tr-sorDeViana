@@ -48,12 +48,18 @@
                 <a class="nav-link  headerText me-2" href="/allArticle">Boutique</a>
               </li>
             </div>
+            <div class="d-flex align-items-center">
+              <i class="fa-solid fa-cart-shopping iconLogo"></i>
+              <li class="nav-item">
+                <a class="nav-link  headerText me-2" href="/cart">Panier</a>
+              </li>
+            </div>
             <div class="d-flex align-items-center imgHeaderContainer">
               <div class="imgUserController">
-                <img src="/public/uploads/<?= $_SESSION['user']['img_path'] !==  null ? $_SESSION['user']['img_path'] : "img_default.png" ?>" alt="photo de profile de l'utilisateur" id="imgUser">
+                <img src="/public/uploads/<?= $_SESSION['user']['img_path']  ? $_SESSION['user']['img_path'] : "img_default.png" ?>" alt="photo de profile de l'utilisateur" id="imgUser">
               </div>
               <div class="hidden" id="showContainer">
-              <i class="fa-solid fa-xmark" id="closeContainerIcon"></i>
+                <i class="fa-solid fa-xmark" id="closeContainerIcon"></i>
                 <div>
                   <li class="nav-item">
                     <a class="nav-link  headerText me-2" href="/profile?id=<?= $_SESSION['user']['idUser'] ?>">profile</a>
