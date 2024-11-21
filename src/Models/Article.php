@@ -26,7 +26,7 @@ class Article
     protected ?string $lastname;
     protected ?string $id_comment;
 
-    public function __construct(?int $id, ?string $title, ?string $description,  ?float $priceExcludingTax,  ?int $tva, ?string $category,  ?int $quantity, ?string $material,?string $img_path, ?string $content, ?string $creation_date, string|null $modification_date, ?int $id_user, ?int $id_article, ?string $firstname, ?string $lastname, ?string $id_comment)
+    public function __construct(?int $id, ?string $title, ?string $description,  ?float $priceExcludingTax,  ?int $tva, ?string $category,  ?int $quantity, ?string $material, ?string $img_path, ?string $content, ?string $creation_date, string|null $modification_date, ?int $id_user, ?int $id_article, ?string $firstname, ?string $lastname, ?string $id_comment)
     {
         $this->id = $id;
         $this->title = $title;
@@ -52,7 +52,7 @@ class Article
         $pdo = DataBase::getConnection();
         $sql = "INSERT INTO article (id, title, description, priceExcludingTax, tva, category, quantity, material,img_path) VALUES (?,?,?,?,?,?,?,?,?)";
         $statement = $pdo->prepare($sql);
-        return $statement->execute([$this->id, $this->title, $this->description, $this->priceExcludingTax, $this->tva, $this->category, $this->quantity,  $this->material,$this->img_path]);
+        return $statement->execute([$this->id, $this->title, $this->description, $this->priceExcludingTax, $this->tva, $this->category, $this->quantity,  $this->material, $this->img_path]);
     }
 
     public function getAllArticle()
@@ -65,7 +65,7 @@ class Article
         $articles = [];
         if ($resultFetch) {
             foreach ($resultFetch as $row) {
-                $article = new Article($row['id'], $row['title'], $row['description'], $row['priceExcludingTax'], $row['tva'], $row['category'], $row['quantity'], $row['material'],$row['img_path'], null, null, null, null, null, null, null, null);
+                $article = new Article($row['id'], $row['title'], $row['description'], $row['priceExcludingTax'], $row['tva'], $row['category'], $row['quantity'], $row['material'], $row['img_path'], null, null, null, null, null, null, null, null);
                 $articles[] = $article;
             }
             return $articles;
@@ -80,7 +80,7 @@ class Article
         $statement->execute([$this->id]);
         $row = $statement->fetch(PDO::FETCH_ASSOC);
         if ($row) {
-            return new Article($row['id'], $row['title'], $row['description'], $row['priceExcludingTax'], $row['tva'], $row['category'], $row['quantity'], $row['material'],$row['img_path'], null, null, null, null, null, null, null, null);
+            return new Article($row['id'], $row['title'], $row['description'], $row['priceExcludingTax'], $row['tva'], $row['category'], $row['quantity'], $row['material'], $row['img_path'], null, null, null, null, null, null, null, null);
         } else {
             return null;
         }
@@ -93,7 +93,7 @@ class Article
         SET `title` = ?, `description` = ?, `priceExcludingTax` = ?, `tva` = ?, `category` = ?, `quantity` = ?, `material` = ?, `img_path` = ?
         WHERE `article`.`id` = ?";
         $statement = $pdo->prepare($sql);
-        return $statement->execute([$this->title, $this->description, $this->priceExcludingTax, $this->tva, $this->category, $this->quantity,  $this->material,$this->img_path, $this->id]);
+        return $statement->execute([$this->title, $this->description, $this->priceExcludingTax, $this->tva, $this->category, $this->quantity,  $this->material, $this->img_path, $this->id]);
     }
 
     public function deleteArticle()
@@ -114,7 +114,7 @@ class Article
         $articles = [];
         if ($resultFetch) {
             foreach ($resultFetch as $row) {
-                $article = new Article($row['id'], $row['title'], $row['description'], $row['priceExcludingTax'], $row['tva'], $row['category'], $row['quantity'], $row['material'],$row['img_path'], null, null, null, null, null, null, null, null);
+                $article = new Article($row['id'], $row['title'], $row['description'], $row['priceExcludingTax'], $row['tva'], $row['category'], $row['quantity'], $row['material'], $row['img_path'], null, null, null, null, null, null, null, null);
                 $articles[] = $article;
             }
             return $articles;
@@ -143,7 +143,7 @@ class Article
         $comments = [];
         if ($resultFetch) {
             foreach ($resultFetch as $row) {
-                $comment = new Article(null, null, null, null, null, null, null, null,null, $row['content'], $row['creation_date'], $row['modification_date'], $row['id_user'], $row['id_article'], $row['firstname'], $row['lastname'], $row['id_comment']);
+                $comment = new Article(null, null, null, null, null, null, null, null, null, $row['content'], $row['creation_date'], $row['modification_date'], $row['id_user'], $row['id_article'], $row['firstname'], $row['lastname'], $row['id_comment']);
                 $comments[] = $comment;
             }
             return $comments;
@@ -158,7 +158,7 @@ class Article
         $statement->execute([$this->id_comment]);
         $row = $statement->fetch(PDO::FETCH_ASSOC);
         if ($row) {
-            return new Article(null, null, null, null, null, null, null,null, null, $row['content'], null, null, null, null, null, null, null);
+            return new Article(null, null, null, null, null, null, null, null, null, $row['content'], null, null, null, null, null, null, null);
         } else {
             return null;
         }
@@ -189,6 +189,34 @@ class Article
         $statement = $pdo->prepare($sql);
         $statement->execute([$this->id]);
         return $resultFetch = $statement->fetch(PDO::FETCH_ASSOC);
+    }
+
+    public function addToCart()
+    {
+        $pdo = DataBase::getConnection();
+        $sql = "INSERT INTO `cart` (`id_user`,`id_article`) VALUE (?,?)";
+        $statement = $pdo->prepare($sql);
+        return $statement->execute([$this->id_user, $this->id_article]);
+    }
+
+    public function getCartArticleByIdUser()
+    {
+        $pdo = DataBase::getConnection();
+        $sql = "SELECT `article`.`id`,`article`.`title`,`article`.`priceExcludingTax`,`article`.`img_path`
+                FROM `article` 
+                INNER JOIN `cart` ON `article`.`id` = `cart`.`id_article`
+                WHERE `cart`.`id_user` = ?;";
+        $statement = $pdo->prepare($sql);
+        $statement->execute([$this->id_user]);
+        $resultFetch = $statement->fetchAll(PDO::FETCH_ASSOC);
+        $articles = [];
+        if ($resultFetch) {
+            foreach ($resultFetch as $row) {
+                $article = new Article($row['id'], $row['title'], null, $row['priceExcludingTax'], null, null, null, null, $row['img_path'], null, null, null, null, null, null, null, null);
+                $articles[] = $article;
+            }
+            return $articles;
+        }
     }
 
     public function getId(): ?int

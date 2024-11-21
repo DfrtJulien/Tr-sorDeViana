@@ -660,12 +660,25 @@ button {
 	margin: auto;
 }
 
+.article {
+	margin-top: 50px;
+}
+
+.artcileCartInfo {
+	flex: 1;
+}
+
 .imgCart {
 	margin-right: 50px;
+	width: 350px;
 }
 
 .imgCart img {
 	width: 100%;
+}
+
+.cartPrice {
+	font-size: 22px;
 }
 
 /************************************************ FOOTER ***************************/
