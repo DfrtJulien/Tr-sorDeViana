@@ -670,14 +670,26 @@ button {
 
 .imgCart {
 	margin-right: 50px;
-	width: 350px;
+	width: 150px;
+	height: 150px;
 }
 
 .imgCart img {
 	width: 100%;
+	height: 100%;
+	border-radius: 30px;
 }
 
 .cartPrice {
+	font-size: 22px;
+}
+
+.buyBtn {
+	margin-left: 15px;
+	padding: 10px;
+	background-color: #731C37;
+	color: white;
+	border-radius: 5px;
 	font-size: 22px;
 }
 
