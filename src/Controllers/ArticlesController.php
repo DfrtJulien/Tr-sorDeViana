@@ -226,7 +226,12 @@ class ArticlesController extends AbstractController
         $articles = $article->getCartArticleByIdUser();
 
         if (isset($_POST['id'])) {
-            var_dump($_POST['id']);
+            $idArticle = htmlspecialchars($_POST['id']);
+
+            $article = new Article(null, null, null, null, null, null, null, null, null, null, null, null, null, $idArticle, null, null, null);
+
+            $article->deleteArticleFromCart();
+            header("Refresh:0");
         }
 
 

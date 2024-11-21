@@ -219,6 +219,14 @@ class Article
         }
     }
 
+    public function deleteArticleFromCart()
+    {
+        $pdo = DataBase::getConnection();
+        $sql = "DELETE FROM `cart` WHERE `id_article` = ?";
+        $statement = $pdo->prepare($sql);
+        return $statement->execute([$this->id_article]);
+    }
+
     public function getId(): ?int
     {
         return $this->id;
