@@ -12,7 +12,7 @@ class UserController extends AbstractController
     {
         if (isset($_GET['id'])) {
             $userId = $_GET['id'];
-            $user = new User($userId, null, null, null, null, null, null,null, null, null, null, null, null);
+            $user = new User($userId, null, null, null, null, null, null, null, null, null, null, null, null);
             $myUser = $user->getUserPorfile();
             $myUserImg = $myUser->getImg();
             $myUserPath = "/public/upload/" . $myUserImg;
@@ -43,7 +43,6 @@ class UserController extends AbstractController
                     if ($check !== false) {
                         echo "Le fichier est une image  - " . $check["mime"] . ".";
                         $uploadOk = 1;
-                       
                     } else {
                         echo "Fichier n'est pas une image.";
                         $uploadOk = 0;
@@ -64,17 +63,18 @@ class UserController extends AbstractController
 
                     if ($uploadOk == 0) {
                         echo "Sorry, your file was not uploaded.";
-                      // if everything is ok, try to upload file
-                      } else {
+                        // if everything is ok, try to upload file
+                    } else {
                         if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-                            $img = htmlspecialchars( basename( $_FILES["fileToUpload"]["name"]));
+                            $img = htmlspecialchars(basename($_FILES["fileToUpload"]["name"]));
+                            $_SESSION['user']['img_path'] = $img;
                         } else {
-                          echo "Sorry, there was an error uploading your file.";
+                            echo "Sorry, there was an error uploading your file.";
                         }
-                      }
-                      
-                    unlink('public/uploads/'. $myUserImg);
-                    $user = new User($userId, $mail, null, null, $city, $postal, $street, null, null, $phone,$img, null, null);
+                    }
+
+                    unlink('public/uploads/' . $myUserImg);
+                    $user = new User($userId, $mail, null, null, $city, $postal, $street, null, null, $phone, $img, null, null);
                     $user->updateUser();
                     $user->updateUserInfo();
 
