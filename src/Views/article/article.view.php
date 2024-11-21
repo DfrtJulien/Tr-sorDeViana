@@ -29,58 +29,58 @@ $numberComment = $comment["COUNT(content)"];
             <p class="articleDescription"><?= $myArticle->getDescription() ?></p>
             <div class="articleNoteContainer">
                 <div class="iconContainer">
-                <?php
-                    if($note === 0){
-                        ?>
+                    <?php
+                    if ($note === 0) {
+                    ?>
                         <i class="fa-regular fa-star"></i>
                         <i class="fa-regular fa-star"></i>
                         <i class="fa-regular fa-star"></i>
                         <i class="fa-regular fa-star"></i>
                         <i class="fa-regular fa-star"></i>
-                        <?php
-                    } else if ($note === 1){
-                        ?>
+                    <?php
+                    } else if ($note === 1) {
+                    ?>
                         <i class="fa-solid fa-star"></i>
                         <i class="fa-regular fa-star"></i>
                         <i class="fa-regular fa-star"></i>
                         <i class="fa-regular fa-star"></i>
                         <i class="fa-regular fa-star"></i>
-                        <?php
-                    } else if ($note === 2){
-                        ?>
+                    <?php
+                    } else if ($note === 2) {
+                    ?>
                         <i class="fa-solid fa-star"></i>
                         <i class="fa-solid fa-star"></i>
                         <i class="fa-regular fa-star"></i>
                         <i class="fa-regular fa-star"></i>
                         <i class="fa-regular fa-star"></i>
-                        <?php
-                    } else if ($note === 3){
-                        ?>
+                    <?php
+                    } else if ($note === 3) {
+                    ?>
                         <i class="fa-solid fa-star"></i>
                         <i class="fa-solid fa-star"></i>
                         <i class="fa-solid fa-star"></i>
                         <i class="fa-regular fa-star"></i>
                         <i class="fa-regular fa-star"></i>
-                        <?php
-                    } else if ($note === 4){
-                        ?>
+                    <?php
+                    } else if ($note === 4) {
+                    ?>
                         <i class="fa-solid fa-star"></i>
                         <i class="fa-solid fa-star"></i>
                         <i class="fa-solid fa-star"></i>
                         <i class="fa-solid fa-star"></i>
                         <i class="fa-regular fa-star"></i>
-                        <?php
-                    } else if ($note === 5){
-                        ?>
+                    <?php
+                    } else if ($note === 5) {
+                    ?>
                         <i class="fa-solid fa-star"></i>
                         <i class="fa-solid fa-star"></i>
                         <i class="fa-solid fa-star"></i>
                         <i class="fa-solid fa-star"></i>
                         <i class="fa-solid fa-star"></i>
-                        <?php
+                    <?php
                     }
-                ?>
-                 </div>
+                    ?>
+                </div>
                 <?php
                 if ($numberComment) {
                 ?>
@@ -91,7 +91,11 @@ $numberComment = $comment["COUNT(content)"];
             </div>
             <div class="priceAndBtn">
                 <p class="articlePrice"><?= $price ?>€</p>
-                <button class="addToCartBtn"><i class="fa-solid fa-cart-plus iconAddToCart"></i>Ajouter au panier</button>
+                <form action="" method="POST">
+                    <input type="hidden" name="addToCart" value="<?= $myArticle->getId() ?>">
+                    <button class="addToCartBtn"><i class="fa-solid fa-cart-plus iconAddToCart"></i>Ajouter au panier</button>
+                </form>
+
             </div>
             <a href="/commentArticle?id=<?= $myArticle->getId() ?>" class="addCommentBtn">Ajoutez un commentaire</a>
         </div>

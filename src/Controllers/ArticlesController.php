@@ -147,6 +147,13 @@ class ArticlesController extends AbstractController
                 header("Refresh:0");
             }
 
+            if (isset($_POST['addToCart'])) {
+                $idArticle = htmlspecialchars($_POST['addToCart']);
+                $idUser = $_SESSION['user']['idUser'];
+                $articelToCart = new Article(null, null, null, null, null, null, null, null, null, null, null, null, $idUser, $idArticle, null, null, null);
+                $articelToCart->addToCart();
+            }
+
             require_once(__DIR__ . "/../Views/article/article.view.php");
         }
     }
@@ -209,5 +216,20 @@ class ArticlesController extends AbstractController
 
             require_once(__DIR__ . "/../Views/article/editComment.view.php");
         }
+    }
+
+    public function showCart()
+    {
+        $idUser = $_SESSION['user']['idUser'];
+        $article = new Article(null, null, null, null, null, null, null, null, null, null, null, null, $idUser, null, null, null, null);
+
+        $articles = $article->getCartArticleByIdUser();
+
+        if (isset($_POST['id'])) {
+            var_dump($_POST['id']);
+        }
+
+
+        require_once(__DIR__ . "/../Views/cart.view.php");
     }
 }

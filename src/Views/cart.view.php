@@ -12,19 +12,32 @@ if (!$_SESSION) {
 ?>
 <section class="cartContainer">
   <div class="cart">
-    <div class="article">
-      <div class="d-flex">
-        <div class="imgCart">
-          <img src="/public/img/collier_argent_coeur_2.png" alt="">
-        </div>
-        <div class="artcileCartInfo">
-          <h2>Collier en Or “Coeur de Viana” en filligran 10cm</h2>
-          <div class="articleCartNote"></div>
-          <p>150€</p>
-        </div>
-      </div>
+    <?php
+    if ($articles) {
+      foreach ($articles as $article) {
+    ?>
+        <div class="article">
+          <div class="d-flex">
+            <div class="imgCart">
+              <img src="/public/img/<?= $article->getImgArticle() ? $article->getImgArticle() : "diablo.png" ?>" alt="image de <?= $article->getTitle() ?>">
+            </div>
+            <div class="artcileCartInfo">
+              <h2><?= $article->getTitle() ?></h2>
+              <div class="articleCartNote"></div>
+              <p class="cartPrice"><?= $article->getPriceExcludingTax() ?>€</p>
+            </div>
+            <form method="POST">
+              <input type="hidden" name="id" id="id" value="<?= $article->getId() ?>">
+              <button type="submit" class="deleteArticleBtn">Suprimer du panier</button>
+            </form>
+          </div>
 
-    </div>
+        </div>
+    <?php
+      }
+    }
+    ?>
+
   </div>
 </section>
 <?php

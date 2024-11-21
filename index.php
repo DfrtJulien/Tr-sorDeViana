@@ -42,7 +42,7 @@ $router->addRoute('/commentArticle', 'ArticlesController', 'addCommentArticle');
 $router->addRoute('/editComment', 'ArticlesController', 'editComment');
 
 //pannier
-$router->addRoute('/cart', 'CartController', 'index');
+$router->addRoute('/cart', 'ArticlesController', 'showCart');
 
 
 $router->handleRequest();
