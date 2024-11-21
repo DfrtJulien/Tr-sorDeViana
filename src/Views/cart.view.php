@@ -14,7 +14,9 @@ if (!$_SESSION) {
   <div class="cart">
     <?php
     if ($articles) {
+      $price = 0;
       foreach ($articles as $article) {
+        $price += $article->getPriceExcludingTax();
     ?>
         <div class="article">
           <div class="d-flex">
@@ -37,7 +39,10 @@ if (!$_SESSION) {
       }
     }
     ?>
-
+    <div class="d-flex mt-5">
+      <p class="cartPrice"><?= $price ?>€</p>
+      <a href="#" class="buyBtn">Passer la commande</a>
+    </div>
   </div>
 </section>
 <?php
