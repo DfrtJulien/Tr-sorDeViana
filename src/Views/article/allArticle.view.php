@@ -68,8 +68,8 @@ use App\Models\Note;
             $sumNote = $notes->sumArticleNote();
             $sumNoteInt = intval(reset($sumNote));
 
-            if($numberNoteToInt !== 0){
-            $note = $sumNoteInt / $numberNoteToInt;
+            if ($numberNoteToInt !== 0) {
+                $note = $sumNoteInt / $numberNoteToInt;
             } else {
                 $note = 0;
             }
@@ -85,61 +85,17 @@ use App\Models\Note;
                     ?>
                         <div class="iconContainer">
                             <?php
-                            if ($note === 6) {
+                            if ($note) {
                             ?>
-                                <i class="fa-regular fa-star"></i>
-                                <i class="fa-regular fa-star"></i>
-                                <i class="fa-regular fa-star"></i>
-                                <i class="fa-regular fa-star"></i>
-                                <i class="fa-regular fa-star"></i>
-                            <?php
-                            } else if ($note === 1) {
-                            ?>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-regular fa-star"></i>
-                                <i class="fa-regular fa-star"></i>
-                                <i class="fa-regular fa-star"></i>
-                                <i class="fa-regular fa-star"></i>
-                            <?php
-                            } else if ($note === 2) {
-                            ?>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-regular fa-star"></i>
-                                <i class="fa-regular fa-star"></i>
-                                <i class="fa-regular fa-star"></i>
-                            <?php
-                            } else if ($note === 3) {
-                            ?>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-regular fa-star"></i>
-                                <i class="fa-regular fa-star"></i>
-                            <?php
-                            } else if ($note === 4) {
-                            ?>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-regular fa-star"></i>
-                            <?php
-                            } else if ($note === 5) {
-                            ?>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
+                                <i class="<?= $note == 0 ? 'fa-regular' : 'fa-solid' ?> fa-star"></i>
+                                <i class="<?= $note < 2 ? 'fa-regular' : 'fa-solid' ?> fa-star"></i>
+                                <i class="<?= $note < 3 ? 'fa-regular' : 'fa-solid' ?> fa-star"></i>
+                                <i class="<?= $note < 4 ? 'fa-regular' : 'fa-solid' ?> fa-star"></i>
+                                <i class="<?= $note < 5 ? 'fa-regular' : 'fa-solid' ?> fa-star"></i>
                             <?php
                             }
                             ?>
                         </div>
-                    <?php
-                    } else {
-                    ?>
-                        
                     <?php
                     }
                     if ($numberComment) {
@@ -152,19 +108,20 @@ use App\Models\Note;
                 <p><?= $price ?>€</p>
                 <div clss="seeMoreContainer">
                     <a href="/infoArticle?id=<?= $article->getId() ?>" class="showMoreArticle">Voir plus</a>
-                </div>
 
-                <?php
-                if ($_SESSION['user']['id_role'] == 1) {
-                ?>
-                    <a href="/updateArticle?id=<?= $article->getId() ?>" class="updateArticleBtn">Modifier l'article</a>
-                    <form action="/deleteArticle" method="POST">
-                        <input type="hidden" name="id" id="id" value="<?= $article->getId() ?>">
-                        <button type="submit" class="deleteArticleBtn">Suprimer l'article</button>
-                    </form>
-                <?php
-                }
-                ?>
+
+                    <?php
+                    if ($_SESSION['user']['id_role'] == 1) {
+                    ?>
+                        <a href="/updateArticle?id=<?= $article->getId() ?>" class="updateArticleBtn">Modifier l'article</a>
+                        <form action="/deleteArticle" method="POST">
+                            <input type="hidden" name="id" id="id" value="<?= $article->getId() ?>">
+                            <button type="submit" class="deleteArticleBtn">Suprimer l'article</button>
+                        </form>
+                    <?php
+                    }
+                    ?>
+                </div>
             </div>
 
         <?php

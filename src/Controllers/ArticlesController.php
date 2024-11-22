@@ -84,8 +84,12 @@ class ArticlesController extends AbstractController
                         $quantity = htmlspecialchars($_POST['quantity']);
                         $material = htmlspecialchars($_POST['material']);
                         $tva = 20;
-                        $img_path = "";
 
+                        if ($myArticle->getImgArticle()) {
+                            $img_path = $myArticle->getImgArticle();
+                        } else {
+                            $img_path = "";
+                        }
 
                         $article = new Article($idArticle, $title, $description, $priceExcludingTax, $tva, $type, $quantity, $material, $img_path, null, null, null, null, null, null, null, null);
 
