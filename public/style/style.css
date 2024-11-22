@@ -599,12 +599,13 @@ button {
 }
 
 .comment {
-	margin-top: 50px;
+	margin-top: 80px;
+	border-bottom: 2px solid black;
 }
 
 .userInfo {
 	margin-right: 150px;
-	width: 400px;
+	width: 500px;
 }
 
 .commentContainer h3 {
@@ -614,6 +615,13 @@ button {
 
 .userImgContainer {
 	margin-right: 50px;
+	width: 150px;
+	height: 150px;
+}
+
+.userImgContainer img {
+	width: 100%;
+	border-radius: 50%;
 }
 
 .commentUserName {

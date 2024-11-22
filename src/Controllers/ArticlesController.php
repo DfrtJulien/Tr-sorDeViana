@@ -5,7 +5,7 @@ namespace App\Controllers;
 use App\Utils\AbstractController;
 use App\Models\Article;
 use App\Models\Note;
-
+use App\Models\Users;
 
 class ArticlesController extends AbstractController
 {
@@ -140,6 +140,7 @@ class ArticlesController extends AbstractController
             $comments = $myArticle->getComment();
 
 
+
             if (!$myArticle) {
                 $this->redirectToRoute('/');
             }
@@ -147,6 +148,7 @@ class ArticlesController extends AbstractController
             if (isset($_POST['idCommentDelete'])) {
                 $idComment = $_POST['idCommentDelete'];
                 $comment = new Article($idArticle, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, $idComment);
+                // $note = new Note();
                 $comment->deleteComment();
                 header("Refresh:0");
             }

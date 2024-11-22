@@ -5,14 +5,15 @@ namespace App\Models;
 use PDO;
 use Config\DataBase;
 
-class Note 
+class Note
 {
     protected ?int $id;
     protected ?int $value;
     protected ?int $id_user;
     protected ?int $id_article;
 
-    public function __construct(?int $id,?int $value,?int $id_user,?int $id_article) {
+    public function __construct(?int $id, ?int $value, ?int $id_user, ?int $id_article)
+    {
         $this->id = $id;
         $this->value = $value;
         $this->id_user = $id_user;
@@ -48,7 +49,25 @@ class Note
     }
 
 
-    public function getId(): int {
+    public function getNoteByUserId()
+    {
+        $pdo = DataBase::getConnection();
+        $sql = "SELECT `value` FROM `note` WHERE `id_article` = ? AND `id_user` = ?";
+        $statement = $pdo->prepare($sql);
+        $statement->execute([$this->id_article, $this->id_user]);
+        return $resultFetch = $statement->fetch(PDO::FETCH_ASSOC);
+    }
+
+    public function deleteNote()
+    {
+        $pdo = DataBase::getConnection();
+        $sql = "DELETE FROM `note` WHERE `id` = ?";
+        $statement = $pdo->prepare($sql);
+        return $statement->execute([$this->id]);
+    }
+
+    public function getId(): int
+    {
         return $this->id;
     }
 
@@ -56,16 +75,19 @@ class Note
     //     return $this->numberVote;
     // }
 
-    public function getValue(): int {
+    public function getValue(): int
+    {
         return $this->value;
     }
- 
-    public function getIdUser(): int {
+
+    public function getIdUser(): int
+    {
         return $this->id_user;
     }
 
-    
-    public function getIdArticle(): int {
+
+    public function getIdArticle(): int
+    {
         return $this->id_article;
     }
 
@@ -74,25 +96,27 @@ class Note
         $this->id = $id;
         return $this;
     }
-  
+
     // public function setNumberVote(int $numberVote): static {
     //     $this->numberVote = $numberVote;
     //     return $this;
     // }
 
-    public function setValue(int $value): static {
+    public function setValue(int $value): static
+    {
         $this->value = $value;
         return $this;
     }
 
-    public function setIdUser(int $id_user): static {
+    public function setIdUser(int $id_user): static
+    {
         $this->id_user = $id_user;
         return $this;
     }
 
-    public function setIdArticle(int $id_article): static {
+    public function setIdArticle(int $id_article): static
+    {
         $this->id_article = $id_article;
         return $this;
     }
-
 }

@@ -1,5 +1,8 @@
 <?php
 
+use App\Models\Users;
+use App\Models\Note;
+
 if (!$_SESSION) {
     require_once(__DIR__ . '/../partials/head.php');
 } else {
@@ -17,6 +20,8 @@ $calcul = $priceWithoutTaxe / 100 * $tva;
 $price = $priceWithoutTaxe + $calcul;
 $comment = $myArticle->getNumberComment();
 $numberComment = $comment["COUNT(content)"];
+
+$idArtcile = $myArticle->getId();
 ?>
 
 <section class="infoArticleContainer">
@@ -30,53 +35,13 @@ $numberComment = $comment["COUNT(content)"];
             <div class="articleNoteContainer">
                 <div class="iconContainer">
                     <?php
-                    if ($note === 0) {
+                    if ($note) {
                     ?>
-                        <i class="fa-regular fa-star"></i>
-                        <i class="fa-regular fa-star"></i>
-                        <i class="fa-regular fa-star"></i>
-                        <i class="fa-regular fa-star"></i>
-                        <i class="fa-regular fa-star"></i>
-                    <?php
-                    } else if ($note === 1) {
-                    ?>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-regular fa-star"></i>
-                        <i class="fa-regular fa-star"></i>
-                        <i class="fa-regular fa-star"></i>
-                        <i class="fa-regular fa-star"></i>
-                    <?php
-                    } else if ($note === 2) {
-                    ?>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-regular fa-star"></i>
-                        <i class="fa-regular fa-star"></i>
-                        <i class="fa-regular fa-star"></i>
-                    <?php
-                    } else if ($note === 3) {
-                    ?>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-regular fa-star"></i>
-                        <i class="fa-regular fa-star"></i>
-                    <?php
-                    } else if ($note === 4) {
-                    ?>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-regular fa-star"></i>
-                    <?php
-                    } else if ($note === 5) {
-                    ?>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
+                        <i class="<?= $note == 0 ? 'fa-regular' : 'fa-solid' ?> fa-star"></i>
+                        <i class="<?= $note < 2 ? 'fa-regular' : 'fa-solid' ?> fa-star"></i>
+                        <i class="<?= $note < 3 ? 'fa-regular' : 'fa-solid' ?> fa-star"></i>
+                        <i class="<?= $note < 4 ? 'fa-regular' : 'fa-solid' ?> fa-star"></i>
+                        <i class="<?= $note < 5 ? 'fa-regular' : 'fa-solid' ?> fa-star"></i>
                     <?php
                     }
                     ?>
@@ -147,17 +112,40 @@ if ($comments) {
         <h3>Les avis de nos clients :</h3>
         <?php
         foreach ($comments as $comment) {
+            $userId = $comment->getIdUser();
+            $user = new Users($userId, null, null, null, null, null, null, null, null, null, null, null, null);
+            $myUser = $user->getUserImgById();
+            $myUserImg = $myUser->getImg();
+
+            $note = new Note(null, null, $userId, $idArtcile);
+            $myNote = $note->getNoteByUserId();
+
+
             $date = date_create($comment->getCreationDate());
+
         ?>
             <div class="d-md-flex comment">
                 <div class="userInfo">
                     <div class="d-flex">
                         <div class="userImgContainer">
-                            <img src="" alt="user image">
+                            <img src="/public/uploads/<?= $myUserImg ?>" alt="user image">
                         </div>
                         <div>
                             <h4 class="commentUserName"><?= $comment->getFirstname() ?> <?= $comment->getLastname() ?></h4>
-                            <p class="commentUserNote">User note</p>
+                            <?php
+                            if ($note) {
+                            ?>
+                                <div class="iconContainer">
+                                    <i class="<?= $myNote == 0 ? 'fa-regular' : 'fa-solid' ?> fa-star"></i>
+                                    <i class="<?= $myNote < 2 ? 'fa-regular' : 'fa-solid' ?> fa-star"></i>
+                                    <i class="<?= $myNote < 3 ? 'fa-regular' : 'fa-solid' ?> fa-star"></i>
+                                    <i class="<?= $myNote < 4 ? 'fa-regular' : 'fa-solid' ?> fa-star"></i>
+                                    <i class="<?= $myNote < 5 ? 'fa-regular' : 'fa-solid' ?> fa-star"></i>
+                                </div>
+
+                            <?php
+                            }
+                            ?>
                         </div>
                     </div>
                     <?php

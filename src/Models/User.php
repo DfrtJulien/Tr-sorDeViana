@@ -21,7 +21,7 @@ class User extends Users
         $statement->execute([$this->id]);
         $row = $statement->fetch(PDO::FETCH_ASSOC);
         if ($row) {
-            return new User(null, $row['mail'], null, null, $row['city'], $row['postal'], $row['street'], null, null, $row['phoneNumber'],$row['img_path'], null, null);
+            return new User(null, $row['mail'], null, null, $row['city'], $row['postal'], $row['street'], null, null, $row['phoneNumber'], $row['img_path'], null, null);
         } else {
             return null;
         }
@@ -44,6 +44,6 @@ class User extends Users
         SET `city` = ?, `postal` = ?, `street` = ?, `phoneNumber` = ?,  `img_path` = ?
         WHERE `userinfo`.`id` = ?";
         $statement = $pdo->prepare($sql);
-        return $statement->execute([$this->city, $this->postal, $this->street, $this->phone_number,$this->img_path, $this->id]);
+        return $statement->execute([$this->city, $this->postal, $this->street, $this->phone_number, $this->img_path, $this->id]);
     }
 }
