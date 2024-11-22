@@ -804,6 +804,10 @@ footer {
 		width: 95%;
 	}
 
+	.filterContainer {
+		width: 100%;
+	}
+
 	/********************************** ARTICLE INFO ***********************************/
 
 	.infoArticleContainer {
