@@ -23,7 +23,7 @@ class Users
     protected int|string|null $id_role;
     protected int|string|null $id_userInfo;
 
-    public function __construct(?int $id,?string $mail, ?string $password,  ?string $register_date, ?string $city, ?string $postal,  ?string $street, ?string $firstname, ?string $lastname, ?string $phone_number, ?string $img_path, int|string|null $id_role, int|string|null $id_userInfo)
+    public function __construct(?int $id, ?string $mail, ?string $password,  ?string $register_date, ?string $city, ?string $postal,  ?string $street, ?string $firstname, ?string $lastname, ?string $phone_number, ?string $img_path, int|string|null $id_role, int|string|null $id_userInfo)
     {
         $this->id = $id;
         $this->mail = $mail;
@@ -39,15 +39,17 @@ class Users
         $this->id_role = $id_role;
         $this->id_userInfo = $id_userInfo;
     }
-    
-    public function saveUser(){
+
+    public function saveUser()
+    {
         $pdo = DataBase::getConnection();
         $sql = "INSERT INTO user (id,mail,password,register_date,id_role, id_userInfo) VALUES (?,?,?,?,?,?)";
         $statement = $pdo->prepare($sql);
         return $statement->execute([$this->id, $this->mail, $this->password, $this->register_date, $this->id_role, $this->id_userInfo]);
     }
 
-    public function saveUserInfo(){
+    public function saveUserInfo()
+    {
         $pdo = DataBase::getConnection();
         $sql = "INSERT INTO userinfo (id,city,postal,street,firstname,lastname,phoneNumber,img_path) VALUES (?,?,?,?,?,?,?,?)";
         $statement = $pdo->prepare($sql);
@@ -73,16 +75,31 @@ class Users
         $statement = $pdo->prepare($sql);
         $statement->execute([$mail]);
         $row = $statement->fetch(PDO::FETCH_ASSOC);
-        if($row){
+        if ($row) {
             if ($row['id_role'] === 1) {
-                return new Admin($row['id'], $row['mail'], $row['password'], $row['register_date'], $row['city'], $row['postal'],$row['street'], $row['firstname'], $row['lastname'], $row['phone_number'], $row['img_path'], $row['id_role'], $row['id_userInfo']);
+                return new Admin($row['id'], $row['mail'], $row['password'], $row['register_date'], $row['city'], $row['postal'], $row['street'], $row['firstname'], $row['lastname'], $row['phone_number'], $row['img_path'], $row['id_role'], $row['id_userInfo']);
             } elseif ($row['id_role'] === 2) {
-                return new User($row['id'], $row['mail'], $row['password'], $row['register_date'], $row['city'], $row['postal'],$row['street'], $row['firstname'], $row['lastname'], $row['phone_number'], $row['img_path'], $row['id_role'], $row['id_userInfo']);
+                return new User($row['id'], $row['mail'], $row['password'], $row['register_date'], $row['city'], $row['postal'], $row['street'], $row['firstname'], $row['lastname'], $row['phone_number'], $row['img_path'], $row['id_role'], $row['id_userInfo']);
             } else {
                 return null;
             }
         }
     }
+
+    public function getUserImgById()
+    {
+        $pdo = DataBase::getConnection();
+        $sql = "SELECT `img_path` FROM `userinfo` WHERE id = ?";
+        $statement = $pdo->prepare($sql);
+        $statement->execute([$this->id]);
+        $row = $statement->fetch(PDO::FETCH_ASSOC);
+        if ($row) {
+            return new User(null, null, null, null, null, null, null, null, null, null, $row['img_path'], null, null, null);
+        } else {
+            return null;
+        }
+    }
+
     public function getId(): ?int
     {
         return $this->id;
