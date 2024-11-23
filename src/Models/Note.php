@@ -63,6 +63,31 @@ class Note
         }
     }
 
+    public function getNoteByid()
+    {
+        $pdo = DataBase::getConnection();
+        $sql = "SELECT * FROM `note` WHERE id = ?";
+        $statement = $pdo->prepare($sql);
+        $statement->execute([$this->id]);
+        $row = $statement->fetch(PDO::FETCH_ASSOC);
+        if ($row) {
+            return new Note($row['id'], $row['value'], $row['id_user'], $row['id_article']);
+        } else {
+            return null;
+        }
+    }
+
+    public function editNote()
+    {
+        $pdo = DataBase::getConnection();
+        $sql = "UPDATE `note` 
+        SET `value` = ?
+        WHERE `note`.`id` = ?";
+        $statement = $pdo->prepare($sql);
+        return $statement->execute([$this->value, $this->id]);
+    }
+
+
     public function deleteNote()
     {
         $pdo = DataBase::getConnection();

@@ -202,23 +202,30 @@ class ArticlesController extends AbstractController
 
     public function editComment()
     {
-        if (isset($_GET['id'], $_GET['idComment'])) {
+        if (isset($_GET['id'], $_GET['idComment'], $_GET['idNote'])) {
             $idArticle = htmlspecialchars($_GET['id']);
             $idComment = htmlspecialchars($_GET['idComment']);
+            $idNote = htmlspecialchars($_GET['idNote']);
             $article = new Article($idArticle, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, $idComment);
+            $note = new Note($idNote, null, null, null);
+
 
             $myArticle = $article->getArticleById();
             $comment = $article->getCommentById();
+            $myNote = $note->getNoteByid();
 
-            if (isset($_POST['editComment'])) {
+            if (isset($_POST['editComment'], $_POST['editNote'])) {
                 $this->check('editComment', $_POST['editComment']);
 
                 if (empty($this->arrayError)) {
                     $updatedComment = $_POST['editComment'];
+                    $updatetedNote = intval($_POST['editNote']);
                     $modificationDate = date("Y-m-d");
 
+                    $newNote = new Note($idNote, $updatetedNote, null, null);
                     $newComment = new Article($idArticle, null, null, null, null, null, null, null, null, $updatedComment, null, $modificationDate, null, null, null, null, $idComment);
 
+                    $newNote->editNote();
                     $newComment->editComment();
                     $this->redirectToRoute('/');
                 }
