@@ -120,9 +120,10 @@ if ($comments) {
             $note = new Note(null, null, $userId, $idArtcile);
             $myNote = $note->getNoteByUserId();
 
-
             $date = date_create($comment->getCreationDate());
-
+            foreach ($myNote as $t) {
+                var_dump($myNote);
+            }
         ?>
             <div class="d-md-flex comment">
                 <div class="userInfo">
@@ -165,11 +166,14 @@ if ($comments) {
                 <div>
                     <p class="commentUserComment"><?= $comment->getContent() ?></p>
                     <?php
+
                     if ($_SESSION['user']['idUser'] == $comment->getIdUser()  || $_SESSION['user']['id_role'] == 1) {
+
                     ?>
                         <div class="d-flex">
                             <form action="" method="POST">
                                 <input type="hidden" id="idDelete" name="idCommentDelete" value="<?= $comment->getIdComment() ?>">
+                                <input type="hidden" id="idDeleteNote" name="idNoteDelete" value="<?= $myNote->getId() ?>">
                                 <button class="deleteCommentBtn" type="submit" class="btn">Supprimer</button>
                             </form>
                             <?php

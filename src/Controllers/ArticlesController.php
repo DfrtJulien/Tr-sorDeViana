@@ -145,10 +145,15 @@ class ArticlesController extends AbstractController
                 $this->redirectToRoute('/');
             }
 
-            if (isset($_POST['idCommentDelete'])) {
-                $idComment = $_POST['idCommentDelete'];
+            if (isset($_POST['idCommentDelete'], $_POST['idNoteDelete'])) {
+                $idComment = htmlspecialchars($_POST['idCommentDelete']);
+                $idNote = htmlspecialchars($_POST['idNoteDelete']);
+
+
                 $comment = new Article($idArticle, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, $idComment);
-                // $note = new Note();
+
+                $note = new Note($idNote, null, null, null);
+                $note->deleteNote();
                 $comment->deleteComment();
                 header("Refresh:0");
             }

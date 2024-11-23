@@ -52,10 +52,15 @@ class Note
     public function getNoteByUserId()
     {
         $pdo = DataBase::getConnection();
-        $sql = "SELECT `value` FROM `note` WHERE `id_article` = ? AND `id_user` = ?";
+        $sql = "SELECT `id`, `value` FROM `note` WHERE `id_article` = ? AND `id_user` = ?";
         $statement = $pdo->prepare($sql);
         $statement->execute([$this->id_article, $this->id_user]);
-        return $resultFetch = $statement->fetch(PDO::FETCH_ASSOC);
+        $row = $statement->fetch(PDO::FETCH_ASSOC);
+        if ($row) {
+            return new Note($row['id'], $row['value'], null, null);
+        } else {
+            return null;
+        }
     }
 
     public function deleteNote()
@@ -70,10 +75,6 @@ class Note
     {
         return $this->id;
     }
-
-    // public function getNumberVote(): int {
-    //     return $this->numberVote;
-    // }
 
     public function getValue(): int
     {
@@ -96,11 +97,6 @@ class Note
         $this->id = $id;
         return $this;
     }
-
-    // public function setNumberVote(int $numberVote): static {
-    //     $this->numberVote = $numberVote;
-    //     return $this;
-    // }
 
     public function setValue(int $value): static
     {
