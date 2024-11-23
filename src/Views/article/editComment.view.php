@@ -20,6 +20,16 @@ if (!$_SESSION) {
       <h2 class="articleTitle"><?= $myArticle->getTitle() ?></h2>
       <p class="articleDescription"><?= $myArticle->getDescription() ?></p>
       <form method="POST">
+        <label for="editNote">Modifier votre note</label>
+        <select name="editNote" id="editNote">
+          <option value="<?= $myNote->getValue() ?>"><?= $myNote->getValue() ?></option>
+          <option value="0">0</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </select>
         <label for="editComment">Modifier votre commentaire :</label>
         <textarea name="editComment" id="editComment"><?= $comment->getContent() ?></textarea>
         <?php

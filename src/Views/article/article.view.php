@@ -121,9 +121,6 @@ if ($comments) {
             $myNote = $note->getNoteByUserId();
 
             $date = date_create($comment->getCreationDate());
-            foreach ($myNote as $t) {
-                var_dump($myNote);
-            }
         ?>
             <div class="d-md-flex comment">
                 <div class="userInfo">
@@ -137,11 +134,11 @@ if ($comments) {
                             if ($note) {
                             ?>
                                 <div class="iconContainer">
-                                    <i class="<?= $myNote == 0 ? 'fa-regular' : 'fa-solid' ?> fa-star"></i>
-                                    <i class="<?= $myNote < 2 ? 'fa-regular' : 'fa-solid' ?> fa-star"></i>
-                                    <i class="<?= $myNote < 3 ? 'fa-regular' : 'fa-solid' ?> fa-star"></i>
-                                    <i class="<?= $myNote < 4 ? 'fa-regular' : 'fa-solid' ?> fa-star"></i>
-                                    <i class="<?= $myNote < 5 ? 'fa-regular' : 'fa-solid' ?> fa-star"></i>
+                                    <i class="<?= $myNote->getValue() == 0 ? 'fa-regular' : 'fa-solid' ?> fa-star"></i>
+                                    <i class="<?= $myNote->getValue() < 2 ? 'fa-regular' : 'fa-solid' ?> fa-star"></i>
+                                    <i class="<?= $myNote->getValue() < 3 ? 'fa-regular' : 'fa-solid' ?> fa-star"></i>
+                                    <i class="<?= $myNote->getValue() < 4 ? 'fa-regular' : 'fa-solid' ?> fa-star"></i>
+                                    <i class="<?= $myNote->getValue() < 5 ? 'fa-regular' : 'fa-solid' ?> fa-star"></i>
                                 </div>
 
                             <?php
@@ -179,7 +176,7 @@ if ($comments) {
                             <?php
                             if ($_SESSION['user']['idUser'] == $comment->getIdUser()) {
                             ?>
-                                <a href="/editComment?id=<?= $myArticle->getId() ?>&idComment=<?= $comment->getIdComment() ?>" class="editCommentBtn">Modifier le commentaire</a>
+                                <a href="/editComment?id=<?= $myArticle->getId() ?>&idComment=<?= $comment->getIdComment() ?>&idNote=<?= $myNote->getId() ?>" class="editCommentBtn">Modifier le commentaire</a>
                             <?php
                             }
                             ?>
