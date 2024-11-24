@@ -126,7 +126,7 @@ if ($comments) {
                 <div class="userInfo">
                     <div class="d-flex">
                         <div class="userImgContainer">
-                            <img src="/public/uploads/<?= $myUserImg ?>" alt="user image">
+                            <img src="/public/uploads/<?= $myUserImg ? $myUserImg : 'img_default.png' ?>" alt="user image">
                         </div>
                         <div>
                             <h4 class="commentUserName"><?= $comment->getFirstname() ?> <?= $comment->getLastname() ?></h4>
