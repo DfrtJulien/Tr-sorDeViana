@@ -57,6 +57,18 @@ $idArtcile = $myArticle->getId();
             <div class="priceAndBtn">
                 <p class="articlePrice"><?= $price ?>€</p>
                 <form action="" method="POST">
+                    <select name="quantity" id="">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                    </select>
                     <input type="hidden" name="addToCart" value="<?= $myArticle->getId() ?>">
                     <button class="addToCartBtn"><i class="fa-solid fa-cart-plus iconAddToCart"></i>Ajouter au panier</button>
                 </form>

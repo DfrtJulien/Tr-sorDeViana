@@ -158,11 +158,18 @@ class ArticlesController extends AbstractController
                 header("Refresh:0");
             }
 
-            if (isset($_POST['addToCart'])) {
+            if (isset($_POST['addToCart'], $_POST['quantity'])) {
+                $quantity = htmlspecialchars($_POST['quantity']);
                 $idArticle = htmlspecialchars($_POST['addToCart']);
                 $idUser = $_SESSION['user']['idUser'];
-                $articelToCart = new Article(null, null, null, null, null, null, null, null, null, null, null, null, $idUser, $idArticle, null, null, null);
-                $articelToCart->addToCart();
+                $articelToCart = new Article(null, null, null, null, null, null, $quantity, null, null, null, null, null, $idUser, $idArticle, null, null, null);
+                $articelToCart->checkIfAlreadyInCart();
+
+                if ($articelToCart->checkIfAlreadyInCart()) {
+                    $articelToCart->addQuantityToCart();
+                } else {
+                    $articelToCart->addToCart();
+                }
             }
 
             require_once(__DIR__ . "/../Views/article/article.view.php");
