@@ -194,9 +194,26 @@ class Article
     public function addToCart()
     {
         $pdo = DataBase::getConnection();
-        $sql = "INSERT INTO `cart` (`id_user`,`id_article`) VALUE (?,?)";
+        $sql = "INSERT INTO `cart` (`quantity`,`id_user`,`id_article`) VALUE (?,?,?)";
         $statement = $pdo->prepare($sql);
-        return $statement->execute([$this->id_user, $this->id_article]);
+        return $statement->execute([$this->quantity, $this->id_user, $this->id_article]);
+    }
+
+    public function checkIfAlreadyInCart()
+    {
+        $pdo = DataBase::getConnection();
+        $sql = "SELECT * FROM `cart` WHERE id_article = ? AND `id_user` = ?";
+        $statement = $pdo->prepare($sql);
+        $statement->execute([$this->id_article, $this->id_user]);
+        return $resultFetch = $statement->fetch(PDO::FETCH_ASSOC);
+    }
+
+    public function addQuantityToCart()
+    {
+        $pdo = DataBase::getConnection();
+        $sql = "UPDATE `cart` SET `quantity` = `quantity`+ ? WHERE id_article = ? AND `id_user` = ?";
+        $statement = $pdo->prepare($sql);
+        return $statement->execute([$this->quantity, $this->id_article, $this->id_user]);
     }
 
     public function getCartArticleByIdUser()
