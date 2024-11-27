@@ -16,7 +16,9 @@ if (!$_SESSION) {
     if ($articles) {
       $price = 0;
       foreach ($articles as $article) {
-        $price += $article->getPriceExcludingTax();
+        $quantity = $article->getQuantity();
+        $price += $article->getPriceExcludingTax()  * $quantity;
+
     ?>
         <div class="article">
           <div class="d-flex">
@@ -26,7 +28,22 @@ if (!$_SESSION) {
             <div class="artcileCartInfo">
               <h2><?= $article->getTitle() ?></h2>
               <div class="articleCartNote"></div>
-              <p class="cartPrice"><?= $article->getPriceExcludingTax() ?>€</p>
+              <p class="cartPrice"><?= $article->getPriceExcludingTax() * $quantity ?>€</p>
+              <form method="POST">
+                <select name="quantityCart" id="quantityCart">
+                  <option value="<?= $quantity ?>"><?= $quantity ?></option>
+                  <?php
+                  for ($i = 0; $i < $quantity; $i++) {
+                  ?>
+                    <option value="<?= $i ?>"><?= $i ?></option>
+                  <?php
+                  }
+                  ?>
+                </select>
+                <input type="hidden" name="idQuantity" id="idQuantity" value="<?= $article->getId() ?>">
+                <button type="submit">Modifier</button>
+              </form>
+
             </div>
             <form method="POST">
               <input type="hidden" name="id" id="id" value="<?= $article->getId() ?>">
