@@ -219,7 +219,7 @@ class Article
     public function getCartArticleByIdUser()
     {
         $pdo = DataBase::getConnection();
-        $sql = "SELECT `article`.`id`,`article`.`title`,`article`.`priceExcludingTax`,`article`.`img_path`
+        $sql = "SELECT `article`.`id`,`article`.`title`,`article`.`priceExcludingTax`,`article`.`img_path`,`cart`.`quantity`
                 FROM `article` 
                 INNER JOIN `cart` ON `article`.`id` = `cart`.`id_article`
                 WHERE `cart`.`id_user` = ?;";
@@ -229,7 +229,7 @@ class Article
         $articles = [];
         if ($resultFetch) {
             foreach ($resultFetch as $row) {
-                $article = new Article($row['id'], $row['title'], null, $row['priceExcludingTax'], null, null, null, null, $row['img_path'], null, null, null, null, null, null, null, null);
+                $article = new Article($row['id'], $row['title'], null, $row['priceExcludingTax'], null, null, $row['quantity'], null, $row['img_path'], null, null, null, null, null, null, null, null);
                 $articles[] = $article;
             }
             return $articles;
@@ -242,6 +242,14 @@ class Article
         $sql = "DELETE FROM `cart` WHERE `id_article` = ?";
         $statement = $pdo->prepare($sql);
         return $statement->execute([$this->id_article]);
+    }
+
+    public function updateCartQuantityArticle()
+    {
+        $pdo = DataBase::getConnection();
+        $sql = "UPDATE `cart` SET `quantity` = ? WHERE id_article = ? AND `id_user` = ?";
+        $statement = $pdo->prepare($sql);
+        return $statement->execute([$this->quantity, $this->id_article, $this->id_user]);
     }
 
     public function getId(): ?int
