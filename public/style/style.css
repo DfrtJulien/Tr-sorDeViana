@@ -396,10 +396,20 @@ button {
 	color: white;
 }
 
-.cardArticle p {
+.articlePrice {
 	font-size: 25px;
 	color: white;
 	padding: 10px;
+}
+
+.articleQuantity {
+	color: #E7CF47;
+	font-size: 20px;
+	margin-bottom: 0;
+	margin-left: 10px;
+	text-decoration: underline;
+	font-family: "Merriweather", serif;
+	font-weight: 600;
 }
 
 .showMoreArticle,

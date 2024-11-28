@@ -106,7 +106,17 @@ use App\Models\Note;
                         }
                         ?>
                     </div>
-                    <p><?= $price ?>€</p>
+                    <div class="d-flex">
+                        <p class="articlePrice"><?= $price ?>€</p>
+                        <?php
+                        if ($article->getQuantity() <= 50) {
+                        ?>
+                            <p class="articleQuantity">Plus que <?= $article->getQuantity() ?> exemplaire !</p>
+                        <?php
+                        }
+                        ?>
+                    </div>
+
                     <div clss="seeMoreContainer">
                         <a href="/infoArticle?id=<?= $article->getId() ?>" class="showMoreArticle">Voir plus</a>
 
@@ -183,7 +193,16 @@ use App\Models\Note;
                         }
                         ?>
                     </div>
-                    <p><?= $price ?>€</p>
+                    <div class="d-flex align-items-center">
+                        <p class="articlePrice"><?= $price ?>€</p>
+                        <?php
+                        if ($article->getQuantity() <= 20) {
+                        ?>
+                            <p class="articleQuantity">Plus que <?= $article->getQuantity() ?> exemplaire !</p>
+                        <?php
+                        }
+                        ?>
+                    </div>
                     <div clss="seeMoreContainer">
                         <a href="/infoArticle?id=<?= $article->getId() ?>" class="showMoreArticle">Voir plus</a>
 
