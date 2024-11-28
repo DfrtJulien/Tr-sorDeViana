@@ -49,9 +49,17 @@ class ArticlesController extends AbstractController
 
     public function showAllArticle()
     {
-        $article = new Article(null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
+        if (isset($_GET['category'])) {
+            $category = $_GET['category'];
+            $article = new Article(null, null, null, null, null, $category, null, null, null, null, null, null, null, null, null, null, null);
 
-        $articles = $article->getAllArticle();
+            $articlesByCategory = $article->getArticleByCategory();
+        } else {
+            $article = new Article(null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
+
+            $articles = $article->getAllArticle();
+        }
+
 
 
         require_once(__DIR__ . "/../Views/article/allArticle.view.php");
