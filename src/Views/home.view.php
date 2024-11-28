@@ -13,16 +13,18 @@ if (!$_SESSION) {
 
 <section class="selectionContainer d-flex">
     <!-- <div class="d-flex"> -->
+    <a href="/allArticle?category=collier">
+        <div class="homeImgContainer">
+            <a href="/allArticle?category=collier" class="homeLink title">Colliers</a>
+            <img src="/public//img//img_collar_home.png" alt="photo de colliers">
+        </div>
+    </a>
     <div class="homeImgContainer">
-        <a href="#" class="homeLink title">Colliers</a>
-        <img src="/public//img//img_collar_home.png" alt="photo de colliers">
-    </div>
-    <div class="homeImgContainer">
-        <a href="#" class="homeLink title">Boucles</a>
+        <a href="/allArticle?category=boucles" class="homeLink title">Boucles</a>
         <img src="/public//img//img_boucle_home.png" alt="photo de boucles">
     </div>
     <div class="homeImgContainer">
-        <a href="#" class="homeLink title">Châles</a>
+        <a href="/allArticle?category=chale" class="homeLink title">Châles</a>
         <img src="/public//img//img_chale_home.png" alt="photo de châles">
     </div>
     </div>
