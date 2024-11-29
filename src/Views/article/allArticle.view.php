@@ -122,14 +122,18 @@ use App\Models\Note;
 
 
                         <?php
-                        if ($_SESSION['user']['id_role'] == 1) {
+                        if (isset($_SESSION['user'])) {
+
+
+                            if ($_SESSION['user']['id_role'] == 1) {
                         ?>
-                            <a href="/updateArticle?id=<?= $article->getId() ?>" class="updateArticleBtn">Modifier l'article</a>
-                            <form action="/deleteArticle" method="POST">
-                                <input type="hidden" name="id" id="id" value="<?= $article->getId() ?>">
-                                <button type="submit" class="deleteArticleBtn">Suprimer l'article</button>
-                            </form>
+                                <a href="/updateArticle?id=<?= $article->getId() ?>" class="updateArticleBtn">Modifier l'article</a>
+                                <form action="/deleteArticle" method="POST">
+                                    <input type="hidden" name="id" id="id" value="<?= $article->getId() ?>">
+                                    <button type="submit" class="deleteArticleBtn">Suprimer l'article</button>
+                                </form>
                         <?php
+                            }
                         }
                         ?>
                     </div>

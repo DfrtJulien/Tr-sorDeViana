@@ -99,14 +99,18 @@ $idArtcile = $myArticle->getId();
                     <p><?= $price ?>€</p>
                     <a href="/infoArticle?id=<?= $article->getId() ?>" class="showMoreArticle">Voir plus</a>
                     <?php
-                    if ($_SESSION['user']['id_role'] == 1) {
+                    if (isset($_SESSION['user'])) {
+
+
+                        if ($_SESSION['user']['id_role'] == 1) {
                     ?>
-                        <a href="/updateArticle?id=<?= $article->getId() ?>" class="updateArticleBtn">Modifier l'article</a>
-                        <form action="/deleteArticle" method="POST">
-                            <input type="hidden" name="id" id="id" value="<?= $article->getId() ?>">
-                            <button type="submit" class="deleteArticleBtn">Suprimer l'article</button>
-                        </form>
+                            <a href="/updateArticle?id=<?= $article->getId() ?>" class="updateArticleBtn">Modifier l'article</a>
+                            <form action="/deleteArticle" method="POST">
+                                <input type="hidden" name="id" id="id" value="<?= $article->getId() ?>">
+                                <button type="submit" class="deleteArticleBtn">Suprimer l'article</button>
+                            </form>
                     <?php
+                        }
                     }
                     ?>
                 </div>
@@ -175,25 +179,28 @@ if ($comments) {
                 <div>
                     <p class="commentUserComment"><?= $comment->getContent() ?></p>
                     <?php
+                    if (isset($_SESSION['user']['idUser'])) {
 
-                    if ($_SESSION['user']['idUser'] == $comment->getIdUser()  || $_SESSION['user']['id_role'] == 1) {
+
+                        if ($_SESSION['user']['idUser'] == $comment->getIdUser()  || $_SESSION['user']['id_role'] == 1) {
 
                     ?>
-                        <div class="d-flex">
-                            <form action="" method="POST">
-                                <input type="hidden" id="idDelete" name="idCommentDelete" value="<?= $comment->getIdComment() ?>">
-                                <input type="hidden" id="idDeleteNote" name="idNoteDelete" value="<?= $myNote->getId() ?>">
-                                <button class="deleteCommentBtn" type="submit" class="btn">Supprimer</button>
-                            </form>
-                            <?php
-                            if ($_SESSION['user']['idUser'] == $comment->getIdUser()) {
-                            ?>
-                                <a href="/editComment?id=<?= $myArticle->getId() ?>&idComment=<?= $comment->getIdComment() ?>&idNote=<?= $myNote->getId() ?>" class="editCommentBtn">Modifier le commentaire</a>
-                            <?php
-                            }
-                            ?>
-                        </div>
+                            <div class="d-flex">
+                                <form action="" method="POST">
+                                    <input type="hidden" id="idDelete" name="idCommentDelete" value="<?= $comment->getIdComment() ?>">
+                                    <input type="hidden" id="idDeleteNote" name="idNoteDelete" value="<?= $myNote->getId() ?>">
+                                    <button class="deleteCommentBtn" type="submit" class="btn">Supprimer</button>
+                                </form>
+                                <?php
+                                if ($_SESSION['user']['idUser'] == $comment->getIdUser()) {
+                                ?>
+                                    <a href="/editComment?id=<?= $myArticle->getId() ?>&idComment=<?= $comment->getIdComment() ?>&idNote=<?= $myNote->getId() ?>" class="editCommentBtn">Modifier le commentaire</a>
+                                <?php
+                                }
+                                ?>
+                            </div>
                     <?php
+                        }
                     }
                     ?>
 
