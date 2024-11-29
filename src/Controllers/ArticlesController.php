@@ -186,32 +186,38 @@ class ArticlesController extends AbstractController
 
     public function addCommentArticle()
     {
-        if (isset($_GET['id'])) {
-
-            $idArticle = htmlspecialchars($_GET['id']);
-            $article = new Article($idArticle, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
-
-            $myArticle = $article->getArticleById();
-
-            if (isset($_POST['comment'], $_POST['note'])) {
-                $this->check('comment', $_POST['comment']);
-
-                if (empty($this->arrayError)) {
-                    $note = intval($_POST['note']);
-                    $comment = $_POST['comment'];
-                    $idUser = $_SESSION['user']['idUser'];
-                    $creation_date = date("Y-m-d");
-                    $article = new Article($idArticle, null, null, null, null, null, null, null, null, $comment, $creation_date, null, $idUser, $idArticle, null, null, null);
-                    $myNote = new Note(null, $note, $idUser, $idArticle);
-
-                    $myNote->addNoteToArticle();
-                    $addComment = $article->addComment();
+        if (isset($_SESSION['user'])) {
 
 
-                    $this->redirectToRoute("/allArticle");
+            if (isset($_GET['id'])) {
+
+                $idArticle = htmlspecialchars($_GET['id']);
+                $article = new Article($idArticle, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
+
+                $myArticle = $article->getArticleById();
+
+                if (isset($_POST['comment'], $_POST['note'])) {
+                    $this->check('comment', $_POST['comment']);
+
+                    if (empty($this->arrayError)) {
+                        $note = intval($_POST['note']);
+                        $comment = $_POST['comment'];
+                        $idUser = $_SESSION['user']['idUser'];
+                        $creation_date = date("Y-m-d");
+                        $article = new Article($idArticle, null, null, null, null, null, null, null, null, $comment, $creation_date, null, $idUser, $idArticle, null, null, null);
+                        $myNote = new Note(null, $note, $idUser, $idArticle);
+
+                        $myNote->addNoteToArticle();
+                        $addComment = $article->addComment();
+
+
+                        $this->redirectToRoute("/allArticle");
+                    }
                 }
+                require_once(__DIR__ . "/../Views/article/addCommentArticle.view.php");
             }
-            require_once(__DIR__ . "/../Views/article/addCommentArticle.view.php");
+        } else {
+            require_once(__DIR__ . "/../Views/security/login.view.php");
         }
     }
 
