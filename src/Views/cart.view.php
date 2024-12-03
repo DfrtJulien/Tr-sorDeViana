@@ -14,6 +14,7 @@ if (!$_SESSION) {
   <div class="cart">
     <?php
     if ($articles) {
+      var_dump($articles);
       $price = 0;
       foreach ($articles as $article) {
         $quantity = $article->getQuantity();
@@ -52,16 +53,18 @@ if (!$_SESSION) {
           </div>
 
         </div>
-    <?php
+      <?php
       }
-    }
-    ?>
-    <div class="d-flex mt-5">
-      <p class="cartPrice"><?= $price ?>€</p>
-      <a href="#" class="buyBtn">Passer la commande</a>
-    </div>
+      ?>
+      <div class="d-flex mt-5">
+        <p class="cartPrice"><?= $price ?>€</p>
+        <a href="#" class="buyBtn">Passer la commande</a>
+      </div>
   </div>
 </section>
 <?php
-include_once(__DIR__ . '/partials/footer.php');
+    }
+
+
+    include_once(__DIR__ . '/partials/footer.php');
 ?>

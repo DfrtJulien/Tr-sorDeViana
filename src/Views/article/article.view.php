@@ -74,7 +74,7 @@ $idArtcile = $myArticle->getId();
                 </form>
 
             </div>
-            <a href="/commentArticle?id=<?= $myArticle->getId() ?>" class="addCommentBtn">Ajoutez un commentaire</a>
+            <a href='/commentArticle?id=<?= $myArticle->getId() ?>' class="addCommentBtn">Ajoutez un commentaire</a>
         </div>
     </div>
 </section>
@@ -91,13 +91,13 @@ $idArtcile = $myArticle->getId();
             if ($article->getTitle() !== $myArticle->getTitle()) {
         ?>
                 <div class="cardMoreArticle">
-                    <div>
+                    <div class="cardMoreArticleImg">
                         <img src="/public/img/<?= $article->getImgArticle() ?>" alt="">
                     </div>
 
                     <h2><?= $article->getTitle() ?></h2>
                     <p><?= $price ?>€</p>
-                    <a href="/infoArticle?id=<?= $article->getId() ?>" class="showMoreArticle">Voir plus</a>
+                    <a href="/infoArticle?id=<?= $article->getId() ?>" class="showMoreArticleBtn">Voir plus</a>
                     <?php
                     if (isset($_SESSION['user'])) {
 

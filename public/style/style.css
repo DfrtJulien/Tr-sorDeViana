@@ -413,6 +413,7 @@ button {
 }
 
 .showMoreArticle,
+.showMoreArticleBtn,
 .updateArticleBtn,
 .deleteArticleBtn,
 .addComentBtn {
@@ -545,25 +546,47 @@ button {
 }
 
 .cardMoreArticle {
-	margin: 70px 110px;
+	margin: 20px 20px;
 	border: 2px solid #232224;
 	width: 350px;
 	background-color: #731C37;
-	height: 400px;
+	height: 350px;
+}
+
+.cardMoreArticleImg {
+	height: 200px;
+	width: 100%;
+}
+
+.cardMoreArticleImg img {
+	height: 100%;
+	width: 100%;
+	object-fit: center;
 }
 
 .cardMoreArticle h2 {
-	font-size: 22px;
-	color: white;
-	padding: 5px;
+	font-size: 20px;
 	color: #E7CF47;
+	padding: 5px;
 	font-weight: bold;
+	height: 50px;
 }
 
 .cardMoreArticle p {
 	color: white;
 	font-size: 22px;
 	margin-left: 5px;
+	height: 38px;
+}
+
+.showMoreArticleBtn {
+	background-color: #FFFCFC;
+	width: 100%;
+	display: block;
+	margin: 0;
+	border-radius: 0;
+	text-align: center;
+	font-weight: 600;
 }
 
 .addCommentBtn {
@@ -632,6 +655,7 @@ button {
 
 .userImgContainer img {
 	width: 100%;
+	height: 100%;
 	border-radius: 50%;
 }
 
@@ -875,20 +899,35 @@ footer {
 	}
 
 	.moreArticleContainer {
-		animation: 5s linear 1s infinite alternate slide;
+		animation: none;
+		flex-wrap: wrap;
 	}
 
 	.cardMoreArticle {
-		margin: 70px 50px;
-		padding: 15px;
+		margin: 5px auto;
 	}
 
 	.cardMoreArticle h2 {
-		font-size: 20px;
+		font-size: 14px;
+		height: auto;
 	}
 
 	.cardMoreArticle p {
 		font-size: 18px;
+	}
+
+	.cardMoreArticleImg {
+		height: 200px;
+	}
+
+	.showMoreArticleBtn {
+		background-color: #FFFCFC;
+		width: 100%;
+		display: block;
+		margin: 0;
+		border-radius: 0;
+		text-align: center;
+		font-weight: 600;
 	}
 
 	/************************** COMMENT ******************************/

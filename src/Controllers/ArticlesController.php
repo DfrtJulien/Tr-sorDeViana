@@ -166,17 +166,23 @@ class ArticlesController extends AbstractController
                 header("Refresh:0");
             }
 
-            if (isset($_POST['addToCart'], $_POST['quantity'])) {
-                $quantity = htmlspecialchars($_POST['quantity']);
-                $idArticle = htmlspecialchars($_POST['addToCart']);
-                $idUser = $_SESSION['user']['idUser'];
-                $articelToCart = new Article(null, null, null, null, null, null, $quantity, null, null, null, null, null, $idUser, $idArticle, null, null, null);
-                $articelToCart->checkIfAlreadyInCart();
 
-                if ($articelToCart->checkIfAlreadyInCart()) {
-                    $articelToCart->addQuantityToCart();
+
+            if (isset($_POST['addToCart'], $_POST['quantity'])) {
+                if (isset($_SESSION['user'])) {
+                    $quantity = htmlspecialchars($_POST['quantity']);
+                    $idArticle = htmlspecialchars($_POST['addToCart']);
+                    $idUser = $_SESSION['user']['idUser'];
+                    $articelToCart = new Article(null, null, null, null, null, null, $quantity, null, null, null, null, null, $idUser, $idArticle, null, null, null);
+                    $articelToCart->checkIfAlreadyInCart();
+
+                    if ($articelToCart->checkIfAlreadyInCart()) {
+                        $articelToCart->addQuantityToCart();
+                    } else {
+                        $articelToCart->addToCart();
+                    }
                 } else {
-                    $articelToCart->addToCart();
+                    $this->redirectToRoute('/login');
                 }
             }
 
