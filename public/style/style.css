@@ -374,7 +374,7 @@ button {
 	margin-top: 30px;
 	background-color: #731C37;
 	margin-left: 20px;
-	display: flex;
+	/* display: flex; */
 	/* flex-direction: column;
 	justify-content: end; */
 }
