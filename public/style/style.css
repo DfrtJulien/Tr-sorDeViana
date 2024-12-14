@@ -370,10 +370,13 @@ button {
 .cardArticle {
 	border: 2px solid black;
 	width: 350px;
-	height: 600px;
+	min-height: 500px;
 	margin-top: 30px;
 	background-color: #731C37;
 	margin-left: 20px;
+	display: flex;
+	/* flex-direction: column;
+	justify-content: end; */
 }
 
 .articleImg {
@@ -400,6 +403,7 @@ button {
 	font-size: 25px;
 	color: white;
 	padding: 10px;
+	height: 60px;
 }
 
 .articleQuantity {
@@ -418,8 +422,6 @@ button {
 .deleteArticleBtn,
 .addComentBtn {
 	padding: 5px;
-	margin: 5px;
-	border-radius: 5px;
 }
 
 .seeMoreContainer {
@@ -431,17 +433,27 @@ button {
 	background-color: #ece6e8;
 	color: #731C37;
 	text-align: center;
+	display: block;
+	border-radius: 0;
+	text-align: center;
 }
 
 .updateArticleBtn {
 	background-color: #e78c47;
 	color: white;
+	width: 100%;
+	display: block;
+	border-radius: 0;
+	text-align: center;
 }
 
 .deleteArticleBtn {
 	background-color: red;
 	color: white;
-	margin-top: 10px;
+	width: 100%;
+	display: block;
+	border-radius: 0;
+	text-align: center;
 }
 
 .numberCommentLink,
@@ -550,7 +562,7 @@ button {
 	border: 2px solid #232224;
 	width: 350px;
 	background-color: #731C37;
-	height: 350px;
+	min-height: 350px;
 }
 
 .cardMoreArticleImg {
@@ -736,6 +748,11 @@ button {
 	font-size: 22px;
 }
 
+.emptyCart {
+	border: 3px solid black;
+	padding: 240px;
+}
+
 /************************************************ FOOTER ***************************/
 footer {
 	background-color: #232224;
@@ -849,6 +866,13 @@ footer {
 
 	.filterContainer {
 		width: 100%;
+	}
+
+
+	/********************************* PROFIL USER *****************************************/
+
+	.imgProfileContainer {
+		height: fit-content;
 	}
 
 	/********************************** ARTICLE INFO ***********************************/

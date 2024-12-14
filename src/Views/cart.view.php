@@ -14,7 +14,6 @@ if (!$_SESSION) {
   <div class="cart">
     <?php
     if ($articles) {
-      var_dump($articles);
       $price = 0;
       foreach ($articles as $article) {
         $quantity = $article->getQuantity();
@@ -63,8 +62,16 @@ if (!$_SESSION) {
   </div>
 </section>
 <?php
+    } else {
+?>
+  <div class="article">
+    <div class="emptyCart">
+      <h2>Vous n'avez pas encore d'article dans le panier.</h2>
+    </div>
+  </div>
+  </section>
+<?php
     }
 
 
     include_once(__DIR__ . '/partials/footer.php');
-?>

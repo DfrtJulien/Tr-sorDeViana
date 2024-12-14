@@ -8,6 +8,7 @@ if (!$_SESSION) {
         require_once(__DIR__ . '/partials/head.php');
     }
 }
+
 ?>
 
 <section class="container my-5">
@@ -17,7 +18,7 @@ if (!$_SESSION) {
                 <div class="imgProfileContainer">
                     <img src="/public/uploads/<?= $myUserImg ? $myUserImg : "img_default.png" ?>" alt="Photo de profile">
                     <label for="fileToUpload">Ajouter votre photo de profile :</label>
-                    <input type="file"  name="fileToUpload" id="fileToUpload">
+                    <input type="file" name="fileToUpload" id="fileToUpload">
                 </div>
                 <div>
                     <div class="p-2">
