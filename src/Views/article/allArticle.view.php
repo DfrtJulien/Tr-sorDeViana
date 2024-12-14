@@ -109,7 +109,7 @@ use App\Models\Note;
                     <div class="d-flex">
                         <p class="articlePrice"><?= $price ?>€</p>
                         <?php
-                        if ($article->getQuantity() <= 50) {
+                        if ($article->getQuantity() <= 10) {
                         ?>
                             <p class="articleQuantity">Plus que <?= $article->getQuantity() ?> exemplaire !</p>
                         <?php
@@ -200,7 +200,7 @@ use App\Models\Note;
                     <div class="d-flex align-items-center">
                         <p class="articlePrice"><?= $price ?>€</p>
                         <?php
-                        if ($article->getQuantity() <= 20) {
+                        if ($article->getQuantity() <= 10) {
                         ?>
                             <p class="articleQuantity">Plus que <?= $article->getQuantity() ?> exemplaire !</p>
                         <?php

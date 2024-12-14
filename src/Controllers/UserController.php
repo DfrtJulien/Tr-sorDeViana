@@ -39,44 +39,55 @@ class UserController extends AbstractController
                     $img = "";
 
 
-                    $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
-                    if ($check !== false) {
-                        echo "Le fichier est une image  - " . $check["mime"] . ".";
-                        $uploadOk = 1;
+                    // $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
+                    // if ($check !== false) {
+                    //     echo "Le fichier est une image  - " . $check["mime"] . ".";
+                    //     $uploadOk = 1;
+                    // } else {
+                    //     echo "Fichier n'est pas une image.";
+                    //     $uploadOk = 0;
+                    // }
+
+                    // if ($_FILES["fileToUpload"]["size"] > 200000000000) {
+                    //     echo "Désole, votre image est trop volumineuse.";
+                    //     $uploadOk = 0;
+                    // }
+
+                    // if (
+                    //     $imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+                    //     && $imageFileType != "gif"
+                    // ) {
+                    //     echo "Désole, seul les images JPG, JPEG, PNG & GIF sont autoriser.";
+                    //     $uploadOk = 0;
+                    // }
+
+                    // if ($uploadOk == 0) {
+                    //     echo "Sorry, your file was not uploaded.";
+                    //     // if everything is ok, try to upload file
+                    // } else {
+                    if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+                        $img = htmlspecialchars(basename($_FILES["fileToUpload"]["name"]));
+                        $_SESSION['user']['img_path'] = $img;
                     } else {
-                        echo "Fichier n'est pas une image.";
-                        $uploadOk = 0;
+                        // echo "Sorry, there was an error uploading your file.";
+                        $_SESSION['user']['img_path'] = $myUserImg;
                     }
+                    // }
 
-                    if ($_FILES["fileToUpload"]["size"] > 200000000000) {
-                        echo "Désole, votre image est trop volumineuse.";
-                        $uploadOk = 0;
-                    }
 
-                    if (
-                        $imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
-                        && $imageFileType != "gif"
-                    ) {
-                        echo "Désole, seul les images JPG, JPEG, PNG & GIF sont autoriser.";
-                        $uploadOk = 0;
-                    }
 
-                    if ($uploadOk == 0) {
-                        echo "Sorry, your file was not uploaded.";
-                        // if everything is ok, try to upload file
+                    if ($_FILES["fileToUpload"]["name"]) {
+                        unlink('public/uploads/' . $myUserImg);
+                        $user = new User($userId, $mail, null, null, $city, $postal, $street, null, null, $phone, $img, null, null);
+                        $user->updateUser();
+                        $user->updateUserInfo();
                     } else {
-                        if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-                            $img = htmlspecialchars(basename($_FILES["fileToUpload"]["name"]));
-                            $_SESSION['user']['img_path'] = $img;
-                        } else {
-                            echo "Sorry, there was an error uploading your file.";
-                        }
+                        $user = new User($userId, $mail, null, null, $city, $postal, $street, null, null, $phone, $myUserImg, null, null);
+                        $user->updateUser();
+                        $user->updateUserInfo();
                     }
 
-                    unlink('public/uploads/' . $myUserImg);
-                    $user = new User($userId, $mail, null, null, $city, $postal, $street, null, null, $phone, $img, null, null);
-                    $user->updateUser();
-                    $user->updateUserInfo();
+
 
                     $this->redirectToRoute('/');
                 }

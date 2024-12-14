@@ -21,21 +21,21 @@ $price = $priceWithoutTaxe + $calcul;
 <section class="infoArticleContainer">
   <div class="flexContainer">
     <div>
-      <img src="" alt="<?= $myArticle->getTitle() ?>" class="articleImg">
+      <img src="/public/img/<?= $myArticle->getImgArticle() ?>" alt="<?= $myArticle->getTitle() ?>" class="articleImg">
     </div>
     <div class="infoContainer">
       <h2 class="articleTitle"><?= $myArticle->getTitle() ?></h2>
       <p class="articleDescription"><?= $myArticle->getDescription() ?></p>
       <form method="POST">
         <label for="note">Ajoutez une note</label>
-          <select name="note" id="note">
-            <option value="0">0</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-          </select>
+        <select name="note" id="note">
+          <option value="0">0</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </select>
         <label for="comment">Veuillez entrer votre commentaire :</label>
         <textarea name="comment" id="comment"></textarea>
         <?php

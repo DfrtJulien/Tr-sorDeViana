@@ -14,7 +14,7 @@ if (!$_SESSION) {
 <section class="infoArticleContainer">
   <div class="flexContainer">
     <div>
-      <img src="" alt="<?= $myArticle->getTitle() ?>" class="articleImg">
+      <img src="/public/img/<?= $myArticle->getImgArticle() ?>" alt="<?= $myArticle->getTitle() ?>" class="articleImg">
     </div>
     <div class="infoContainer">
       <h2 class="articleTitle"><?= $myArticle->getTitle() ?></h2>
