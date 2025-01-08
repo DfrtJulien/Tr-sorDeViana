@@ -86,6 +86,46 @@ class Article
         }
     }
 
+    public function getMostRecentArticle()
+    {
+        $pdo = DataBase::getConnection();
+        $sql = "SELECT id, title, priceExcludingTax, img_path
+                FROM article
+                ORDER BY id DESC
+                LIMIT 4";
+        $statement = $pdo->prepare($sql);
+        $statement->execute();
+        $resultFetch = $statement->fetchAll(PDO::FETCH_ASSOC);
+        $articles = [];
+        if ($resultFetch) {
+            foreach ($resultFetch as $row) {
+                $article = new Article($row['id'], $row['title'], null, $row['priceExcludingTax'], null, null, null, null, $row['img_path'], null, null, null, null, null, null, null, null);
+                $articles[] = $article;
+            }
+            return $articles;
+        }
+    }
+
+    public function getSelectionArticle()
+    {
+        $pdo = DataBase::getConnection();
+        $sql = "SELECT id, title, priceExcludingTax, img_path
+                FROM article
+                ORDER BY id ASC
+                LIMIT 5";
+        $statement = $pdo->prepare($sql);
+        $statement->execute();
+        $resultFetch = $statement->fetchAll(PDO::FETCH_ASSOC);
+        $articles = [];
+        if ($resultFetch) {
+            foreach ($resultFetch as $row) {
+                $article = new Article($row['id'], $row['title'], null, $row['priceExcludingTax'], null, null, null, null, $row['img_path'], null, null, null, null, null, null, null, null);
+                $articles[] = $article;
+            }
+            return $articles;
+        }
+    }
+
     public function updateArticle()
     {
         $pdo = DataBase::getConnection();
