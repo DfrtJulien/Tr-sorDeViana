@@ -11,87 +11,8 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="/public/style/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/swiffy-slider@1.6.0/dist/js/swiffy-slider.min.js" crossorigin="anonymous" defer></script>
+  <link href="https://cdn.jsdelivr.net/npm/swiffy-slider@1.6.0/dist/css/swiffy-slider.min.css" rel="stylesheet" crossorigin="anonymous">
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg myNav">
-    <div class="container-fluid justify-content-around py-3">
-      <div class="d-flex align-items-center">
-        <a class="navbar-brand" href="/">
-          <img src="/public/img/logo_tresorviana.png" alt="Logo Trésor de Viana" width="40" height="40">
-        </a>
-        <h1 class="headerTitle title">Trésor De Viana</h1>
-      </div>
-      <div>
-        <input type="text" placeholder="Que’est ce que vous recherchez ?" class="searchInput">
-        <a href=""><i class="fa-solid fa-magnifying-glass iconLogo searchLogo"></i></a>
-      </div>
-
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="" id="navbarNav">
-        <ul class="navbar-nav">
-          <div class="d-flex align-items-center">
-            <i class="fa-solid fa-store iconLogo"></i>
-            <li class="nav-item">
-              <a class="nav-link  headerText me-2" href="/">Accueil</a>
-            </li>
-          </div>
-
-          <?php
-          if (isset($_SESSION['user'])) {
-          ?>
-            <div class="d-flex align-items-center">
-              <i class="fa-solid fa-cart-shopping iconLogo"></i>
-              <li class="nav-item">
-                <a class="nav-link  headerText me-2" href="/allArticle">Boutique</a>
-              </li>
-            </div>
-            <div class="d-flex align-items-center">
-              <i class="fa-solid fa-cart-shopping iconLogo"></i>
-              <li class="nav-item">
-                <a class="nav-link  headerText me-2" href="/cart">Panier</a>
-              </li>
-            </div>
-            <div class="d-flex align-items-center imgHeaderContainer">
-              <div class="imgUserController">
-                <img src="/public/uploads/<?= $_SESSION['user']['img_path']  ? $_SESSION['user']['img_path'] : "img_default.png" ?>" alt="photo de profile de l'utilisateur" id="imgUser">
-              </div>
-              <div class="hidden" id="showContainer">
-                <i class="fa-solid fa-xmark" id="closeContainerIcon"></i>
-                <div>
-                  <li class="nav-item">
-                    <a class="nav-link  headerText me-2" href="/profile?id=<?= $_SESSION['user']['idUser'] ?>">profile</a>
-                  </li>
-                </div>
-                <div class="d-flex align-items-center">
-                  <i class="fa-solid fa-right-from-bracket iconLogo"></i>
-                  <li class="nav-item">
-                    <a class="nav-link  headerText me-2" href="/logout">déconexion</a>
-                  </li>
-                </div>
-              </div>
-
-            </div>
-
-          <?php
-          } else {
-          ?>
-            <div class="d-flex align-items-center">
-              <i class="fa-solid fa-user iconLogo"></i>
-              <li class="nav-item">
-                <a class="nav-link  headerText me-2" href="/register">Inscription</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link  headerText ms-2" href="/login">Connexion</a>
-              </li>
-            </div>
-          <?php
-          }
-          ?>
-        </ul>
-      </div>
-    </div>
-  </nav>
-  <div class="myBody">
