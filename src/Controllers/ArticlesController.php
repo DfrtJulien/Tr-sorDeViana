@@ -226,7 +226,7 @@ class ArticlesController extends AbstractController
             require_once(__DIR__ . "/../Views/security/login.view.php");
         }
     }
-
+   
     public function editComment()
     {
         if (isset($_GET['id'], $_GET['idComment'], $_GET['idNote'])) {

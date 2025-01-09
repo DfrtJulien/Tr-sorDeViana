@@ -1,26 +1,36 @@
 
-const img = document.getElementById('imgUser');
-const showContainer = document.getElementById('showContainer');
-const closeIcon = document.getElementById('closeContainerIcon');
+if(document.getElementById('hamburgerIcon')){
+    const menuBurger = document.getElementById('hamburgerIcon');
 
-
-img.addEventListener('click', toggleShow);
-
-function toggleShow(){
-    showContainer.classList.toggle('hidden');
+    menuBurger.addEventListener('click', showCanva)
 }
 
+if(document.getElementById("closeIcon")){
+    const closeIcon = document.getElementById("closeIcon");
 
-closeIcon.addEventListener('click', removeContainer);
+    closeIcon.addEventListener('click', hideCanva)
 
-
-function removeContainer(){
-    showContainer.classList.add('hidden');
 }
 
-document.addEventListener('click', (event) => {
-    if(!showContainer.classList.contains('hidden') && event.target !== img && event.target !== showContainer){
-        showContainer.classList.add('hidden');
-    } 
-});
+function showCanva() {
+    const canva = document.getElementById('offsetCanva');
+    const closeIcon = document.getElementById("closeIcon");
+    const menuBurger = document.getElementById('hamburgerIcon');
+    if(!canva.classList.contains("show")){
+        canva.classList.add('show');
+        closeIcon.classList.add("show");
+        menuBurger.classList.add('hide');
+    }  
+}
 
+function hideCanva() {
+    const closeIcon = document.getElementById("closeIcon");
+    const canva = document.getElementById('offsetCanva');
+    const menuBurger = document.getElementById('hamburgerIcon');
+
+    if(!canva.classList.contains("hide")){
+        canva.classList.remove('show');
+        closeIcon.classList.remove("show");
+        menuBurger.classList.remove('hide');
+    }
+}
