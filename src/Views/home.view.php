@@ -20,11 +20,12 @@ if (!$_SESSION) {
 </section>
 <div class="homeJeweleryText">
     <p>Nos bijoux sont conçus avec une attention minutieuse aux détails, alliant matériaux de haute qualité et savoir-faire exceptionnel. Chaque pièce est un symbole de raffinement et de durabilité, créée pour illuminer vos moments spéciaux et résister à l'épreuve du temps</p>
+    <a href="/allArticle" class="homeShowMoreLink">Voir notre catalogue</a>
 </div>
 <section class="composition">
     <div class="compositionTextImg">
         <div class="compositionText">
-            <p>Nos Composition</h2>
+            <h2>Nos Composition</h2>
             <p>Des bijoux exquis qui captivent le regard et subliment chaque instant. Élégance, beauté et raffinement à portée de main pour révéler votre éclat.</p>
         </div>
         <div class="compositionImg">
