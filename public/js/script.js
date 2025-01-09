@@ -34,3 +34,35 @@ function hideCanva() {
         menuBurger.classList.remove('hide');
     }
 }
+
+if(document.getElementById('footerCategory')){
+    const category = document.getElementById('footerCategory');
+
+    category.addEventListener('click', showUlFooter);
+}
+
+function showUlFooter() {
+    const footerUl = document.getElementById('footerUl');
+    if(!footerUl.classList.contains('hide')){
+        footerUl.classList.add("hide");
+    }else {
+        footerUl.classList.remove("hide");
+    }
+   
+}
+
+if(document.getElementById('footerService')){
+    const service = document.getElementById('footerService');
+
+    service.addEventListener('click', showService);
+}
+
+function showService() {
+    const footerService = document.getElementById('footerContact');
+    if(!footerService.classList.contains('hide')){
+        footerService.classList.add("hide");
+    }else {
+        footerService.classList.remove("hide");
+    }
+   
+}

@@ -8,6 +8,7 @@
 	/* 6B1A33 */
 	--title_color: #E7CF47;
 	--text_color: #FFFCFC;
+	--footer_bg_color: #323232;
 }
 
 h1,
@@ -191,12 +192,26 @@ button {
 	color: var(--text_color);
 }
 
+.homeShowMoreLink {
+	display: block;
+	text-align: center;
+	margin-top: 20px;
+	font-size: 20px;
+	color: var(--bg_color);
+	padding: 10px 15px;
+	transition: all 0.3s ease;
+}
+
+.homeShowMoreLink {
+	transform: scale(1.1);
+}
+
 .homeJeweleryText,
 .composition,
 .collection,
 .selection {
 	width: 90%;
-	margin: 30px auto;
+	margin: 50px auto;
 }
 
 .homeJeweleryText p {
@@ -208,7 +223,9 @@ button {
 	margin-top: 7%;
 }
 
-.compositionText h2 {
+.compositionText h2,
+.collection h2,
+.selection h2 {
 	font-size: 30px;
 	font-weight: bold;
 }
@@ -304,6 +321,49 @@ button {
 .selectionArticleContainer img {
 	height: 100px;
 	object-fit: cover;
+}
+
+
+/********************************** FOOTER  **********************/
+
+footer {
+	background-color: var(--footer_bg_color);
+	padding: 25px;
+	color: var(--text_color);
+}
+
+footer img {
+	width: 250px;
+}
+
+.footerP {
+	font-style: italic;
+	margin-top: 15px;
+	margin-bottom: 15px;
+	font-size: 15px;
+}
+
+.iconContainer {
+	display: flex;
+	column-gap: 25px;
+	margin-bottom: 35px;
+}
+
+.iconContainer i {
+	transition: all 0.5s ease-in;
+	color: var(--text_color);
+}
+
+.iconContainer i:hover {
+	color: var(--bg_color);
+}
+
+.footerLabel {
+	font-size: 20px;
+}
+
+.footerUl {
+	transition: all 0.5s ease;
 }
 
 @media screen and (min-width:698px) {
@@ -405,7 +465,27 @@ button {
 		height: 250px;
 	}
 
+	/*************************** FOOTER ******************** */
+
+	footer {
+		display: flex;
+		padding-top: 25px;
+	}
+
+	.imgTextFooter {
+		max-width: 50%;
+		margin: auto;
+	}
+
+	.footerLnkFlex {
+		display: flex;
+		column-gap: 20px;
+		padding-right: 50px;
+	}
+
+
 }
+
 
 @media screen and (min-width:1200px) {
 
@@ -415,7 +495,7 @@ button {
 		margin: auto;
 		padding: 15px 0;
 	}
-	
+
 
 	/********************************************** HOME *******************************/
 	.header {
@@ -446,7 +526,9 @@ button {
 		align-items: center;
 	}
 
-	.compositionText h2 {
+	.compositionText h2,
+	.collection h2,
+	.selection h2 {
 		font-size: 55px;
 	}
 
@@ -456,6 +538,17 @@ button {
 
 	.compositionArticles {
 		column-gap: 10px;
+	}
+
+
+	/*************************** FOOTER ******************** */
+
+	.footerP {
+		font-size: 22px;
+	}
+
+	.footerLnkFlex {
+		align-items: center;
 	}
 
 
