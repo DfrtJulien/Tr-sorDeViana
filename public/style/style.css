@@ -211,7 +211,9 @@ button {
 .homeJeweleryText,
 .composition,
 .collection,
-.selection {
+.selection,
+.qsm,
+.qsm-last {
 	width: 90%;
 	margin: 50px auto;
 }
@@ -326,78 +328,78 @@ button {
 }
 
 
-	/************************************ PAGE ISNCRIPTION ******************/
+/************************************ PAGE ISNCRIPTION ******************/
 
-	.registerContainer {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		min-height: 35vh;
-		margin-top: 15px;
-		margin-bottom: 30px;
-		padding: 15px;
-	}
+.registerContainer {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 35vh;
+	margin-top: 15px;
+	margin-bottom: 30px;
+	padding: 15px;
+}
 
-	.formRegisterLogin {
-		border: 1px solid var(--bg_color);
-		padding: 25px 15px;
-		border-radius: 8px;
-	}
+.formRegisterLogin {
+	border: 1px solid var(--bg_color);
+	padding: 25px 15px;
+	border-radius: 8px;
+}
 
-	.formRegisterLogin h1 {
-		text-align: center;
-		font-size: 30px;
-		font-weight: bold;
-	}
+.formRegisterLogin h1 {
+	text-align: center;
+	font-size: 30px;
+	font-weight: bold;
+}
 
-	.formRegisterLogin p {
-		text-align: center;
-		font-style: italic;
-		margin-top: 5px;
-		margin-bottom: 15px;
-		font-weight: 16px;
-		color: var(--bg_color);
-		opacity: 0.8;
-	}
+.formRegisterLogin p {
+	text-align: center;
+	font-style: italic;
+	margin-top: 5px;
+	margin-bottom: 15px;
+	font-weight: 16px;
+	color: var(--bg_color);
+	opacity: 0.8;
+}
 
-	.formRegisterLogin label {
-		width: 100%;
-		margin-bottom: 10px;
-		margin-top: 15px;
-		font-size: 18px;
-	}
+.formRegisterLogin label {
+	width: 100%;
+	margin-bottom: 10px;
+	margin-top: 15px;
+	font-size: 18px;
+}
 
-	.formRegisterLogin input {
-		padding: 10px;
-		width: 100%;
-	}
+.formRegisterLogin input {
+	padding: 10px;
+	width: 100%;
+}
 
-	.formLoginRegister {
-		width: 65%;
-		margin: auto;
-		text-align: center;
-	}
+.formLoginRegister {
+	width: 65%;
+	margin: auto;
+	text-align: center;
+}
 
-	.activeFormBtn {
-		background-color: var(--bg_color);
-		color: var(--text_color);
-		padding: 10px 15px;
-		border-radius: 8px;
-		margin-top: 10px;
-		text-transform: uppercase;
-	}
+.activeFormBtn {
+	background-color: var(--bg_color);
+	color: var(--text_color);
+	padding: 10px 15px;
+	border-radius: 8px;
+	margin-top: 10px;
+	text-transform: uppercase;
+}
 
-	.formLoginRegister p {
-		margin-top: 5px;
-		margin-bottom: 10px;
-	}
+.formLoginRegister p {
+	margin-top: 5px;
+	margin-bottom: 10px;
+}
 
-	.activeFormA {
-		padding: 10px 15px;
-		text-transform: uppercase;
-		border: 1px solid var(--bg_color);
-		border-radius: 8px;
-	}
+.activeFormA {
+	padding: 10px 15px;
+	text-transform: uppercase;
+	border: 1px solid var(--bg_color);
+	border-radius: 8px;
+}
 
 /********************************** FOOTER  **********************/
 
@@ -439,6 +441,20 @@ footer img {
 
 .footerUl {
 	transition: all 0.5s ease;
+}
+
+/********************************* QSM PAGE  *****************************/
+
+.qsm h1,
+.qsm h2 {
+	font-size: 30px;
+}
+
+.qsm p,
+.qsm-last p {
+	font-size: 18px;
+	margin-bottom: 25px;
+	margin-top: 25px;
 }
 
 @media screen and (min-width:698px) {
@@ -573,6 +589,39 @@ footer img {
 		margin-top: 20px;
 	}
 
+	/********************************* QSM PAGE  *****************************/
+
+	.qsm h1,
+	.qsm-last h2 {
+		font-size: 45px;
+		margin-bottom: 35px;
+	}
+
+	.qsm-flex {
+		display: flex;
+		margin-top: 50px;
+	}
+
+	.first-p {
+		padding: 0 !important;
+	}
+
+	.qsm p,
+	.qsm-last p {
+		font-size: 20px;
+		margin-bottom: 0;
+		margin-top: 0;
+		padding: 0 35px;
+	}
+
+	.qsm-img {
+		min-width: 45%;
+	}
+
+	.qsm-last {
+		padding: 35px;
+	}
+
 	/*************************** FOOTER ******************** */
 
 	footer {
@@ -648,13 +697,41 @@ footer img {
 		column-gap: 10px;
 	}
 
-	
+
 	/************************************ PAGE ISNCRIPTION ******************/
 
 	.formRegisterLogin {
 		width: 35%;
 		padding: 35px;
 	}
+
+	/********************************* QSM PAGE  *****************************/
+
+	.qsm h1 {
+		font-size: 65px;
+	}
+
+	.qsm-flex {
+		display: flex;
+		margin-top: 50px;
+	}
+
+	.first-p {
+		width: 65%;
+	}
+
+	.qsm p {
+		margin-bottom: 0;
+		margin-top: 0;
+		padding: 35px 105px;
+	}
+
+	.qsm-img {
+		min-width: 50%;
+		height: 300px;
+		object-fit: cover;
+	}
+
 
 	/*************************** FOOTER ******************** */
 
