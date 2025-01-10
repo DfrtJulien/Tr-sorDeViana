@@ -32,6 +32,7 @@
       <div class="footerContact hide" id="footerContact">
         <ul>
           <li><a href="/contact">Contact</a></li>
+          <li><a href="/qui-sommes-nous">Qui sommes-nous ?</a></li>
         </ul>
       </div>
     </div>

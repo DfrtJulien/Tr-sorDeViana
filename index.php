@@ -45,4 +45,8 @@ $router->addRoute('/editComment', 'ArticlesController', 'editComment');
 $router->addRoute('/cart', 'ArticlesController', 'showCart');
 
 
+//page annexes
+$router->addRoute('/qui-sommes-nous', 'AnnexeController', 'index');
+
+
 $router->handleRequest();
