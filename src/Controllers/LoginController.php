@@ -63,7 +63,7 @@ class LoginController extends AbstractController
 
                 $user = new Admin(null, $mail, $password, null, null, null, null, null,null, null, null, null, null);
                 $responseGetUser = $user->login($mail);
-
+               
 
                 if ($responseGetUser) {
                     $passwordUser = $responseGetUser->getPassword();

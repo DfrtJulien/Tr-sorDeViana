@@ -21,7 +21,7 @@
         <i class="fa-solid fa-xmark closeIcon" id="closeIcon"></i>
       </div>
       <div class="navLinkleft">
-        <a href="/allRecipe">Nouveauté</a>
+        <a href="/allArticle">Nouveauté</a>
         <a href="">Catégories</a>
         <a href="">Recherche</a>
       </div>
@@ -29,12 +29,11 @@
         <a href="/"><img src="/public/img/Logo.png" alt="Logo de Trésor de Viana" class="logo"></a>
       </div>
       <div class="navLinkright">
-      <a href="">Boutique</a>
         <?php
         if(isset($_SESSION['user'])){
           ?>
             <a href="/cart">Panier</a>
-            <a href="/profile">Compte</a>  
+            <a href="/profile?id=<?= $_SESSION['user']['idUser'] ?>">Compte</a>  
           <?php
         } else {
           ?>
@@ -80,7 +79,7 @@
           <?php
             if(isset($_SESSION['user'])){
               ?>
-                 <h5></a href="#">Compte<a></h5>
+                 <h5></a href="/profile">Compte<a></h5>
               <?php
             }
           ?>

@@ -7,6 +7,7 @@ abstract class AbstractController
 {
     protected array $arrayError = [];
     protected array  $cart = [];
+    protected array $arraySucces = [];
 
     public function redirectToRoute($route)
     {
@@ -128,6 +129,12 @@ abstract class AbstractController
                 //         $this->arrayError['note'] = "Entrez une note correcte";
                 //     }
         }
+    }
+
+    public function showMsg()
+    {
+      $this->arraySucces['register'] = "Inscription réussi !";
+      return $this->arraySucces;
     }
 
     public function check($nameInput, $value)

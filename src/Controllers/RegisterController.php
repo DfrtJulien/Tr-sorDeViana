@@ -36,7 +36,10 @@ class RegisterController extends AbstractController
         } else {
           $user->saveUserInfo();
           $user->saveUser();
-          $this->redirectToRoute('/');
+          $succesMsg = $this->showMsg();
+          if ($succesMsg) {
+              header("Refresh: 1; /login");
+          }
         }
       }
     }

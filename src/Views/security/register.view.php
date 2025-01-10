@@ -10,6 +10,15 @@
                 <h1>Inscription</h1>
                 <p>Content de vous compter parmis nous</p>
             </div>
+            <?php
+        if (isset($succesMsg)) {
+        ?>
+            <div class="alert alert-success errorContainer" role="alert">
+                <p class='text-success'><?= $succesMsg['register'] ?></p>
+            </div>
+        <?php
+        }
+        ?>
             <div class="">
                 <label for="firstname">Prénom</label>
                 <input type="text" name="firstname" id="firstname">
