@@ -18,7 +18,7 @@ require_once(__DIR__ . '/../partials/head.php');
     <h2>Notre produit phare</h2>
     <div class="mostLikedArticleContainer">
         <?php
-        if ($articleMostLikedInfo) {
+        if (isset($articleMostLikedInfo)) {
         ?>
             <div class="mostLikedArticleImg">
                 <img src="/public/img/<?= $articleMostLikedInfo->getImgArticle() ?>" alt="<?= $articleMostLikedInfo->getTitle() ?>">
@@ -35,7 +35,7 @@ require_once(__DIR__ . '/../partials/head.php');
 </section>
 <section class="allArticle">
     <?php
-    if ($articles) {
+    if (isset($articles)) {
         $numberArtcile = count($articles);
     ?>
         <h4><?= $numberArtcile ?> PRODUITS</h4>
