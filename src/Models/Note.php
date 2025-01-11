@@ -96,6 +96,32 @@ class Note
         return $statement->execute([$this->id]);
     }
 
+
+    public function getArticleIBestNote()
+    {
+        $pdo = DataBase::getConnection();
+        $sql = "SELECT
+            id_article,
+            COUNT(*) AS nombre_avis,
+            AVG(value) AS moyenne_value
+        FROM
+            note
+        GROUP BY
+            id_article
+        HAVING
+            AVG(value) = (SELECT MAX(moyenne_value) FROM (SELECT AVG(value) AS moyenne_value FROM note GROUP BY id_article) AS subquery)
+        ORDER BY
+            moyenne_value DESC";
+        $statement = $pdo->prepare($sql);
+        $statement->execute();
+        $note = $statement->fetch(PDO::FETCH_ASSOC);
+        if ($note) {
+            return new Note(null, $note['moyenne_value'], null, $note['id_article']);
+        } else {
+            return null;
+        }
+    }
+
     public function getId(): int
     {
         return $this->id;
