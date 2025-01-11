@@ -21,7 +21,7 @@
       <i class="fa-solid fa-xmark closeIcon" id="closeIcon"></i>
     </div>
     <div class="navLinkleft">
-      <a href="/allArticle">Nouveauté</a>
+      <a href="/allArticle">Catalogue</a>
       <a href="">Catégories</a>
       <a href="">Recherche</a>
     </div>
@@ -76,7 +76,7 @@
     </div>
     <div>
       <a href="/allArticle">
-        <h5>Nouveauté</h5>
+        <h5>Catalogue</h5>
       </a>
     </div>
     <div>

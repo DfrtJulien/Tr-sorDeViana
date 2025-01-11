@@ -55,6 +55,15 @@ class ArticlesController extends AbstractController
 
             $articlesByCategory = $article->getArticleByCategory();
         } else {
+
+            $note = new Note(null, null, null, null, null);
+            $article = $note->getArticleIBestNote();
+            $idArticleMostLiked = $article->getIdArticle();
+
+            $articleMostLiked = new article($idArticleMostLiked, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
+
+            $articleMostLikedInfo = $articleMostLiked->getArticleById();
+
             $article = new Article(null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
 
             $articles = $article->getAllArticle();
@@ -226,7 +235,7 @@ class ArticlesController extends AbstractController
             require_once(__DIR__ . "/../Views/security/login.view.php");
         }
     }
-   
+
     public function editComment()
     {
         if (isset($_GET['id'], $_GET['idComment'], $_GET['idNote'])) {
