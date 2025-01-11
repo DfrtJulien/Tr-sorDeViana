@@ -21,7 +21,7 @@
       <i class="fa-solid fa-xmark closeIcon" id="closeIcon"></i>
     </div>
     <div class="navLinkleft">
-      <a href="/allArticle">Catalogue</a>
+      <a href="/allArticle" class="<?= $activeLink !== "allArticle" ? '' : "activeLink" ?>">Catalogue</a>
       <a href="">Catégories</a>
       <a href="">Recherche</a>
     </div>
@@ -34,11 +34,12 @@
       ?>
         <a href="/cart">Panier</a>
         <a href="/profile?id=<?= $_SESSION['user']['idUser'] ?>">Compte</a>
+        <a href="/logout">Déconexion</a>
       <?php
       } else {
       ?>
-        <a href="/register">Inscription</a>
-        <a href="/login">Connexion</a>
+        <a href="/register" class="<?= $activeLink !== "register" ? '' : "activeLink" ?>">Inscription</a>
+        <a href="/login" class="<?= $activeLink !== "login" ? '' : "activeLink" ?>">Connexion</a>
       <?php
       }
       ?>
@@ -76,7 +77,7 @@
     </div>
     <div>
       <a href="/allArticle">
-        <h5>Catalogue</h5>
+        <h5 class="<?= $activeLink !== "allArticle" ? '' : "activeLink" ?>">Catalogue</h5>
       </a>
     </div>
     <div>

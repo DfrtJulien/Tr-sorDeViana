@@ -55,6 +55,12 @@ button {
 	border: none;
 }
 
+.activeLink {
+	color: var(--title_color) !important;
+	font-family: "Cinzel Decorative", serif;
+	;
+}
+
 /********************************* NAVBAR********************************* */
 
 .navbar {
@@ -119,8 +125,12 @@ button {
 }
 
 .show {
-	transform: translateY(0);
 	display: block;
+}
+
+.show2 {
+	display: block;
+	position: absolute;
 }
 
 .hide,
