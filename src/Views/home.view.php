@@ -1,7 +1,7 @@
 <?php
+$activeLink = "home";
+require_once(__DIR__ . '/partials/head.php');
 
-    require_once(__DIR__ . '/partials/head.php');
-    
 ?>
 
 <section class="header">

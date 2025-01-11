@@ -18,6 +18,7 @@ function showCanva() {
     const menuBurger = document.getElementById('hamburgerIcon');
     if(!canva.classList.contains("show")){
         canva.classList.add('show');
+        canva.style.transform = 'translateY(0)';
         closeIcon.classList.add("show");
         menuBurger.classList.add('hide');
     }  
@@ -47,6 +48,7 @@ function showUlFooter() {
         footerUl.classList.add("hide");
     }else {
         footerUl.classList.remove("hide");
+        footerUl.classList.add("show2");
     }
    
 }
@@ -63,6 +65,7 @@ function showService() {
         footerService.classList.add("hide");
     }else {
         footerService.classList.remove("hide");
+        footerService.classList.add('show2');
     }
    
 }

@@ -1,4 +1,5 @@
 <?php
+$activeLink = "allArticle";
 
 require_once(__DIR__ . '/../partials/head.php');
 
