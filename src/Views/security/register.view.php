@@ -11,10 +11,10 @@ require_once(__DIR__ . '/../partials/head.php');
                 <p>Content de vous compter parmis nous</p>
             </div>
             <?php
-            if (isset($succesMsg)) {
+            if (isset($this->arraySucces['register'])) {
             ?>
                 <div class="alert alert-success errorContainer" role="alert">
-                    <p class='text-success'><?= $succesMsg['register'] ?></p>
+                    <p class='text-success'><?= $this->arraySucces['register'] ?></p>
                 </div>
             <?php
             }

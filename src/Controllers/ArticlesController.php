@@ -231,6 +231,8 @@ class ArticlesController extends AbstractController
                 $article = new Article($idArticle, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
 
                 $myArticle = $article->getArticleById();
+                $notes = new Note(null, null, null, $idArticle);
+
 
                 if (isset($_POST['comment'], $_POST['note'])) {
                     $this->check('comment', $_POST['comment']);
@@ -243,11 +245,13 @@ class ArticlesController extends AbstractController
                         $article = new Article($idArticle, null, null, null, null, null, null, null, null, $comment, $creation_date, null, $idUser, $idArticle, null, null, null);
                         $myNote = new Note(null, $note, $idUser, $idArticle);
 
+                        $this->showMsg("addedComment");
+
                         $myNote->addNoteToArticle();
                         $addComment = $article->addComment();
 
 
-                        $this->redirectToRoute("/allArticle");
+                        header("Refresh: 2; /allArticle");
                     }
                 }
                 require_once(__DIR__ . "/../Views/article/addCommentArticle.view.php");

@@ -1,57 +1,51 @@
 <?php
 
-if (!$_SESSION) {
-  require_once(__DIR__ . '/../partials/head.php');
-} else {
-  if ($_SESSION['user']['id_role'] == 1) {
-    require_once(__DIR__ . '/../partials/adminHead.php');
-  } else {
-    require_once(__DIR__ . '/../partials/head.php');
-  }
-}
-
-
-$priceWithoutTaxe = $myArticle->getPriceExcludingTax();
-$tva = $myArticle->getTva();
-$calcul = $priceWithoutTaxe / 100 * $tva;
-$price = $priceWithoutTaxe + $calcul;
+require_once(__DIR__ . '/../partials/head.php');
 
 ?>
 
-<section class="infoArticleContainer">
-  <div class="flexContainer">
-    <div>
-      <img src="/public/img/<?= $myArticle->getImgArticle() ?>" alt="<?= $myArticle->getTitle() ?>" class="articleImg">
+<section class="articleInfo">
+  <div class="myArticleFlex">
+    <div class="myArticleImg">
+      <img src="/public/img/<?= $myArticle->getImgArticle() ?>" alt="<?= $myArticle->getTitle() ?>">
     </div>
-    <div class="infoContainer">
-      <h2 class="articleTitle"><?= $myArticle->getTitle() ?></h2>
-      <p class="articleDescription"><?= $myArticle->getDescription() ?></p>
-      <form method="POST">
-        <label for="note">Ajoutez une note</label>
-        <select name="note" id="note">
-          <option value="0">0</option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-        </select>
-        <label for="comment">Veuillez entrer votre commentaire :</label>
-        <textarea name="comment" id="comment"></textarea>
-        <?php
-        if (isset($this->arrayError['comment'])) {
-        ?>
-          <div class="alert alert-danger" role="alert">
-            <p class='text-danger'><?= $this->arrayError['comment'] ?></p>
-          </div>
-        <?php
-        } ?>
-        <button type="submit" class="addComentBtn">Ajoutez un commentaire</button>
-      </form>
+    <div class="myArticleInfo">
+      <h1><?= $myArticle->getTitle() ?></h1>
+      <p><?= $myArticle->getDescription() ?></p>
+      <p class="myArticlePrice"><?= $myArticle->getPriceExcludingTax() ?> €</p>
     </div>
+
+  </div>
+
   </div>
 </section>
+<section class="addComment">
+  <h1>Ajouuter votre note et commentaire</h1>
+  <?php
+  if (isset($this->arraySucces['addedComment'])) {
+  ?>
+    <div class="alert alert-success succesContainer" role="alert">
+      <p class='text-success'><?= $this->arraySucces['addedComment'] ?></p>
+    </div>
+  <?php
+  }
 
+  ?>
+  <form action="" method="POST">
+    <label for="note">Entrez votre note</label>
+    <select name="note" id="note" class="addNoteSelect" style="width: 200px">
+      <option value="0">0</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+    </select>
+    <label for="comment">Entrez votre commentaire</label>
+    <textarea name="comment" id="comment"></textarea>
+    <button type="submit" class="showMoreBtn">Envoyer</button>
+  </form>
+</section>
 <?php
 include_once(__DIR__ . "/../partials/footer.php");
 ?>
