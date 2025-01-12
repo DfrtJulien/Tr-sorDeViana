@@ -141,7 +141,7 @@ require_once(__DIR__ . '/../partials/head.php');
                                         <?php
                                         if ($_SESSION['user']['idUser'] == $id_user) {
                                         ?>
-                                            <a href="/editComment?id=<?= $user_note->getId() ?>&idComment=<?= $comment->getIdComment() ?>&idNote=<?= $user_note->getId() ?>" class="activeFormA">Modifier le commentaire</a>
+                                            <a href="/editComment?id=<?= $idArticle ?>&idComment=<?= $comment->getIdComment() ?>&idNote=<?= $user_note->getId() ?>" class="activeFormA">Modifier le commentaire</a>
                                         <?php
                                         }
                                         ?>

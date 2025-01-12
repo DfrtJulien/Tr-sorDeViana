@@ -142,6 +142,9 @@ abstract class AbstractController
             case 'addedComment':
                 $this->arraySucces['addedComment'] = "Commentaire ajouter avec succes !";
                 break;
+            case 'edditedComment':
+                $this->arraySucces['edditedComment'] = "Commentaire modiffier avec succes !";
+                break;
         }
     }
 
