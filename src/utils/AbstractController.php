@@ -131,10 +131,18 @@ abstract class AbstractController
         }
     }
 
-    public function showMsg()
+
+
+    public function showMsg($msg)
     {
-      $this->arraySucces['register'] = "Inscription réussi !";
-      return $this->arraySucces;
+        switch ($msg) {
+            case 'register':
+                $this->arraySucces['register'] = "Inscirpiton réussi !";
+                break;
+            case 'addedComment':
+                $this->arraySucces['addedComment'] = "Commentaire ajouter avec succes !";
+                break;
+        }
     }
 
     public function check($nameInput, $value)

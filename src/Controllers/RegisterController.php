@@ -27,7 +27,7 @@ class RegisterController extends AbstractController
         $passwordHash = password_hash($password, PASSWORD_DEFAULT);
         $idRole = 2;
         var_dump("test");
-        $user = new Users(null, $mail, $passwordHash, $registerDate,null,null,null,$firstname,$lastname,null,null,$idRole,null);
+        $user = new Users(null, $mail, $passwordHash, $registerDate, null, null, null, $firstname, $lastname, null, null, $idRole, null);
 
         $userExist = $user->existingUser($mail);
 
@@ -36,10 +36,9 @@ class RegisterController extends AbstractController
         } else {
           $user->saveUserInfo();
           $user->saveUser();
-          $succesMsg = $this->showMsg();
-          if ($succesMsg) {
-              header("Refresh: 1; /login");
-          }
+          $succesMsg = $this->showMsg('register');
+
+          header("Refresh: 2; /login");
         }
       }
     }
@@ -71,7 +70,7 @@ class RegisterController extends AbstractController
         $passwordHash = password_hash($password, PASSWORD_DEFAULT);
         $idRole = 1;
 
-        $user = new Admin(null, $mail, $passwordHash, $registerDate, $city, $postal, $street, $firstname, $lastname, $phone,null, $idRole, null);
+        $user = new Admin(null, $mail, $passwordHash, $registerDate, $city, $postal, $street, $firstname, $lastname, $phone, null, $idRole, null);
 
         $userExist = $user->existingUser($mail);
 

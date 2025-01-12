@@ -50,7 +50,9 @@ require_once(__DIR__ . '/../partials/head.php');
                 </select>
                 <button type="submit" class="showMoreBtn">Ajouter au panier</button>
             </form>
+            <a href="commentArticle?id=<?= $myArticle->getId() ?>" class="activeFormA">Ajouter un commentaire</a>
         </div>
+
     </div>
 </section>
 <section class="moreArticle">
