@@ -552,8 +552,9 @@ button {
 }
 
 .mostLikedArticleImg {
-	width: 35%;
+	width: 75%;
 	margin: auto;
+	max-height: 115px;
 }
 
 .mostLikedArticleInfo {
@@ -659,6 +660,7 @@ button {
 
 .moreArticle {
 	overflow: hidden;
+	padding-bottom: 15px;
 }
 
 .moreArticle h3 {
@@ -670,7 +672,7 @@ button {
 .moreArticleFlex {
 	display: flex;
 	flex-wrap: nowrap;
-	column-gap: 10%;
+	column-gap: 5%;
 	animation: defilement 15s linear infinite alternate;
 }
 
@@ -678,6 +680,7 @@ button {
 	width: 45%;
 	flex-shrink: 0;
 	box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+	padding-bottom: 10px;
 }
 
 .moreArticleArticle img {
@@ -984,6 +987,7 @@ button {
 
 	.mostLikedArticleImg {
 		margin: 15px;
+		max-height: 350px;
 	}
 
 	.mostLikedArticleInfo {
