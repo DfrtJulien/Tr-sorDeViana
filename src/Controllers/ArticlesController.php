@@ -270,7 +270,6 @@ class ArticlesController extends AbstractController
             $article = new Article($idArticle, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, $idComment);
             $note = new Note($idNote, null, null, null);
 
-
             $myArticle = $article->getArticleById();
             $comment = $article->getCommentById();
             $myNote = $note->getNoteByid();
@@ -286,9 +285,12 @@ class ArticlesController extends AbstractController
                     $newNote = new Note($idNote, $updatetedNote, null, null);
                     $newComment = new Article($idArticle, null, null, null, null, null, null, null, null, $updatedComment, null, $modificationDate, null, null, null, null, $idComment);
 
+                    $this->showMsg('edditedComment');
+
                     $newNote->editNote();
                     $newComment->editComment();
-                    $this->redirectToRoute('/');
+
+                    header("Refresh: 2; /infoArticle?id=" . $idArticle . "");
                 }
             }
 
