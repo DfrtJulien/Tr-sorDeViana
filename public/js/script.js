@@ -69,3 +69,18 @@ function showService() {
     }
    
 }
+
+
+
+
+if(document.getElementById('moreArticle')){
+    const moreArticle = document.getElementById('moreArticle');
+    const articles = document.querySelectorAll('.moreArticleArticle');
+    // je récupere le nombre d'article total
+    const totalArticles = articles.length;
+    // je calcul le temps de l'aniamtion pour que chaque article soit affiché 2s
+    const animationDuration = totalArticles * 4
+
+    // Je modifie la durée de l'animation en fonction du nombre d'articles
+    conteneur.style.animationDuration = `${animationDuration}s`;
+}

@@ -141,11 +141,19 @@ class ArticlesController extends AbstractController
             $article = new Article($idArticle, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
             $notes = new Note(null, null, null, $idArticle);
 
+            //je récupère le nombre total d'avis sur mon article
             $numberNote = $notes->countNoteByArticleId();
+
+            // je transforme en valeur INT 
             $numberNoteToInt = reset($numberNote);
+
+            // j'additione toute les note de mon article
             $sumNote = $notes->sumArticleNote();
+
+            // je le transforme en valeur INT
             $sumNoteInt = intval(reset($sumNote));
 
+            // si mon article a des avis alors je divise la note par le nombre d'avis pour avoir la moyenne sur 5 sinon je retourne 0
             if ($numberNoteToInt !== 0) {
                 $note = $sumNoteInt / $numberNoteToInt;
             } else {
@@ -153,14 +161,19 @@ class ArticlesController extends AbstractController
             }
 
             $myArticle = $article->getArticleById();
-            $moreArticle = $myArticle->getArticleByCategory();
-            $comments = $myArticle->getComment();
 
-
-
+            // si mon article n'existe pas je le renvoie vers la page 404
             if (!$myArticle) {
-                $this->redirectToRoute('/');
+                $this->redirectToRoute('/404');
+            } else {
+
+                // je récupere mes articles qui sont de la même catégorie que l'article que l'utilisateur regarde
+                $moreArticle = $myArticle->getArticleByCategory();
+
+                // je récupere les commentaires de mon article
+                $comments = $myArticle->getComment();
             }
+
 
             if (isset($_POST['idCommentDelete'], $_POST['idNoteDelete'])) {
                 $idComment = htmlspecialchars($_POST['idCommentDelete']);
@@ -176,18 +189,24 @@ class ArticlesController extends AbstractController
             }
 
 
-
+            // je regarde si mon utilisateur a ajouter au panier et en quelle quantité
             if (isset($_POST['addToCart'], $_POST['quantity'])) {
+
+                // si il est connecté alors je récupere dans ma base de donnée
                 if (isset($_SESSION['user'])) {
                     $quantity = htmlspecialchars($_POST['quantity']);
                     $idArticle = htmlspecialchars($_POST['addToCart']);
                     $idUser = $_SESSION['user']['idUser'];
                     $articelToCart = new Article(null, null, null, null, null, null, $quantity, null, null, null, null, null, $idUser, $idArticle, null, null, null);
+
+                    // je regarde si mon utilisateur a déja l'article dans son panier
                     $articelToCart->checkIfAlreadyInCart();
 
+                    // si oui alors j'augmente la quantité
                     if ($articelToCart->checkIfAlreadyInCart()) {
                         $articelToCart->addQuantityToCart();
                     } else {
+                        // si non alors j'ajoute
                         $articelToCart->addToCart();
                     }
                 } else {
@@ -196,6 +215,8 @@ class ArticlesController extends AbstractController
             }
 
             require_once(__DIR__ . "/../Views/article/article.view.php");
+        } else {
+            $this->redirectToRoute('/404');
         }
     }
 

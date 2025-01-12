@@ -1,13 +1,7 @@
 <?php
-if (!$_SESSION) {
-  require_once(__DIR__ . '/partials/head.php');
-} else {
-  if ($_SESSION['user']['id_role'] == 1) {
-    require_once(__DIR__ . '/partials/adminHead.php');
-  } else {
-    require_once(__DIR__ . '/partials/head.php');
-  }
-}
+
+require_once(__DIR__ . '/partials/head.php');
+
 
 ?>
 <section class="cartContainer">
