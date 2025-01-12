@@ -79,11 +79,15 @@ require_once(__DIR__ . '/../partials/head.php');
         ?>
     </div>
 </section>
-<section class="articleComment">
-    <h3>Les avis de nos clients :</h3>
-    <div class="comments">
-        <?php
-        if (isset($comments)) {
+
+
+<?php
+if (isset($comments)) {
+?>
+    <section class="articleComment">
+        <h3>Les avis de nos clients :</h3>
+        <div class="comments">
+            <?php
             foreach ($comments as $comment) {
                 $id_user = $comment->getIdUser();
                 $notes = new Note(null, null, $id_user, $idArticle);
@@ -97,7 +101,7 @@ require_once(__DIR__ . '/../partials/head.php');
                 $commentUpdated = $comment->getModificationDate();
 
 
-        ?>
+            ?>
                 <div class="comment">
                     <div class="commentUserInfo">
                         <div class="commentUserImgName">
@@ -134,8 +138,8 @@ require_once(__DIR__ . '/../partials/head.php');
                             ?>
                                     <div class="commentBtnContainer">
                                         <form action="" method="POST">
-                                            <input type="hidden" id="idDelete" name="idCommentDelete" value="<?= $comment->getIdComment() ?>">
-                                            <input type="hidden" id="idDeleteNote" name="idNoteDelete" value="<?= $user_note->getId() ?>">
+                                            <input type="hidden" id="idCommentDelete" name="idCommentDelete" value="<?= $comment->getIdComment() ?>">
+                                            <input type="hidden" id="idNoteDelete" name="idNoteDelete" value="<?= $user_note->getId() ?>">
                                             <button class="showMoreBtn" type="submit" class="btn">Supprimer</button>
                                         </form>
                                         <?php
@@ -158,8 +162,8 @@ require_once(__DIR__ . '/../partials/head.php');
                         }
                     }
     ?>
-    </div>
-</section>
-<?php
-include_once(__DIR__ . "/../partials/footer.php");
-?>
+        </div>
+    </section>
+    <?php
+    include_once(__DIR__ . "/../partials/footer.php");
+    ?>
