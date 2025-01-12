@@ -1,118 +1,75 @@
 <?php
 
-use App\Models\Users;
+use App\Models\User;
 use App\Models\Note;
 
-if (!$_SESSION) {
-    require_once(__DIR__ . '/../partials/head.php');
-} else {
-    if ($_SESSION['user']['id_role'] == 1) {
-        require_once(__DIR__ . '/../partials/adminHead.php');
-    } else {
-        require_once(__DIR__ . '/../partials/head.php');
-    }
-}
+require_once(__DIR__ . '/../partials/head.php');
 
-
-$priceWithoutTaxe = $myArticle->getPriceExcludingTax();
-$tva = $myArticle->getTva();
-$calcul = $priceWithoutTaxe / 100 * $tva;
-$price = $priceWithoutTaxe + $calcul;
-$comment = $myArticle->getNumberComment();
-$numberComment = $comment["COUNT(content)"];
-
-$idArtcile = $myArticle->getId();
 ?>
 
-<section class="infoArticleContainer">
-    <div class="flexContainer">
-        <div>
-            <img src="/public/img/<?= $myArticle->getImgArticle() ?>" alt="<?= $myArticle->getTitle() ?>" class="articleImg">
+<section class="articleInfo">
+    <div class="myArticleFlex">
+        <div class="myArticleImg">
+            <img src="/public/img/<?= $myArticle->getImgArticle() ?>" alt="<?= $myArticle->getTitle() ?>">
         </div>
-        <div class="infoContainer">
-            <h2 class="articleTitle"><?= $myArticle->getTitle() ?></h2>
-            <p class="articleDescription"><?= $myArticle->getDescription() ?></p>
-            <div class="articleNoteContainer">
-                <div class="iconContainer">
-                    <?php
-                    if ($note) {
-                    ?>
-                        <i class="<?= $note == 0 ? 'fa-regular' : 'fa-solid' ?> fa-star"></i>
-                        <i class="<?= $note < 2 ? 'fa-regular' : 'fa-solid' ?> fa-star"></i>
-                        <i class="<?= $note < 3 ? 'fa-regular' : 'fa-solid' ?> fa-star"></i>
-                        <i class="<?= $note < 4 ? 'fa-regular' : 'fa-solid' ?> fa-star"></i>
-                        <i class="<?= $note < 5 ? 'fa-regular' : 'fa-solid' ?> fa-star"></i>
-                    <?php
-                    }
-                    ?>
+        <div class="myArticleInfo">
+            <h1><?= $myArticle->getTitle() ?></h1>
+            <p><?= $myArticle->getDescription() ?></p>
+            <?php
+            if (isset($note)) {
+            ?>
+                <div class="myArticleNote">
+                    <div class="myArticleIcon">
+                        <i class="<?= $note == 0 ? 'fa-regular' : 'fa-solid' ?> fa-star ratingIcon"></i>
+                        <i class="<?= $note < 2 ? 'fa-regular' : 'fa-solid' ?> fa-star ratingIcon"></i>
+                        <i class="<?= $note < 3 ? 'fa-regular' : 'fa-solid' ?> fa-star ratingIcon"></i>
+                        <i class="<?= $note < 4 ? 'fa-regular' : 'fa-solid' ?> fa-star ratingIcon"></i>
+                        <i class="<?= $note < 5 ? 'fa-regular' : 'fa-solid' ?> fa-star ratingIcon"></i>
+                    </div>
+                    <p class="myRecipeNumberComment"><?= $numberNoteToInt ?> Avis</p>
                 </div>
-                <?php
-                if ($numberComment) {
-                ?>
-                    <a href="#comment" class="numberComment"><?= $numberComment ?> Avis</a>
-                <?php
-                }
-                ?>
-            </div>
-            <div class="priceAndBtn">
-                <p class="articlePrice"><?= $price ?>€</p>
-                <form action="" method="POST">
-                    <select name="quantity" id="">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                        <option value="9">9</option>
-                        <option value="10">10</option>
-                    </select>
-                    <input type="hidden" name="addToCart" value="<?= $myArticle->getId() ?>">
-                    <button class="addToCartBtn"><i class="fa-solid fa-cart-plus iconAddToCart"></i>Ajouter au panier</button>
-                </form>
+                <p class="myArticlePrice"><?= $myArticle->getPriceExcludingTax() ?> €</p>
 
-            </div>
-            <a href='/commentArticle?id=<?= $myArticle->getId() ?>' class="addCommentBtn">Ajoutez un commentaire</a>
+            <?php
+            }
+            ?>
+            <form action="" method="POST" class="addToCart">
+                <input type="hidden" name="addToCart" value="<?= $myArticle->getId() ?>">
+                <label for="quantity">Quantité</label>
+                <select name="quantity" id="quantity" class="addCartSelect" style="width:200px;">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                </select>
+                <button type="submit" class="showMoreBtn">Ajouter au panier</button>
+            </form>
         </div>
     </div>
 </section>
-<hr class="infoArticleHr">
 <section class="moreArticle">
-    <h3 class="moreArticleTitle">Vous pourrier aussi aimer :</h3>
-    <div class="moreArticleContainer">
+    <h3>Vous pourriez aussi aimer :</h3>
+    <div class="moreArticleFlex" id="moreArticle">
         <?php
-        foreach ($moreArticle as $article) {
-            $priceWithoutTaxe = $article->getPriceExcludingTax();
-            $tva = $article->getTva();
-            $calcul = $priceWithoutTaxe / 100 * $tva;
-            $price = $priceWithoutTaxe + $calcul;
-            if ($article->getTitle() !== $myArticle->getTitle()) {
+        if (isset($moreArticle)) {
+            foreach ($moreArticle as $article) {
         ?>
-                <div class="cardMoreArticle">
-                    <div class="cardMoreArticleImg">
-                        <img src="/public/img/<?= $article->getImgArticle() ?>" alt="">
-                    </div>
-
-                    <h2><?= $article->getTitle() ?></h2>
-                    <p><?= $price ?>€</p>
-                    <a href="/infoArticle?id=<?= $article->getId() ?>" class="showMoreArticleBtn">Voir plus</a>
-                    <?php
-                    if (isset($_SESSION['user'])) {
-
-
-                        if ($_SESSION['user']['id_role'] == 1) {
-                    ?>
-                            <a href="/updateArticle?id=<?= $article->getId() ?>" class="updateArticleBtn">Modifier l'article</a>
-                            <form action="/deleteArticle" method="POST">
-                                <input type="hidden" name="id" id="id" value="<?= $article->getId() ?>">
-                                <button type="submit" class="deleteArticleBtn">Suprimer l'article</button>
-                            </form>
-                    <?php
-                        }
-                    }
-                    ?>
+                <div class="moreArticleArticle">
+                    <a href="/infoArticle?id=<?= $article->getId() ?>">
+                        <div>
+                            <img src="/public/img/<?= $article->getImgArticle() ?>" alt="<?= $article->getTitle() ?>">
+                        </div>
+                        <div>
+                            <h5><?= $article->getTitle() ?></h5>
+                            <p><?= $article->getPriceExcludingTax() ?> €</p>
+                        </div>
+                    </a>
                 </div>
         <?php
             }
@@ -120,100 +77,87 @@ $idArtcile = $myArticle->getId();
         ?>
     </div>
 </section>
-<hr class="infoArticleHr">
-<?php
-if ($comments) {
-?>
-    <section class="commentContainer" id="comment">
-        <h3>Les avis de nos clients :</h3>
+<section class="articleComment">
+    <h3>Les avis de nos clients :</h3>
+    <div class="comments">
         <?php
-        foreach ($comments as $comment) {
-            $userId = $comment->getIdUser();
-            $user = new Users($userId, null, null, null, null, null, null, null, null, null, null, null, null);
-            $myUser = $user->getUserImgById();
-            $myUserImg = $myUser->getImg();
+        if (isset($comments)) {
+            foreach ($comments as $comment) {
+                $id_user = $comment->getIdUser();
+                $notes = new Note(null, null, $id_user, $idArticle);
+                $users = new User($id_user, null, null, null, null, null, null, null, null, null, null, null, null);
 
-            $note = new Note(null, null, $userId, $idArtcile);
-            $myNote = $note->getNoteByUserId();
+                $user_note = $notes->getNoteByUserId();
+                $user = $users->getUserPorfile();
 
-            $date = date_create($comment->getCreationDate());
+
+                $commentDate = $comment->getCreationDate();
+                $commentUpdated = $comment->getModificationDate();
+
+
         ?>
-            <div class="d-md-flex comment">
-                <div class="userInfo">
-                    <div class="d-flex">
-                        <div class="userImgContainer">
-                            <img src="/public/uploads/<?= $myUserImg ? $myUserImg : 'img_default.png' ?>" alt="user image">
-                        </div>
-                        <div>
-                            <h4 class="commentUserName"><?= $comment->getFirstname() ?> <?= $comment->getLastname() ?></h4>
-                            <?php
-                            if ($note) {
-                            ?>
-                                <div class="iconContainer">
-                                    <i class="<?= $myNote->getValue() == 0 ? 'fa-regular' : 'fa-solid' ?> fa-star"></i>
-                                    <i class="<?= $myNote->getValue() < 2 ? 'fa-regular' : 'fa-solid' ?> fa-star"></i>
-                                    <i class="<?= $myNote->getValue() < 3 ? 'fa-regular' : 'fa-solid' ?> fa-star"></i>
-                                    <i class="<?= $myNote->getValue() < 4 ? 'fa-regular' : 'fa-solid' ?> fa-star"></i>
-                                    <i class="<?= $myNote->getValue() < 5 ? 'fa-regular' : 'fa-solid' ?> fa-star"></i>
+                <div class="comment">
+                    <div class="commentUserInfo">
+                        <div class="commentUserImgName">
+                            <div class="commentUserImg">
+                                <img src="/public/uploads/<?= $user->getImg() ? $user->getImg()  : "img_default.png" ?>" alt="photo de profile de <?= $comment->getFirstName() . " " . $comment->getLastName() ?> ">
+                            </div>
+                            <div>
+                                <h4><?= $comment->getFirstName() . " " . $comment->getLastName() ?></h4>
+                                <div>
+                                    <?php
+                                    if (isset($user_note)) {
+                                    ?>
+                                        <div class="userNote">
+                                            <i class="<?= $user_note->getValue() == 0 ? 'fa-regular' : 'fa-solid' ?> fa-star"></i>
+                                            <i class="<?= $user_note->getValue() < 2 ? 'fa-regular' : 'fa-solid' ?> fa-star"></i>
+                                            <i class="<?= $user_note->getValue() < 3 ? 'fa-regular' : 'fa-solid' ?> fa-star"></i>
+                                            <i class="<?= $user_note->getValue() < 4 ? 'fa-regular' : 'fa-solid' ?> fa-star"></i>
+                                            <i class="<?= $user_note->getValue() < 5 ? 'fa-regular' : 'fa-solid' ?> fa-star"></i>
+                                        </div>
+
+                                    <?php
+                                    }
+                                    ?>
                                 </div>
-
-                            <?php
-                            }
-                            ?>
+                            </div>
                         </div>
-                    </div>
-                    <?php
-                    if (!$comment->getModificationDate()) {
-                    ?>
-                        <p class="commentUserDate">Avis émis le : <?= date_format($date, "d-m-Y") ?></p>
-                    <?php
-                    } else {
-                        $modificationDate = date_create($comment->getModificationDate());
-                    ?>
-                        <p class="commentUserDate">Modifié le : <?= date_format($modificationDate, "d-m-Y") ?></p>
-                    <?php
-                    }
-                    ?>
-                </div>
+                        <p class="commentDate">Avis émis le <?= $commentUpdated ? $commentUpdated  : $commentDate ?></p>
+                        <div class="userCommentContent">
+                            <p><?= $comment->getContent() ?></p>
+                            <?php
+                            if (isset($_SESSION['user'])) {
 
-                <div>
-                    <p class="commentUserComment"><?= $comment->getContent() ?></p>
-                    <?php
-                    if (isset($_SESSION['user']['idUser'])) {
-
-
-                        if ($_SESSION['user']['idUser'] == $comment->getIdUser()  || $_SESSION['user']['id_role'] == 1) {
-
-                    ?>
-                            <div class="d-flex">
-                                <form action="" method="POST">
-                                    <input type="hidden" id="idDelete" name="idCommentDelete" value="<?= $comment->getIdComment() ?>">
-                                    <input type="hidden" id="idDeleteNote" name="idNoteDelete" value="<?= $myNote->getId() ?>">
-                                    <button class="deleteCommentBtn" type="submit" class="btn">Supprimer</button>
-                                </form>
-                                <?php
-                                if ($_SESSION['user']['idUser'] == $comment->getIdUser()) {
-                                ?>
-                                    <a href="/editComment?id=<?= $myArticle->getId() ?>&idComment=<?= $comment->getIdComment() ?>&idNote=<?= $myNote->getId() ?>" class="editCommentBtn">Modifier le commentaire</a>
+                                if ($_SESSION['user']['idUser'] == $id_user || $_SESSION['user']['id_role'] == "1") {
+                            ?>
+                                    <div class="commentBtnContainer">
+                                        <form action="" method="POST">
+                                            <input type="hidden" id="idDelete" name="idCommentDelete" value="<?= $comment->getIdComment() ?>">
+                                            <input type="hidden" id="idDeleteNote" name="idNoteDelete" value="<?= $user_note->getId() ?>">
+                                            <button class="showMoreBtn" type="submit" class="btn">Supprimer</button>
+                                        </form>
+                                        <?php
+                                        if ($_SESSION['user']['idUser'] == $id_user) {
+                                        ?>
+                                            <a href="/editComment?id=<?= $user_note->getId() ?>&idComment=<?= $comment->getIdComment() ?>&idNote=<?= $user_note->getId() ?>" class="activeFormA">Modifier le commentaire</a>
+                                        <?php
+                                        }
+                                        ?>
+                                    </div>
                                 <?php
                                 }
+
                                 ?>
-                            </div>
-                    <?php
+                        </div>
+                    </div>
+                </div>
+    <?php
+                            }
                         }
                     }
-                    ?>
-
-                </div>
-            </div>
-
-        <?php
-        }
-
-        ?>
-    </section>
+    ?>
+    </div>
+</section>
 <?php
-}
-
 include_once(__DIR__ . "/../partials/footer.php");
 ?>

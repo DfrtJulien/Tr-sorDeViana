@@ -55,7 +55,7 @@
     } else {
     ?>
       <div class="smLinkContainer">
-        <a href="/register" class="nav-link">Connexion</a>
+        <a href="/login" class="nav-link">Connexion</a>
       </div>
     <?php
     }
