@@ -22,7 +22,7 @@
       </div>
       <div class="navLinkleft">
         <a href="/allArticle">Nouveauté</a>
-        <a href="">Catégories</a>
+        <a href="" id="category">Catégories</a>
         <a href="">Recherche</a>
       </div>
       <div class="logoContainer">
